@@ -1,12 +1,24 @@
-.DS_Store
-node_modules
+# Build
 /build
-/.svelte-kit
+
+# Node modules & Packages
+node_modules
 /package
+
+# SvelteKit
+/.svelte-kit
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Environment
+.DS_Store
 .env
 .env.*
 !.env.example
-.vercel
-.output
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+
+# PNPM, NPM & Yarn
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
