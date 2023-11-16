@@ -15,6 +15,9 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+    env:
+      PUBLIC_GOOGLE_ANALYTICS_TAG: '${{ secrets.PUBLIC_GOOGLE_ANALYTICS_TAG }}'
+      PUBLIC_PRISMIC_REPOSITORY_NAME: '${{ secrets.PUBLIC_PRISMIC_REPOSITORY_NAME }}'
     steps:
       - name: Check GitHub repository
         uses: actions/checkout@v3
