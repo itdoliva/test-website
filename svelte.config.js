@@ -1,7 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
-/** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter({
@@ -10,7 +9,11 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true
-		})
+		}),
+		alias: {
+			$components: 'src/lib/components',
+			$stores: 'src/lib/stores'
+		}
 	},
 	preprocess: vitePreprocess()
 };
