@@ -1,10 +1,12 @@
 :root {
 	--odd-black: #000000;
+	--odd-gray: #f8f8f8;
 	--odd-white: #ffffff;
 	--odd-green-light: #eefef7;
 	--odd-green-medium: #53f8be;
 	--odd-green-dark: #257051;
 	--odd-grey-light: #f2f1f4;
+	--odd-grey-semilight: #c7c3ce;
 	--odd-grey-medium: #7d738c;
 	--odd-grey-dark: #38343f;
 	--odd-pink-light: #ffecf3;
