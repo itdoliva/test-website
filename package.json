@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@prismicio/client": "^7.3.1",
 		"@prismicio/svelte": "^1.0.2",
+		"siema": "^1.5.1",
 		"sveltekit-i18n": "^2.4.2"
 	}
 }
