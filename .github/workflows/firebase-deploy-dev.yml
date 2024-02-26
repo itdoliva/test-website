@@ -1,42 +1,42 @@
 name: Firebase Deployment (Development)
 
 on:
-  push:
-    branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+    push:
+        branches:
+            - develop
+    pull_request:
+        branches:
+            - develop
 
 jobs:
-  build_and_deploy:
-    name: Firebase Deploy (Development)
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    env:
-      PUBLIC_GOOGLE_ANALYTICS_TAG: '${{ secrets.PUBLIC_GOOGLE_ANALYTICS_TAG }}'
-      PUBLIC_PRISMIC_REPOSITORY_NAME: '${{ secrets.PUBLIC_PRISMIC_REPOSITORY_NAME }}'
-    steps:
-      - name: Check GitHub repository
-        uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - name: Install dependencies
-        run: npm ci
-      - name: Create website build
-        run: npm run build
-      - name: Deploy website to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+    build_and_deploy:
+        name: Firebase Deploy (Development)
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [18.x]
         env:
-          FIREBASE_CLI_EXPERIMENTS: webframeworks
-        with:
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_THE_ODD_SITE }}'
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          projectId: the-odd-site
-          channelId: dev
-          expires: 30d
+            PUBLIC_GOOGLE_ANALYTICS_TAG: '${{ secrets.PUBLIC_GOOGLE_ANALYTICS_TAG }}'
+            PUBLIC_PRISMIC_REPOSITORY_NAME: '${{ secrets.PUBLIC_PRISMIC_REPOSITORY_NAME }}'
+        steps:
+            - name: Check GitHub repository
+              uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
+            - name: Install dependencies
+              run: npm ci
+            - name: Create website build
+              run: npm run build
+            - name: Deploy website to Firebase
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              env:
+                  FIREBASE_CLI_EXPERIMENTS: webframeworks
+              with:
+                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_THE_ODD_SITE }}'
+                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
+                  projectId: the-odd-site
+                  channelId: dev
+                  expires: 30d
