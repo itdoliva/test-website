@@ -1,0 +1,86 @@
+<script>
+    export let pattern = 'light';
+
+    const scrollDown = () => {
+        const screenHeight = document.documentElement.clientHeight;
+        const offset = window.scrollY;
+
+        window.scrollBy(0, screenHeight - offset);
+    };
+</script>
+
+<button on:click|stopPropagation={scrollDown}>
+    <svg viewBox="0 0 45 34" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path
+            class={`pattern-${pattern}`}
+            d="M0.996094 0.733887L22.4995 22.2372L44.0028 0.733887"
+        />
+        <path
+            class={`pattern-${pattern}`}
+            d="M0.996094 11.4854L22.4995 32.9886L44.0028 11.4854"
+        />
+    </svg>
+</button>
+
+<style>
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-0.5rem);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    button {
+        animation: bounce 2.5s infinite;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    button,
+    button * {
+        cursor: pointer;
+    }
+
+    svg {
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    path {
+        stroke-width: 1.5;
+    }
+
+    .pattern-dark {
+        stroke: var(--odd-gray-dark);
+    }
+
+    .pattern-light {
+        stroke: var(--odd-gray-light);
+    }
+
+    @media only screen and (max-width: 600px) {
+        svg {
+            height: 2rem;
+            width: calc(2rem * 1.35);
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+    }
+
+    @media only screen and (min-width: 768px) {
+    }
+
+    @media only screen and (min-width: 1024px) {
+    }
+
+    @media only screen and (min-width: 1280px) {
+    }
+
+    @media only screen and (min-width: 1536px) {
+    }
+</style>
