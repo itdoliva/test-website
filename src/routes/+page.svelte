@@ -1,18 +1,27 @@
 <script>
-	import { t } from '$stores/language';
-
-	export let data;
-
-	console.log(data);
+    import Subscription from '@components/Subscription.svelte';
+    import Footer from '@components/Footer.svelte';
+    import CoverSection from '@sections/home/CoverSection.svelte';
+    import DescriptionSection from '@sections/home/DescriptionSection.svelte';
+    import BranchesSection from '@sections/home/BranchesSection.svelte';
+    import ClientsSection from '@sections/home/ClientsSection.svelte';
+    import ValuesSection from '@sections/home/ValuesSection.svelte';
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+    <title>Odd Data & Design Studio</title>
 </svelte:head>
 
-<h1>Not yet!</h1>
-<h1>{$t('default')}</h1>
+<CoverSection />
+<DescriptionSection />
+<BranchesSection />
+<ClientsSection />
+<ValuesSection />
+<Subscription />
+<Footer pattern="studio" />
 
 <style>
+    :global(#odd-cookie-consent) {
+        display: none;
+    }
 </style>
