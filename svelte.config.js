@@ -11,10 +11,12 @@ const config = {
             strict: true,
         }),
         alias: {
+            '@src': 'src',
             '@lib': 'src/lib',
-            '@content': 'src/lib/content',
             '@components': 'src/lib/components',
+            '@content': 'src/lib/content',
             '@sections': 'src/lib/sections',
+            '@slices': 'src/lib/slices',
             '@stores': 'src/lib/stores',
             '@utils': 'src/lib/utils',
         },
