@@ -21,7 +21,4 @@
 <Footer pattern="studio" />
 
 <style>
-    :global(#odd-cookie-consent) {
-        display: none;
-    }
 </style>
