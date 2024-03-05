@@ -2,8 +2,8 @@
     import { inView } from '@utils/actions';
 
     import Container from '@components/Container.svelte';
-    import SectionTitle from '@components/SectionTitle.svelte';
     import HeaderText from '@components/HeaderText.svelte';
+    import SectionTitle from '@components/SectionTitle.svelte';
 
     let showTexts = false;
 </script>
@@ -46,7 +46,7 @@
     }
 
     .description-wrapper p {
-        background-position: center left;
+        background-position: left center;
         background-repeat: no-repeat;
         color: var(--odd-gray-dark);
         display: block;

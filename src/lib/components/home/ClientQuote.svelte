@@ -10,7 +10,7 @@
     div {
         align-items: flex-start;
         background-color: var(--odd-gray-light);
-        box-shadow: rgba(0, 0, 0, 0.1) 6px 6px 12px;
+        box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         height: 100%;

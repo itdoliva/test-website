@@ -1,7 +1,7 @@
 <script>
     import Container from '@components/Container.svelte';
-    import SectionTitle from '@components/SectionTitle.svelte';
     import HeaderText from '@components/HeaderText.svelte';
+    import SectionTitle from '@components/SectionTitle.svelte';
 </script>
 
 <section>
@@ -54,19 +54,19 @@
     }
 
     .values-wrapper div:nth-child(1) {
-        background-image: url('icons/value-women.svg');
+        background-image: url('/icons/value-women.svg');
     }
 
     .values-wrapper div:nth-child(2) {
-        background-image: url('icons/value-lgbtqia.svg');
+        background-image: url('/icons/value-lgbtqia.svg');
     }
 
     .values-wrapper div:nth-child(3) {
-        background-image: url('icons/value-social.svg');
+        background-image: url('/icons/value-social.svg');
     }
 
     .values-wrapper div:nth-child(4) {
-        background-image: url('icons/value-worldwide.svg');
+        background-image: url('/icons/value-worldwide.svg');
     }
 
     .values-wrapper span {

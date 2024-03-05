@@ -1,10 +1,10 @@
 <script>
     import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+    import { quotesSlider } from '@utils/splide.js';
 
     import Container from '@components/Container.svelte';
     import SectionTitle from '@components/SectionTitle.svelte';
     import ClientQuote from '@components/home/ClientQuote.svelte';
-    import { quotesSliderConfig } from '@utils/splide.js';
 
     const quotes = [
         {
@@ -22,16 +22,16 @@
 <section>
     <Container>
         <SectionTitle pattern="studio">What our clients say</SectionTitle>
-        <Splide options={quotesSliderConfig}>
+        <Splide options={quotesSlider}>
             {#each quotes as quote}
                 <SplideSlide>
                     <ClientQuote>
-                        <svelte:fragment slot="quote"
-                            >{quote.text}</svelte:fragment
-                        >
-                        <svelte:fragment slot="author"
-                            >{quote.author}</svelte:fragment
-                        >
+                        <svelte:fragment slot="quote">
+                            {quote.text}
+                        </svelte:fragment>
+                        <svelte:fragment slot="author">
+                            {quote.author}
+                        </svelte:fragment>
                     </ClientQuote>
                 </SplideSlide>
             {/each}
@@ -50,12 +50,21 @@
         position: unset;
     }
 
+    section :global(.splide__slide) {
+        opacity: 0.4;
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    section :global(.splide__slide.is-active) {
+        opacity: 1;
+    }
+
     section :global(.splide__pagination__page) {
-        background: var(--odd-gray-medium);
+        background-color: var(--odd-gray-medium);
     }
 
     section :global(.splide__pagination__page.is-active) {
-        background: var(--odd-purple-medium);
+        background-color: var(--odd-purple-medium);
     }
 
     @media only screen and (max-width: 600px) {
@@ -70,18 +79,8 @@
         }
 
         section :global(.splide__pagination__page) {
-            border-radius: 0.5rem;
             height: 0.625rem;
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
             width: 0.625rem;
-        }
-
-        section :global(.splide__pagination__page.is-active) {
-            height: 0.5rem;
-            margin-left: 0.375rem;
-            margin-right: 0.375rem;
-            width: 1.25rem;
         }
     }
 
