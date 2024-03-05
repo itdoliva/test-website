@@ -25,21 +25,21 @@
 <style>
     footer {
         align-items: flex-end;
-        background: var(--odd-purple-dark);
+        background-color: var(--odd-purple-dark);
         display: flex;
         justify-content: space-between;
     }
 
     footer.odd-studio {
-        background: var(--odd-purple-dark);
+        background-color: var(--odd-purple-dark);
     }
 
     footer.odd-experiments {
-        background: var(--odd-turquoise-medium);
+        background-color: var(--odd-turquoise-medium);
     }
 
     footer.odd-education {
-        background: var(--odd-blue-medium);
+        background-color: var(--odd-blue-medium);
     }
 
     a,

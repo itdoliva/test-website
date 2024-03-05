@@ -1,7 +1,8 @@
 <script>
+    export let padding = false;
 </script>
 
-<div>
+<div class={padding ? 'with-padding' : ''}>
     <slot />
 </div>
 
@@ -14,6 +15,10 @@
         div {
             margin: 0 auto;
             width: 85vw;
+        }
+
+        div.with-padding {
+            padding: 3.75rem 0;
         }
     }
 

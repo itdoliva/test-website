@@ -56,19 +56,19 @@
 
 <style>
     div {
-        background: var(--odd-purple-medium);
+        background-color: var(--odd-purple-medium);
     }
 
     div.odd-studio {
-        background: var(--odd-purple-medium);
+        background-color: var(--odd-purple-medium);
     }
 
     div.odd-experiments {
-        background: var(--odd-turquoise-medium);
+        background-color: var(--odd-turquoise-medium);
     }
 
     div.odd-education {
-        background: var(--odd-blue-medium);
+        background-color: var(--odd-blue-medium);
     }
 
     h3:nth-of-type(1) {
@@ -108,7 +108,7 @@
 
     input {
         appearance: none;
-        background-color: transparent;
+        background: transparent;
         border-bottom: 1px solid var(--odd-gray-light);
         color: var(--odd-gray-light);
         display: block;

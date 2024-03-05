@@ -37,7 +37,7 @@
 
     button {
         animation: bounce 2.5s infinite;
-        background-color: transparent;
+        background: transparent;
         cursor: pointer;
     }
 
