@@ -1,0 +1,28 @@
+[
+    {
+        "__TYPE__": "SharedSliceContent",
+        "variation": "default",
+        "primary": {},
+        "items": [
+            {
+                "__TYPE__": "GroupItemContent",
+                "value": [
+                    [
+                        "paragraph",
+                        {
+                            "__TYPE__": "StructuredTextContent",
+                            "value": [
+                                {
+                                    "type": "paragraph",
+                                    "content": {
+                                        "text": "Exercitation tempor in nisi cillum ipsum cillum exercitation id incididunt nisi veniam tempor proident Lorem et. Et eu nulla proident ullamco."
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ]
+    }
+]
