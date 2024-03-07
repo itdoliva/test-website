@@ -1,0 +1,24 @@
+[
+    {
+        "__TYPE__": "SharedSliceContent",
+        "variation": "default",
+        "primary": {
+            "text": {
+                "__TYPE__": "FieldContent",
+                "value": "division",
+                "type": "Text"
+            },
+            "author": {
+                "__TYPE__": "FieldContent",
+                "value": "grade",
+                "type": "Text"
+            },
+            "details": {
+                "__TYPE__": "FieldContent",
+                "value": "necessary",
+                "type": "Text"
+            }
+        },
+        "items": []
+    }
+]

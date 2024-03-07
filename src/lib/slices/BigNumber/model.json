@@ -1,0 +1,33 @@
+{
+    "id": "big_number",
+    "type": "SharedSlice",
+    "name": "BigNumber",
+    "description": "BigNumber",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {},
+            "items": {
+                "value": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Big Number",
+                        "placeholder": "The value for this big number."
+                    }
+                },
+                "text": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Big Number Text",
+                        "placeholder": "The text for this big number."
+                    }
+                }
+            }
+        }
+    ]
+}
