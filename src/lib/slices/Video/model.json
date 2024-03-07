@@ -1,0 +1,33 @@
+{
+    "id": "video",
+    "type": "SharedSlice",
+    "name": "Video",
+    "description": "Video",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {
+                "iframe": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Video iFrame",
+                        "placeholder": "The iframe snippet of this video."
+                    }
+                },
+                "caption": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Video Caption",
+                        "placeholder": "The caption of this video (optional)."
+                    }
+                }
+            },
+            "items": {}
+        }
+    ]
+}
