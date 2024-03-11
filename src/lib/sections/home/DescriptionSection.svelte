@@ -1,33 +1,21 @@
 <script>
-    import { inView } from '@utils/actions';
-
     import Container from '@components/Container.svelte';
-    import HeaderText from '@components/HeaderText.svelte';
     import SectionTitle from '@components/SectionTitle.svelte';
-
-    let showTexts = false;
 </script>
 
 <section>
     <Container>
         <SectionTitle pattern="studio">What we do</SectionTitle>
-        <HeaderText background="light" pattern="studio">
+        <div class="header-wrapper">
             <p>
-                Odd Data & Design is a <span
-                    class="highlight-font highlight-color"
+                Odd Data & Design is a <span class="text-highlight"
                     >data reimagination</span
                 >
                 company specializing in
-                <span class="highlight-font highlight-color"
-                    >data representation</span
-                >.
+                <span class="text-highlight">data representation</span>.
             </p>
-        </HeaderText>
-        <div
-            class={`description-wrapper ${showTexts ? 'reveal' : ''}`}
-            use:inView
-            on:enter={() => (showTexts = true)}
-        >
+        </div>
+        <div class="description-wrapper">
             <p>
                 We strategize, analyze, explore, visualize, and transform your
             </p>
@@ -45,6 +33,22 @@
         background-color: var(--odd-gray-light);
     }
 
+    .header-wrapper p {
+        color: var(--odd-gray-dark);
+        font-family: 'Switzer', sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.04rem;
+        text-align: center;
+        text-wrap: balance;
+    }
+
+    .header-wrapper .text-highlight {
+        color: var(--odd-purple-medium);
+        font-family: 'Newsreader', serif;
+        font-style: italic;
+        letter-spacing: -0.1rem;
+    }
+
     .description-wrapper p {
         background-position: left center;
         background-repeat: no-repeat;
@@ -53,7 +57,6 @@
         font-family: 'Switzer', sans-serif;
         font-weight: 400;
         letter-spacing: -0.03rem;
-        line-height: 120%;
         text-wrap: balance;
     }
 
@@ -74,6 +77,17 @@
             padding: 5rem 0 2.5rem 0;
         }
 
+        .header-wrapper p {
+            font-size: 2rem;
+            line-height: 120%;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-wrapper .text-highlight {
+            font-size: 2.25rem;
+            line-height: 100%;
+        }
+
         .description-wrapper {
             margin-top: 5rem;
         }
@@ -81,6 +95,7 @@
         .description-wrapper p {
             background-size: auto 3rem;
             font-size: 1.5rem;
+            line-height: 120%;
             margin-bottom: 1rem;
             padding-left: 1.75rem;
         }

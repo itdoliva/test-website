@@ -1,26 +1,22 @@
 <script>
     import Container from '@components/Container.svelte';
-    import HeaderText from '@components/HeaderText.svelte';
     import SectionTitle from '@components/SectionTitle.svelte';
 </script>
 
 <section>
     <Container>
         <SectionTitle pattern="studio">Who we are</SectionTitle>
-        <HeaderText background="light" pattern="studio">
+        <div class="header-wrapper">
             <p>
-                We are <span class="highlight-font highlight-color">
-                    passionate thinkers and makers</span
-                >
-                who love to push new ways to interact, think and show information.
+                We are <span class="text-highlight"
+                    >passionate thinkers and makers</span
+                > who love to push new ways to interact, think and show information.
             </p>
             <p>
-                Some imagine what data can become.<br /><span
-                    class="highlight-weight"
-                    >We make it happen.
-                </span>
+                Some imagine what data can become.<br />
+                <span class="text-bold">We make it happen.</span>
             </p>
-        </HeaderText>
+        </div>
         <div class="values-wrapper">
             <div><span>We are a women-led and women-owned company</span></div>
             <div>
@@ -40,6 +36,26 @@
 <style>
     section {
         background-color: var(--odd-gray-light);
+    }
+
+    .header-wrapper p {
+        color: var(--odd-gray-dark);
+        font-family: 'Switzer', sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.04rem;
+        text-align: center;
+        text-wrap: balance;
+    }
+
+    .header-wrapper .text-highlight {
+        color: var(--odd-purple-medium);
+        font-family: 'Newsreader', serif;
+        font-style: italic;
+        letter-spacing: -0.1rem;
+    }
+
+    .header-wrapper .text-bold {
+        font-weight: 600;
     }
 
     .values-wrapper {
@@ -81,6 +97,17 @@
     @media only screen and (max-width: 600px) {
         section {
             padding: 2.5rem 0 5rem 0;
+        }
+
+        .header-wrapper p {
+            font-size: 2rem;
+            line-height: 120%;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-wrapper .text-highlight {
+            line-height: 100%;
+            font-size: 2.25rem;
         }
 
         .values-wrapper {

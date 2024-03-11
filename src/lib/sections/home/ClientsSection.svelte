@@ -61,6 +61,7 @@
 
     section :global(.splide__pagination__page) {
         background-color: var(--odd-gray-medium);
+        margin: 0.25rem;
     }
 
     section :global(.splide__pagination__page.is-active) {

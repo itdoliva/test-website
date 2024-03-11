@@ -9,7 +9,7 @@
     };
 </script>
 
-<button on:click|stopPropagation={scrollDown}>
+<button type="button" on:click|stopPropagation={scrollDown}>
     <svg viewBox="0 0 45 34" xmlns="http://www.w3.org/2000/svg" fill="none">
         <path
             class={`pattern-${pattern}`}
