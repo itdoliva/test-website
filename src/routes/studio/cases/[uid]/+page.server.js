@@ -1,10 +1,18 @@
+import { get } from 'svelte/store';
+import { locale } from '@stores/language';
 import { createClient } from '@utils/prismic';
 
 export const prerender = false;
 
 export const load = async ({ params, fetch, cookies }) => {
     const client = createClient({ fetch, cookies });
-    const page = await client.getByUID('odd-studio-cases', params.uid);
+    const queryParams = { lang: get(locale) };
+
+    const page = await client.getByUID(
+        'odd-studio-cases',
+        params.uid,
+        queryParams
+    );
 
     return { page };
 };

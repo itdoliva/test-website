@@ -1,5 +1,5 @@
 const translations = {
-    en: {
+    'en-us': {
         default: 'Hello, World!',
     },
     pt: {
