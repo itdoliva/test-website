@@ -19,7 +19,8 @@
 
 <style>
     ol {
-        background: var(--odd-white);
+        background-color: var(--odd-gray-light);
+        border-radius: 0.625rem;
         box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
     }
 
@@ -59,31 +60,85 @@
 
     @media only screen and (max-width: 600px) {
         ol {
-            border-radius: 0.625rem;
-            margin: 1rem 0;
+            margin: 1.25rem 0;
             padding: 1rem 1rem;
         }
 
         li {
             font-size: 1rem;
-            line-height: 110%;
-            margin: 0 0 0.75rem 0.5rem;
-            padding-left: 0.75rem;
+            line-height: 120%;
+            margin: 0 0 0.875rem 0.75rem;
+            padding-left: 1rem;
         }
     }
 
     @media only screen and (min-width: 600px) {
+        ol {
+            margin: 1.25rem 0;
+            padding: 1.25rem 1.25rem;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 120%;
+            margin: 0 0 0.875rem 0.75rem;
+            padding-left: 1rem;
+        }
     }
 
     @media only screen and (min-width: 768px) {
+        ol {
+            margin: 1.5rem 0;
+            padding: 1.5rem 1.5rem;
+        }
+
+        li {
+            font-size: 1.125rem;
+            line-height: 125%;
+            margin: 0 0 1rem 0.75rem;
+            padding-left: 1.25rem;
+        }
     }
 
     @media only screen and (min-width: 1024px) {
+        ol {
+            margin: 1.75rem 0;
+            padding: 1.5rem 1.5rem;
+        }
+
+        li {
+            font-size: 1.125rem;
+            line-height: 125%;
+            margin: 0 0 1rem 0.75rem;
+            padding-left: 1.25rem;
+        }
     }
 
     @media only screen and (min-width: 1280px) {
+        ol {
+            margin: 2rem 0;
+            padding: 1.75rem 1.75rem;
+        }
+
+        li {
+            font-size: 1.25rem;
+            line-height: 130%;
+            margin: 0 0 1rem 1rem;
+            padding-left: 1.75rem;
+        }
     }
 
     @media only screen and (min-width: 1536px) {
+        ol {
+            margin: 2.5rem 0;
+            padding: 1.75rem 1.75rem;
+        }
+
+        li {
+            font-size: 1.25rem;
+            line-height: 130%;
+            margin: 0 0 1rem 1rem;
+            padding-left: 1.75rem;
+        }
     }
 </style>

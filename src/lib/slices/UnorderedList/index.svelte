@@ -19,13 +19,13 @@
 
 <style>
     ul {
-        background: var(--odd-white);
+        background-color: var(--odd-gray-light);
+        border-radius: 0.625rem;
         box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
     }
 
     li {
         background-image: url('/icons/right-arrow-purple.svg');
-        background-position: left 5%;
         background-repeat: no-repeat;
         color: var(--odd-gray-dark);
         font-family: 'Switzer', sans-serif;
@@ -55,32 +55,97 @@
 
     @media only screen and (max-width: 600px) {
         ul {
-            border-radius: 0.625rem;
-            margin: 1rem 0;
+            margin: 1.25rem 0;
             padding: 1rem 1rem;
         }
 
         li {
+            background-position: left 5%;
             background-size: 1.125rem;
             font-size: 1rem;
-            line-height: 110%;
-            margin-bottom: 0.75rem;
+            line-height: 120%;
+            margin-bottom: 0.875rem;
             padding-left: 1.75rem;
         }
     }
 
     @media only screen and (min-width: 600px) {
+        ul {
+            margin: 1.25rem 0;
+            padding: 1.25rem 1.25rem;
+        }
+
+        li {
+            background-position: left 5%;
+            background-size: 1.125rem;
+            font-size: 1rem;
+            line-height: 120%;
+            margin-bottom: 1rem;
+            padding-left: 1.75rem;
+        }
     }
 
     @media only screen and (min-width: 768px) {
+        ul {
+            margin: 1.5rem 0;
+            padding: 1.5rem 1.5rem;
+        }
+
+        li {
+            background-position: left 10%;
+            background-size: 1.25rem;
+            font-size: 1.125rem;
+            line-height: 125%;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
     }
 
     @media only screen and (min-width: 1024px) {
+        ul {
+            margin: 1.75rem 0;
+            padding: 1.5rem 1.5rem;
+        }
+
+        li {
+            background-position: left 10%;
+            background-size: 1.25rem;
+            font-size: 1.125rem;
+            line-height: 125%;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
     }
 
     @media only screen and (min-width: 1280px) {
+        ul {
+            margin: 2rem 0;
+            padding: 1.75rem 1.75rem;
+        }
+
+        li {
+            background-position: left 15%;
+            background-size: 1.5rem;
+            font-size: 1.25rem;
+            line-height: 130%;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+        }
     }
 
     @media only screen and (min-width: 1536px) {
+        ul {
+            margin: 2.5rem 0;
+            padding: 1.75rem 1.75rem;
+        }
+
+        li {
+            background-position: left 15%;
+            background-size: 1.5rem;
+            font-size: 1.25rem;
+            line-height: 130%;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+        }
     }
 </style>
