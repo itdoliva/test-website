@@ -14,6 +14,17 @@ export const quotesSlider = {
 export const imageSlider = {
     arrows: false,
     autoplay: true,
+    gap: '1rem',
+    interval: 3000,
+    resetProgress: false,
+    speed: 750,
+    type: 'loop',
+};
+
+export const casesSlider = {
+    arrows: false,
+    autoplay: true,
+    gap: '1rem',
     interval: 3000,
     resetProgress: false,
     speed: 750,
