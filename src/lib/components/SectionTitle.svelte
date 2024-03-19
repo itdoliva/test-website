@@ -39,17 +39,37 @@
     }
 
     @media only screen and (min-width: 600px) {
+        h2 {
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+        }
     }
 
     @media only screen and (min-width: 768px) {
+        h2 {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+        }
     }
 
     @media only screen and (min-width: 1024px) {
+        h2 {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+        }
     }
 
     @media only screen and (min-width: 1280px) {
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+        }
     }
 
     @media only screen and (min-width: 1536px) {
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 2.5rem;
+        }
     }
 </style>

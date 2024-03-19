@@ -1,0 +1,174 @@
+<script>
+    import Container from '@components/Container.svelte';
+</script>
+
+<section>
+    <Container>
+        <h1>
+            <span>odd <span class="highlight-text">studio</span></span> collaborates
+            with data experts, researchers and organizations to make data fun, aesthetically
+            pleasing, drive better actions and why not, change the world.
+        </h1>
+    </Container>
+</section>
+
+<style>
+    section {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 100svh;
+    }
+
+    h1 {
+        font-family: 'Switzer', sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.04rem;
+        text-align: center;
+        text-wrap: balance;
+    }
+
+    h1 .highlight-text {
+        font-family: 'Newsreader', serif;
+        font-size: 2.625rem;
+        font-style: italic;
+        letter-spacing: -0.15rem;
+        line-height: 100%;
+    }
+
+    @media only screen and (max-width: 600px) {
+        section {
+            background: linear-gradient(
+                180deg,
+                var(--odd-purple-dark) 0%,
+                var(--odd-purple-medium) 75%,
+                var(--odd-gray-light) 100%
+            );
+            padding: 3.75rem 0;
+        }
+
+        h1 {
+            color: var(--odd-gray-light);
+            font-size: 2.375rem;
+            line-height: 120%;
+        }
+
+        h1 .highlight-text {
+            color: var(--odd-gray-light);
+            font-size: 2.625rem;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        section {
+            background: linear-gradient(
+                180deg,
+                var(--odd-purple-dark) 0%,
+                var(--odd-purple-medium) 75%,
+                var(--odd-gray-light) 100%
+            );
+            padding: 3.75rem 0;
+        }
+
+        h1 {
+            color: var(--odd-gray-light);
+            font-size: 2.75rem;
+            line-height: 120%;
+        }
+
+        h1 .highlight-text {
+            color: var(--odd-gray-light);
+            font-size: 2.875rem;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        section {
+            background: linear-gradient(
+                180deg,
+                var(--odd-purple-dark) 0%,
+                var(--odd-purple-medium) 75%,
+                var(--odd-gray-light) 100%
+            );
+            padding: 3.75rem 0;
+        }
+
+        h1 {
+            color: var(--odd-gray-light);
+            font-size: 3.25rem;
+            line-height: 115%;
+        }
+
+        h1 .highlight-text {
+            color: var(--odd-gray-light);
+            font-size: 3.375rem;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        section {
+            background: linear-gradient(
+                180deg,
+                var(--odd-purple-dark) 0%,
+                var(--odd-purple-medium) 75%,
+                var(--odd-gray-light) 100%
+            );
+            padding: 3.75rem 0;
+        }
+
+        h1 {
+            color: var(--odd-gray-light);
+            font-size: 3.75rem;
+            line-height: 115%;
+        }
+
+        h1 .highlight-text {
+            color: var(--odd-gray-light);
+            font-size: 3.875rem;
+        }
+    }
+
+    @media only screen and (min-width: 1280px) {
+        section {
+            background: var(--odd-gray-light);
+            padding: 5rem 0;
+        }
+
+        h1 {
+            color: var(--odd-gray-dark);
+            font-size: 3.75rem;
+            line-height: 110%;
+        }
+
+        h1 > span {
+            color: var(--odd-purple-medium);
+        }
+
+        h1 .highlight-text {
+            color: var(--odd-purple-medium);
+            font-size: 3.75rem;
+        }
+    }
+
+    @media only screen and (min-width: 1536px) {
+        section {
+            background: var(--odd-gray-light);
+            padding: 5rem 0;
+        }
+
+        h1 {
+            color: var(--odd-gray-dark);
+            font-size: 4.5rem;
+            line-height: 110%;
+        }
+
+        h1 > span {
+            color: var(--odd-purple-medium);
+        }
+
+        h1 .highlight-text {
+            color: var(--odd-purple-medium);
+            font-size: 4.5rem;
+        }
+    }
+</style>
