@@ -3,6 +3,8 @@ import { locale } from '@stores/language';
 import { createClient } from '@utils/prismic';
 
 export const prerender = false;
+export const ssr = false;
+export const csr = true;
 
 export const load = async ({ fetch, cookies }) => {
     const client = createClient({ fetch, cookies });
