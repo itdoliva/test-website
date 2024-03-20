@@ -1,5 +1,5 @@
-<script>
-    import { browser } from '$app/environment';
+<svelte:head>
+    <title>Odd Data & Design Studio</title>
+</svelte:head>
 
-    if (browser) window.location.href = '/studio';
-</script>
+<h1>Not yet!</h1>
