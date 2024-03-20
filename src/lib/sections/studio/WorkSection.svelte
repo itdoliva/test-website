@@ -162,6 +162,10 @@
             line-height: 120%;
             margin-bottom: 2rem;
         }
+
+        section div.desktop-content {
+            display: none;
+        }
     }
 
     @media only screen and (min-width: 600px) {
@@ -184,6 +188,10 @@
             font-size: 1rem;
             line-height: 120%;
             margin-bottom: 1.5rem;
+        }
+
+        section div.desktop-content {
+            display: none;
         }
     }
 
@@ -208,6 +216,10 @@
             line-height: 125%;
             margin-bottom: 1.5rem;
         }
+
+        section div.desktop-content {
+            display: none;
+        }
     }
 
     @media only screen and (min-width: 1024px) {
@@ -231,6 +243,10 @@
             line-height: 125%;
             margin-bottom: 1.75rem;
         }
+
+        section div.desktop-content {
+            display: none;
+        }
     }
 
     @media only screen and (min-width: 1280px) {
@@ -242,7 +258,8 @@
             display: none;
         }
 
-        div.desktop-content {
+        section div.desktop-content {
+            display: block;
             margin: 0 -10rem;
         }
 
@@ -272,7 +289,8 @@
             display: none;
         }
 
-        div.desktop-content {
+        section div.desktop-content {
+            display: block;
             margin: 0 -10rem;
         }
 

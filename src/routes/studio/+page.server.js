@@ -17,6 +17,7 @@ export const load = async ({ fetch, cookies }) => {
                 title
                 category
                 display_image
+                summary
             }
         }`,
     };

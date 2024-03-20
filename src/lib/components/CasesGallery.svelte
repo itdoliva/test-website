@@ -1,6 +1,11 @@
 <script>
     export let branch;
     export let cases;
+
+    const getSummaryText = (content) =>
+        content.summary[0].text < 500
+            ? content.summary[0].text
+            : content.summary[0].text.slice(0, 497) + '...';
 </script>
 
 <div class={`cases-gallery odd-${branch}`}>
@@ -11,9 +16,12 @@
                 {#if index % 3 === column}
                     <a href={`/${branch}/cases/${content.uid}`}>
                         <div
-                            class="case-slider-cover"
                             style={`background-image: url(${content.display_image.url});`}
-                        />
+                        >
+                            <div class="case-gallery-overlay">
+                                {getSummaryText(content)}
+                            </div>
+                        </div>
                         <h4>{content.title}</h4>
                     </a>
                 {/if}
@@ -42,7 +50,7 @@
         width: 100%;
     }
 
-    a div {
+    a > div {
         background: linear-gradient(
             180deg,
             var(--odd-purple-medium) 0%,
@@ -54,6 +62,25 @@
         border-radius: 1.25rem;
         cursor: pointer;
         width: 100%;
+    }
+
+    a > div .case-gallery-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: inherit;
+        color: var(--odd-gray-light);
+        cursor: pointer;
+        font-family: 'Switzer', sans-serif;
+        font-weight: 400;
+        height: inherit;
+        letter-spacing: -0.09rem;
+        line-height: 120%;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        width: 100%;
+    }
+
+    a:hover > div .case-gallery-overlay {
+        opacity: 1;
     }
 
     a h4 {
@@ -92,6 +119,11 @@
             gap: 3rem;
         }
 
+        a > div .case-gallery-overlay {
+            font-size: 1.25rem;
+            padding: 2rem 2rem;
+        }
+
         a h4 {
             color: var(--odd-gray-dark);
             font-size: 1.75rem;
@@ -121,6 +153,11 @@
 
         div.cases-gallery > div {
             gap: 3.75rem;
+        }
+
+        a > div .case-gallery-overlay {
+            font-size: 1.375rem;
+            padding: 2.5rem 2.5rem;
         }
 
         a h4 {
