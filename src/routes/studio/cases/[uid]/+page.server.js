@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { locale } from '@stores/language';
 import { createClient } from '@utils/prismic';
 
-export const prerender = false;
+export const prerender = 'auto';
 export const ssr = false;
 export const csr = true;
 
