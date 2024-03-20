@@ -1,0 +1,75 @@
+{
+    "id": "exemplo-leroy",
+    "label": "exemplo-leroy",
+    "repeatable": true,
+    "json": {
+        "Main": {
+            "uid": {
+                "type": "UID",
+                "config": {
+                    "label": "Document ID"
+                }
+            },
+            "cover_image": {
+                "type": "Image",
+                "config": {
+                    "constraint": {},
+                    "thumbnails": [],
+                    "label": "Cover Image"
+                }
+            },
+            "title": {
+                "type": "Text",
+                "config": {
+                    "label": "Title"
+                }
+            },
+            "subtitle": {
+                "type": "Text",
+                "config": {
+                    "label": "Subtitle"
+                }
+            },
+            "author": {
+                "type": "Text",
+                "config": {
+                    "label": "Author"
+                }
+            },
+            "date": {
+                "type": "Date",
+                "config": {
+                    "label": "Date"
+                }
+            },
+            "body": {
+                "type": "Slices",
+                "fieldset": "Slice zone",
+                "config": {
+                    "labels": {},
+                    "choices": {
+                        "paragraph": {
+                            "type": "Slice",
+                            "fieldset": "Paragraph",
+                            "description": "Use this slice to add one (or more) paragraph.",
+                            "icon": "short_text",
+                            "non-repeat": {},
+                            "repeat": {
+                                "paragraph": {
+                                    "type": "StructuredText",
+                                    "config": {
+                                        "single": "paragraph,strong,em,hyperlink",
+                                        "label": "Paragraph",
+                                        "placeholder": "Insert here the text of the paragraph."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "status": true,
+    "format": "custom"
+}

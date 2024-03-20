@@ -1,0 +1,63 @@
+{
+    "id": "oddservices",
+    "label": "what we do",
+    "repeatable": true,
+    "json": {
+        "Main": {
+            "uid": {
+                "type": "UID",
+                "config": {
+                    "label": "UID",
+                    "placeholder": "Enter a unique identifier here."
+                }
+            },
+            "order": {
+                "type": "Number",
+                "config": {
+                    "label": "Order",
+                    "placeholder": "Insert the position (sorting) in which the service must appear on the page."
+                }
+            },
+            "color": {
+                "type": "Select",
+                "config": {
+                    "options": ["orange", "magenta", "green"],
+                    "label": "Color",
+                    "placeholder": "Select the color to be applied to this service's components on the page."
+                }
+            },
+            "background": {
+                "type": "Image",
+                "config": {
+                    "constraint": {},
+                    "thumbnails": [],
+                    "label": "Background"
+                }
+            },
+            "title": {
+                "type": "Text",
+                "config": {
+                    "label": "Title",
+                    "placeholder": "Insert the service title here."
+                }
+            },
+            "description": {
+                "type": "Text",
+                "config": {
+                    "label": "Description",
+                    "placeholder": "Insert here a short text describing this service."
+                }
+            },
+            "deliveries": {
+                "type": "StructuredText",
+                "config": {
+                    "multi": "list-item",
+                    "label": "Deliveries",
+                    "placeholder": "Insert here examples of deliveries related to this type of service."
+                }
+            }
+        }
+    },
+    "status": false,
+    "format": "custom"
+}
