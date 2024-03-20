@@ -8,7 +8,7 @@ const config = {
             assets: 'build',
             fallback: '404.html',
             precompress: false,
-            strict: true,
+            strict: false,
         }),
         alias: {
             '@src': 'src',
