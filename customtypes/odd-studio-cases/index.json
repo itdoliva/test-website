@@ -106,12 +106,11 @@
                     "placeholder": "A short text that summarizes this case."
                 }
             },
-            "cover_image": {
-                "type": "Image",
+            "preview": {
+                "type": "Text",
                 "config": {
-                    "constraint": {},
-                    "thumbnails": [],
-                    "label": "Cover Image"
+                    "label": "Preview Text",
+                    "placeholder": ""
                 }
             },
             "display_image": {
@@ -122,11 +121,22 @@
                     "label": "Display Image"
                 }
             },
+            "cover_image": {
+                "type": "Image",
+                "config": {
+                    "constraint": {},
+                    "thumbnails": [],
+                    "label": "Cover Image"
+                }
+            },
             "slices": {
                 "type": "Slices",
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "full_width_image": {
+                            "type": "SharedSlice"
+                        },
                         "video": {
                             "type": "SharedSlice"
                         },

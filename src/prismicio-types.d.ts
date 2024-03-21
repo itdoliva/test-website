@@ -119,6 +119,7 @@ export type ExemploLeroyDocument<Lang extends string = string> =
     >;
 
 type OddStudioCasesDocumentDataSlicesSlice =
+    | FullWidthImageSlice
     | VideoSlice
     | ImagesSlice
     | ExternalLinkSlice
@@ -266,15 +267,15 @@ interface OddStudioCasesDocumentData {
     summary: prismic.RichTextField;
 
     /**
-     * Cover Image field in *odd.studio/studio/cases*
+     * Preview Text field in *odd.studio/studio/cases*
      *
-     * - **Field Type**: Image
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: odd-studio-cases.cover_image
+     * - **API ID Path**: odd-studio-cases.preview
      * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#image
+     * - **Documentation**: https://prismic.io/docs/field#key-text
      */
-    cover_image: prismic.ImageField<never>;
+    preview: prismic.KeyTextField;
 
     /**
      * Display Image field in *odd.studio/studio/cases*
@@ -286,6 +287,17 @@ interface OddStudioCasesDocumentData {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     display_image: prismic.ImageField<never>;
+
+    /**
+     * Cover Image field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: odd-studio-cases.cover_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    cover_image: prismic.ImageField<never>;
 
     /**
      * Slice Zone field in *odd.studio/studio/cases*
@@ -1957,6 +1969,61 @@ export type ExternalLinkSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FullscreenImage → Primary*
+ */
+export interface FullWidthImageSliceDefaultPrimary {
+    /**
+     * Image field in *FullscreenImage → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: full_width_image.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>;
+
+    /**
+     * Images Caption field in *FullscreenImage → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The caption to show below the image (optional).
+     * - **API ID Path**: full_width_image.primary.caption
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    caption: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for FullscreenImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FullWidthImageSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<FullWidthImageSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *FullscreenImage*
+ */
+type FullWidthImageSliceVariation = FullWidthImageSliceDefault;
+
+/**
+ * FullscreenImage Shared Slice
+ *
+ * - **API ID**: `full_width_image`
+ * - **Description**: FullWidthImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FullWidthImageSlice = prismic.SharedSlice<
+    'full_width_image',
+    FullWidthImageSliceVariation
+>;
+
+/**
  * Primary content in *Images → Primary*
  */
 export interface ImagesSliceDefaultPrimary {
@@ -2379,6 +2446,10 @@ declare module '@prismicio/client' {
             ExternalLinkSliceDefaultPrimary,
             ExternalLinkSliceVariation,
             ExternalLinkSliceDefault,
+            FullWidthImageSlice,
+            FullWidthImageSliceDefaultPrimary,
+            FullWidthImageSliceVariation,
+            FullWidthImageSliceDefault,
             ImagesSlice,
             ImagesSliceDefaultPrimary,
             ImagesSliceDefaultItem,
