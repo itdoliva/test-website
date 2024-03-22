@@ -13,13 +13,24 @@
 
 <style>
     h4 {
-        color: var(--odd-purple-medium);
         font-family: 'Switzer', sans-serif;
         font-weight: 600;
         letter-spacing: -0.025rem;
         line-height: 120%;
         text-transform: uppercase;
         text-wrap: balance;
+    }
+
+    :global(.odd-studio) h4 {
+        color: var(--odd-purple-medium);
+    }
+
+    :global(.odd-education) h4 {
+        color: var(--odd-blue-medium);
+    }
+
+    :global(.odd-experiments) h4 {
+        color: var(--odd-turquoise-medium);
     }
 
     @media only screen and (max-width: 600px) {
@@ -45,7 +56,6 @@
 
     @media only screen and (min-width: 1024px) {
         h4 {
-            font-size: 1.75rem;
             margin: 2.25rem 0 1.75rem 0;
         }
     }
@@ -59,7 +69,6 @@
 
     @media only screen and (min-width: 1536px) {
         h4 {
-            font-size: 2rem;
             margin: 3.5rem 0 2.5rem 0;
         }
     }

@@ -18,7 +18,6 @@
 <style>
     div {
         background-color: var(--odd-gray-light);
-        border-radius: 0.625rem;
     }
 
     div :global(p) {
@@ -41,93 +40,91 @@
     }
 
     div :global(p a) {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         cursor: pointer;
         font-weight: 500;
         text-decoration: underline;
     }
 
+    :global(.odd-studio) div :global(p a) {
+        color: var(--odd-purple-medium);
+    }
+
+    :global(.odd-education) div :global(p a) {
+        color: var(--odd-blue-medium);
+    }
+
+    :global(.odd-experiments) div :global(p a) {
+        color: var(--odd-turquoise-medium);
+    }
+
     @media only screen and (max-width: 600px) {
         div {
-            box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
             margin: 1.25rem 0;
-            padding: 1rem 1rem;
         }
 
         div :global(p) {
             font-size: 1rem;
             line-height: 120%;
-            margin-bottom: 0.875rem;
+            margin-bottom: 1.25rem;
         }
     }
 
     @media only screen and (min-width: 600px) {
         div {
-            box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
             margin: 1.25rem 0;
-            padding: 1.25rem 1.25rem;
         }
 
         div :global(p) {
             font-size: 1rem;
             line-height: 120%;
-            margin-bottom: 0.875rem;
+            margin-bottom: 1.25rem;
         }
     }
 
     @media only screen and (min-width: 768px) {
         div {
-            box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
             margin: 1.5rem 0;
-            padding: 1.5rem 1.5rem;
         }
 
         div :global(p) {
             font-size: 1.125rem;
             line-height: 125%;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
     }
 
     @media only screen and (min-width: 1024px) {
         div {
-            box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
             margin: 1.75rem 0;
-            padding: 1.5rem 1.5rem;
         }
 
         div :global(p) {
             font-size: 1.125rem;
             line-height: 125%;
-            margin-bottom: 1rem;
+            margin-bottom: 1.75rem;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         div {
-            box-shadow: unset;
             margin: 2rem 0;
-            padding: 0;
         }
 
         div :global(p) {
             font-size: 1.25rem;
             line-height: 130%;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
         div {
-            box-shadow: unset;
             margin: 2.5rem 0;
-            padding: 0;
         }
 
         div :global(p) {
-            font-size: 1.25rem;
-            line-height: 130%;
-            margin-bottom: 1rem;
+            margin-bottom: 2.5rem;
         }
     }
 </style>
