@@ -48,8 +48,8 @@
     <div>
         <input type="text" bind:value={email} placeholder={'EMAIL HERE'} />
         <button
-            class={buttonState}
             type="button"
+            class={buttonState}
             on:click={buttonState === 'active' ? subscribe : () => {}}
         >
             <span>{buttonText}</span>
@@ -61,21 +61,20 @@
 <style>
     div {
         background-color: var(--odd-purple-medium);
+        border-top-left-radius: 0.625rem;
+        border-top-right-radius: 0.625rem;
     }
 
     div.odd-studio {
         background-color: var(--odd-purple-medium);
-        border-radius: inherit;
     }
 
     div.odd-experiments {
         background-color: var(--odd-turquoise-medium);
-        border-radius: inherit;
     }
 
     div.odd-education {
         background-color: var(--odd-blue-medium);
-        border-radius: inherit;
     }
 
     h3:nth-of-type(1) {
@@ -87,7 +86,7 @@
     }
 
     h3:nth-of-type(2) {
-        color: var(--odd-turquoise-light);
+        color: var(--odd-gray-light);
         font-family: 'Switzer', sans-serif;
         font-weight: 600;
         letter-spacing: -0.04rem;
@@ -110,17 +109,23 @@
         color: var(--odd-gray-light);
         font-family: 'Switzer', sans-serif;
         letter-spacing: -0.04rem;
-        width: 90%;
+        text-wrap: balance;
     }
 
     div > div {
         background-color: transparent;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
         padding: 0;
     }
 
     input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
         appearance: none;
         background: transparent;
         color: var(--odd-gray-light);
@@ -134,21 +139,43 @@
         width: 100%;
     }
 
+    input::-webkit-input-placeholder {
+        color: var(--odd-gray-light);
+    }
+
+    input::-moz-placeholder {
+        color: var(--odd-gray-light);
+    }
+
+    input:-ms-input-placeholder {
+        color: var(--odd-gray-light);
+    }
+
+    input::-ms-input-placeholder {
+        color: var(--odd-gray-light);
+    }
+
     input::placeholder {
         color: var(--odd-gray-light);
     }
 
     button {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         background-color: var(--odd-gray-light);
         border: 1px solid var(--odd-gray-dark);
         border-radius: 3.75rem;
         color: var(--odd-gray-dark);
         cursor: pointer;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         font-family: 'Switzer', sans-serif;
         font-weight: 400;
         letter-spacing: -0.04rem;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         margin: 0 auto;
     }
@@ -201,7 +228,7 @@
 
     @media only screen and (max-width: 600px) {
         div {
-            padding: 2.5rem 7.5vw 1.5rem 7.5vw;
+            padding: 2.25rem 7.5vw 1.25rem 7.5vw;
         }
 
         h3:nth-of-type(1) {
@@ -220,8 +247,13 @@
         }
 
         div > div {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
             align-items: flex-start;
             border-bottom: none;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
             flex-direction: column;
             gap: 0;
             padding: 0;
@@ -249,7 +281,7 @@
 
     @media only screen and (min-width: 600px) {
         div {
-            padding: 2.5rem 12.5vw 1.5rem 12.5vw;
+            padding: 2.25rem 30% 1.25rem 2.5rem;
         }
 
         h3:nth-of-type(1) {
@@ -268,8 +300,13 @@
         }
 
         div > div {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
             align-items: flex-start;
             border-bottom: none;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
             flex-direction: column;
             gap: 0;
             padding: 0;
@@ -297,7 +334,7 @@
 
     @media only screen and (min-width: 768px) {
         div {
-            padding: 2.5rem 15vw 1.5rem 15vw;
+            padding: 2.75rem 45% 1.5rem 3rem;
         }
 
         h3:nth-of-type(1) {
@@ -315,18 +352,8 @@
             margin-bottom: 1.25rem;
         }
 
-        div > div {
-            align-items: flex-start;
-            border-bottom: none;
-            flex-direction: column;
-            gap: 0;
-            padding: 0;
-        }
-
         input {
-            border-bottom: 1px solid var(--odd-gray-light);
             font-size: 1.125rem;
-            margin-bottom: 1.25rem;
             padding: 0.5rem;
         }
 
@@ -345,55 +372,13 @@
 
     @media only screen and (min-width: 1024px) {
         div {
-            padding: 2.5rem 20vw 1.5rem 20vw;
-        }
-
-        h3:nth-of-type(1) {
-            font-size: 2.25rem;
-            line-height: 60%;
-        }
-
-        h3:nth-of-type(2) {
-            font-size: 2.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            font-size: 1.125rem;
-            margin-bottom: 1.25rem;
-        }
-
-        div > div {
-            align-items: flex-start;
-            border-bottom: none;
-            flex-direction: column;
-            gap: 0;
-            padding: 0;
-        }
-
-        input {
-            border-bottom: 1px solid var(--odd-gray-light);
-            font-size: 1.125rem;
-            margin-bottom: 1.25rem;
-            padding: 0.5rem;
-        }
-
-        button {
-            font-size: 1.125rem;
-            gap: 0.75rem;
-            padding: 0.375rem 1.25rem;
-            width: 11rem;
-        }
-
-        button span:nth-child(2) {
-            height: 1.125rem;
-            width: 1.125rem;
+            padding: 3rem 45% 1.75rem 3.5rem;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         div {
-            padding: 0;
+            padding: 4rem 50% 3rem 4rem;
         }
 
         h3:nth-of-type(1) {
@@ -412,8 +397,13 @@
         }
 
         div > div {
+            -webkit-box-align: end;
+            -ms-flex-align: end;
             align-items: flex-end;
             border-bottom: 1px solid var(--odd-gray-light);
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
             flex-direction: row;
             gap: 1.5rem;
             padding: 0 0 0.375rem 0;
@@ -429,8 +419,6 @@
 
         button {
             font-size: 1.25rem;
-            gap: 0.75rem;
-            padding: 0.375rem 1.25rem;
             width: 16rem;
         }
 
@@ -442,50 +430,7 @@
 
     @media only screen and (min-width: 1536px) {
         div {
-            padding: 0;
-        }
-
-        h3:nth-of-type(1) {
-            font-size: 2.75rem;
-            line-height: 50%;
-        }
-
-        h3:nth-of-type(2) {
-            font-size: 2.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        div > div {
-            align-items: flex-end;
-            border-bottom: 1px solid var(--odd-gray-light);
-            flex-direction: row;
-            gap: 1.5rem;
-            padding: 0 0 0.375rem 0;
-        }
-
-        input {
-            border-bottom: none;
-            font-size: 1.25rem;
-            margin-bottom: 0;
-            padding: 0;
-            width: 100%;
-        }
-
-        button {
-            font-size: 1.25rem;
-            gap: 0.75rem;
-            padding: 0.375rem 1.25rem;
-            width: 16rem;
-        }
-
-        button span:nth-child(2) {
-            height: 1.25rem;
-            width: 1.25rem;
+            padding: 5rem 60% 3.75rem 5rem;
         }
     }
 </style>
