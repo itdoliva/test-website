@@ -2,6 +2,7 @@
     --odd-black: #000000;
     --odd-white: #ffffff;
     --odd-blue-medium: #3570df;
+    --odd-blue-dark: #2b5cb7;
     --odd-gray-light: #faf9fa;
     --odd-gray-medium: #acabac;
     --odd-gray-dark: #373737;
@@ -11,6 +12,7 @@
     --odd-purple-dark: #2c0165;
     --odd-turquoise-light: #6cdade;
     --odd-turquoise-medium: #0ac2c8;
+    --odd-turquoise-dark: #08989d;
     --odd-yellow-medium: #edff19;
 }
 
