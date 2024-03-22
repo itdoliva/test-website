@@ -20,8 +20,6 @@
 <style>
     ol {
         background-color: var(--odd-gray-light);
-        border-radius: 0.625rem;
-        box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
     }
 
     li {
@@ -36,11 +34,23 @@
     }
 
     li::marker {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         content: counter(list-item);
         font-family: 'Switzer', sans-serif;
         font-weight: 600;
         letter-spacing: -0.02rem;
+    }
+
+    :global(.odd-studio) li::marker {
+        color: var(--odd-purple-medium);
+    }
+
+    :global(.odd-education) li::marker {
+        color: var(--odd-blue-medium);
+    }
+
+    :global(.odd-experiments) li::marker {
+        color: var(--odd-turquoise-medium);
     }
 
     li :global(strong) {
@@ -52,16 +62,27 @@
     }
 
     li :global(a) {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         cursor: pointer;
         font-weight: 500;
         text-decoration: underline;
     }
 
+    :global(.odd-studio) li :global(a) {
+        color: var(--odd-purple-medium);
+    }
+
+    :global(.odd-education) li :global(a) {
+        color: var(--odd-blue-medium);
+    }
+
+    :global(.odd-experiments) li :global(a) {
+        color: var(--odd-turquoise-medium);
+    }
+
     @media only screen and (max-width: 600px) {
         ol {
-            margin: 1.25rem 0;
-            padding: 1rem 1rem;
+            margin: 2.5rem 0;
         }
 
         li {
@@ -74,8 +95,7 @@
 
     @media only screen and (min-width: 600px) {
         ol {
-            margin: 1.25rem 0;
-            padding: 1.25rem 1.25rem;
+            margin: 2.5rem 0;
         }
 
         li {
@@ -88,8 +108,7 @@
 
     @media only screen and (min-width: 768px) {
         ol {
-            margin: 1.5rem 0;
-            padding: 1.5rem 1.5rem;
+            margin: 3rem 0;
         }
 
         li {
@@ -102,22 +121,13 @@
 
     @media only screen and (min-width: 1024px) {
         ol {
-            margin: 1.75rem 0;
-            padding: 1.5rem 1.5rem;
-        }
-
-        li {
-            font-size: 1.125rem;
-            line-height: 125%;
-            margin: 0 0 1rem 0.75rem;
-            padding-left: 1.25rem;
+            margin: 3.5rem 0;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         ol {
-            margin: 2rem 0;
-            padding: 1.75rem 1.75rem;
+            margin: 4rem 0;
         }
 
         li {
@@ -130,15 +140,7 @@
 
     @media only screen and (min-width: 1536px) {
         ol {
-            margin: 2.5rem 0;
-            padding: 1.75rem 1.75rem;
-        }
-
-        li {
-            font-size: 1.25rem;
-            line-height: 130%;
-            margin: 0 0 1rem 1rem;
-            padding-left: 1.75rem;
+            margin: 5rem 0;
         }
     }
 </style>

@@ -20,18 +20,28 @@
 <style>
     ul {
         background-color: var(--odd-gray-light);
-        border-radius: 0.625rem;
-        box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
     }
 
     li {
-        background-image: url('/icons/right-arrow-purple.svg');
+        background-image: url('/icons/right-arrow-dark.svg');
         background-repeat: no-repeat;
         color: var(--odd-gray-dark);
         font-family: 'Switzer', sans-serif;
         font-weight: 400;
         letter-spacing: -0.02rem;
         list-style-type: none;
+    }
+
+    :global(.odd-studio) li {
+        background-image: url('/icons/right-arrow-purple.svg');
+    }
+
+    :global(.odd-education) li {
+        background-image: url('/icons/right-arrow-blue.svg');
+    }
+
+    :global(.odd-experiments) li {
+        background-image: url('/icons/right-arrow-turquoise.svg');
     }
 
     li:last-child {
@@ -47,16 +57,27 @@
     }
 
     li :global(a) {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         cursor: pointer;
         font-weight: 500;
         text-decoration: underline;
     }
 
+    :global(.odd-studio) li :global(a) {
+        color: var(--odd-purple-medium);
+    }
+
+    :global(.odd-education) li :global(a) {
+        color: var(--odd-blue-medium);
+    }
+
+    :global(.odd-experiments) li :global(a) {
+        color: var(--odd-turquoise-medium);
+    }
+
     @media only screen and (max-width: 600px) {
         ul {
-            margin: 1.25rem 0;
-            padding: 1rem 1rem;
+            margin: 2.5rem 0;
         }
 
         li {
@@ -71,8 +92,7 @@
 
     @media only screen and (min-width: 600px) {
         ul {
-            margin: 1.25rem 0;
-            padding: 1.25rem 1.25rem;
+            margin: 2.5rem 0;
         }
 
         li {
@@ -87,8 +107,7 @@
 
     @media only screen and (min-width: 768px) {
         ul {
-            margin: 1.5rem 0;
-            padding: 1.5rem 1.5rem;
+            margin: 3rem 0;
         }
 
         li {
@@ -96,31 +115,19 @@
             background-size: 1.25rem;
             font-size: 1.125rem;
             line-height: 125%;
-            margin-bottom: 1rem;
             padding-left: 2rem;
         }
     }
 
     @media only screen and (min-width: 1024px) {
         ul {
-            margin: 1.75rem 0;
-            padding: 1.5rem 1.5rem;
-        }
-
-        li {
-            background-position: left 10%;
-            background-size: 1.25rem;
-            font-size: 1.125rem;
-            line-height: 125%;
-            margin-bottom: 1rem;
-            padding-left: 2rem;
+            margin: 3.5rem 0;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         ul {
-            margin: 2rem 0;
-            padding: 1.75rem 1.75rem;
+            margin: 4rem 0;
         }
 
         li {
@@ -128,24 +135,13 @@
             background-size: 1.5rem;
             font-size: 1.25rem;
             line-height: 130%;
-            margin-bottom: 1rem;
             padding-left: 3rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
         ul {
-            margin: 2.5rem 0;
-            padding: 1.75rem 1.75rem;
-        }
-
-        li {
-            background-position: left 15%;
-            background-size: 1.5rem;
-            font-size: 1.25rem;
-            line-height: 130%;
-            margin-bottom: 1rem;
-            padding-left: 3rem;
+            margin: 5rem 0;
         }
     }
 </style>
