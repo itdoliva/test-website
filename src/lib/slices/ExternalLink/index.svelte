@@ -26,20 +26,37 @@
     }
 
     div {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        border-radius: 3.75rem;
         color: var(--odd-gray-dark);
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         font-family: 'Switzer', sans-serif;
         font-weight: 500;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         letter-spacing: -0.02rem;
         line-height: 120%;
         text-transform: lowercase;
+        width: -webkit-max-content;
+        width: -moz-max-content;
         width: max-content;
     }
 
-    div:hover {
+    :global(.odd-studio) div:hover {
         background-color: var(--odd-turquoise-light);
+    }
+
+    :global(.odd-education) div:hover {
+        background-color: var(--odd-pink-light);
+    }
+
+    :global(.odd-experiments) div:hover {
+        background-color: var(--odd-yellow-medium);
     }
 
     span {
@@ -56,7 +73,6 @@
     @media only screen and (max-width: 600px) {
         div {
             border: 1px solid var(--odd-gray-dark);
-            border-radius: 3.75rem;
             font-size: 1.125rem;
             gap: 0.625rem;
             margin: 1.25rem auto;
@@ -72,7 +88,6 @@
     @media only screen and (min-width: 600px) {
         div {
             border: 1px solid var(--odd-gray-dark);
-            border-radius: 3.75rem;
             font-size: 1.125rem;
             gap: 0.625rem;
             margin: 1.25rem auto;
@@ -87,8 +102,6 @@
 
     @media only screen and (min-width: 768px) {
         div {
-            border: 1px solid var(--odd-gray-dark);
-            border-radius: 4rem;
             font-size: 1.25rem;
             gap: 0.75rem;
             margin: 1.5rem auto;
@@ -103,26 +116,14 @@
 
     @media only screen and (min-width: 1024px) {
         div {
-            border: 1px solid var(--odd-gray-dark);
-            border-radius: 4rem;
-            font-size: 1.25rem;
-            gap: 0.75rem;
             margin: 1.75rem auto;
-            padding: 0.625rem 1.375rem;
-        }
-
-        span:nth-child(2) {
-            height: 1.25rem;
-            width: 1.25rem;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         div {
             border: 2px solid var(--odd-gray-dark);
-            border-radius: 5rem;
             font-size: 1.5rem;
-            gap: 0.75rem;
             margin: 2rem auto;
             padding: 0.75rem 1.5rem;
         }
@@ -135,17 +136,7 @@
 
     @media only screen and (min-width: 1536px) {
         div {
-            border: 2px solid var(--odd-gray-dark);
-            border-radius: 5rem;
-            font-size: 1.5rem;
-            gap: 0.75rem;
             margin: 2.5rem auto;
-            padding: 0.75rem 1.5rem;
-        }
-
-        span:nth-child(2) {
-            height: 1.5rem;
-            width: 1.5rem;
         }
     }
 </style>
