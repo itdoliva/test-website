@@ -6,21 +6,23 @@
     export let cases;
 </script>
 
-<div class={`odd-${branch}`}>
-    <Splide options={casesSlider}>
-        {#each cases as content}
-            <SplideSlide>
-                <a href={`/${branch}/cases/${content.uid}`}>
-                    <div
-                        class="case-slider-cover"
-                        style={`background-image: url(${content.display_image.url});`}
-                    />
-                    <h4>{content.title}</h4>
-                </a>
-            </SplideSlide>
-        {/each}
-    </Splide>
-</div>
+{#if cases}
+    <div class={`odd-${branch}`}>
+        <Splide options={casesSlider}>
+            {#each cases as content}
+                <SplideSlide>
+                    <a href={`/${branch}/cases/${content.uid}`}>
+                        <div
+                            class="case-slider-cover"
+                            style={`background-image: url(${content.display_image.url});`}
+                        />
+                        <h4>{content.title}</h4>
+                    </a>
+                </SplideSlide>
+            {/each}
+        </Splide>
+    </div>
+{/if}
 
 <style>
     @import url('@splidejs/svelte-splide/css');
@@ -29,18 +31,13 @@
         margin: 0 auto;
     }
 
-    a {
+    div a {
         cursor: pointer;
         display: block;
         text-decoration: none;
     }
 
-    a div {
-        background: linear-gradient(
-            180deg,
-            var(--odd-purple-medium) 0%,
-            var(--odd-white) 100%
-        );
+    div a div {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -48,7 +45,7 @@
         cursor: pointer;
     }
 
-    a h4 {
+    div a h4 {
         color: var(--odd-gray-dark);
         cursor: pointer;
         font-family: 'Switzer', sans-serif;
@@ -58,16 +55,21 @@
         text-wrap: balance;
     }
 
-    a:hover h4 {
+    div.odd-studio a:hover h4 {
         color: var(--odd-purple-medium);
     }
 
-    div :global(.splide__pagination) {
-        position: unset;
+    div.odd-education a:hover h4 {
+        color: var(--odd-blue-medium);
     }
 
-    div:last-of-type :global(.splide__pagination) {
-        margin-bottom: 0;
+    div.odd-experiments a:hover h4 {
+        color: var(--odd-turquoise-medium);
+    }
+
+    div :global(.splide__pagination) {
+        margin-top: 1.25rem;
+        position: unset;
     }
 
     div :global(.splide__pagination__page) {
@@ -75,8 +77,16 @@
         margin: 0.25rem;
     }
 
-    div :global(.splide__pagination__page.is-active) {
+    div.odd-studio :global(.splide__pagination__page.is-active) {
         background-color: var(--odd-purple-medium);
+    }
+
+    div.odd-education :global(.splide__pagination__page.is-active) {
+        background-color: var(--odd-blue-medium);
+    }
+
+    div.odd-experiments :global(.splide__pagination__page.is-active) {
+        background-color: var(--odd-turquoise-medium);
     }
 
     @media only screen and (max-width: 600px) {
@@ -84,19 +94,15 @@
             width: 100%;
         }
 
-        a div {
+        div a div {
             height: 30rem;
             margin-bottom: 1.25rem;
             width: 100%;
         }
 
-        a h4 {
+        div a h4 {
             font-size: 1.75rem;
             line-height: 120%;
-        }
-
-        div :global(.splide__pagination) {
-            margin: 1.25rem 0 3.75rem 0;
         }
 
         div :global(.splide__pagination__page) {
@@ -110,19 +116,15 @@
             width: 80%;
         }
 
-        a div {
+        div a div {
             height: 30rem;
             margin-bottom: 1.25rem;
             width: 100%;
         }
 
-        a h4 {
+        div a h4 {
             font-size: 1.75rem;
             line-height: 120%;
-        }
-
-        div :global(.splide__pagination) {
-            margin: 1.25rem 0 3.75rem 0;
         }
 
         div :global(.splide__pagination__page) {
@@ -136,24 +138,14 @@
             width: 75%;
         }
 
-        a div {
+        div a div {
             height: 32.5rem;
             margin-bottom: 1.5rem;
-            width: 100%;
         }
 
-        a h4 {
+        div a h4 {
             font-size: 2.25rem;
             line-height: 110%;
-        }
-
-        div :global(.splide__pagination) {
-            margin: 1.25rem 0 3.75rem 0;
-        }
-
-        div :global(.splide__pagination__page) {
-            height: 0.625rem;
-            width: 0.625rem;
         }
     }
 
@@ -162,24 +154,9 @@
             width: 70%;
         }
 
-        a div {
+        div a div {
             height: 35rem;
             margin-bottom: 1.75rem;
-            width: 100%;
-        }
-
-        a h4 {
-            font-size: 2.25rem;
-            line-height: 110%;
-        }
-
-        div :global(.splide__pagination) {
-            margin: 1.25rem 0 3.75rem 0;
-        }
-
-        div :global(.splide__pagination__page) {
-            height: 0.625rem;
-            width: 0.625rem;
         }
     }
 
