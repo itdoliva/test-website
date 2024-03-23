@@ -17,9 +17,18 @@
 
 <style>
     div {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
 
@@ -29,7 +38,7 @@
     }
 
     span {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         font-family: 'Switzer', sans-serif;
         font-weight: 400;
         letter-spacing: -0.015rem;
@@ -71,11 +80,11 @@
 
     @media only screen and (min-width: 768px) {
         div {
-            margin: 1.5rem 0;
+            margin: 1.5rem -5rem;
         }
 
         div :global(iframe) {
-            min-height: calc(70vw * (9 / 16));
+            min-height: calc((10rem + 70vw) * (9 / 16));
         }
 
         span {
@@ -86,46 +95,36 @@
 
     @media only screen and (min-width: 1024px) {
         div {
-            margin: 1.75rem 0;
+            margin: 1.75rem -5rem;
         }
 
         div :global(iframe) {
-            min-height: calc(60vw * (9 / 16));
-        }
-
-        span {
-            font-size: 1rem;
-            margin-top: 1rem;
+            min-height: calc((10rem + 60vw) * (9 / 16));
         }
     }
 
     @media only screen and (min-width: 1280px) {
         div {
-            margin: 2rem 0;
+            margin: 2rem -10rem;
         }
 
         div :global(iframe) {
-            min-height: calc(45rem * (9 / 16));
+            min-height: calc((20rem + 45rem) * (9 / 16));
         }
 
         span {
-            font-size: 1rem;
-            margin-top: 1rem;
+            font-size: 1.125rem;
+            margin-top: 1.125rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
         div {
-            margin: 2.5rem 0;
+            margin: 2.5rem -10rem;
         }
 
         div :global(iframe) {
-            min-height: calc(60rem * (9 / 16));
-        }
-
-        span {
-            font-size: 1rem;
-            margin-top: 1rem;
+            min-height: calc((20rem + 60rem) * (9 / 16));
         }
     }
 </style>

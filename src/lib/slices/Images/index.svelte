@@ -32,9 +32,18 @@
     @import url('@splidejs/svelte-splide/css');
 
     div {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
 
@@ -53,12 +62,20 @@
         margin: 0.25rem;
     }
 
-    div :global(.splide__pagination__page.is-active) {
+    :global(.odd-studio) div :global(.splide__pagination__page.is-active) {
         background-color: var(--odd-purple-medium);
     }
 
+    :global(.odd-education) div :global(.splide__pagination__page.is-active) {
+        background-color: var(--odd-blue-medium);
+    }
+
+    :global(.odd-experiments) div :global(.splide__pagination__page.is-active) {
+        background-color: var(--odd-turquoise-medium);
+    }
+
     span {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         font-family: 'Switzer', sans-serif;
         font-weight: 400;
         letter-spacing: -0.015rem;
@@ -110,16 +127,7 @@
 
     @media only screen and (min-width: 768px) {
         div {
-            margin: 1.5rem 0;
-        }
-
-        div :global(.splide__pagination) {
-            margin-top: 0.625rem;
-        }
-
-        div :global(.splide__pagination__page) {
-            height: 0.625rem;
-            width: 0.625rem;
+            margin: 1.5rem -5rem;
         }
 
         span {
@@ -130,27 +138,13 @@
 
     @media only screen and (min-width: 1024px) {
         div {
-            margin: 1.75rem 0;
-        }
-
-        div :global(.splide__pagination) {
-            margin-top: 0.625rem;
-        }
-
-        div :global(.splide__pagination__page) {
-            height: 0.625rem;
-            width: 0.625rem;
-        }
-
-        span {
-            font-size: 1rem;
-            margin-top: 1rem;
+            margin: 1.75rem -5rem;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         div {
-            margin: 2rem 0;
+            margin: 2rem -10rem;
         }
 
         div :global(.splide__pagination) {
@@ -163,28 +157,14 @@
         }
 
         span {
-            font-size: 1rem;
-            margin-top: 1rem;
+            font-size: 1.125rem;
+            margin-top: 1.125rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
         div {
-            margin: 2.5rem 0;
-        }
-
-        div :global(.splide__pagination) {
-            margin-top: 1rem;
-        }
-
-        div :global(.splide__pagination__page) {
-            height: 0.75rem;
-            width: 0.75rem;
-        }
-
-        span {
-            font-size: 1rem;
-            margin-top: 1rem;
+            margin: 2.5rem -10rem;
         }
     }
 </style>
