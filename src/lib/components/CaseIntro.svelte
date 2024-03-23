@@ -1,20 +1,29 @@
 <script>
+    import Container from '@components/Container.svelte';
     import { PrismicRichText } from '@prismicio/svelte';
 
+    export let pattern;
     export let content;
 </script>
 
-<section>
-    <div class="title-wrapper">
-        <button type="button" on:click={() => history.back()} />
-        <div>
-            <h1>{content.title || ''}</h1>
-            <h2>{content.category || ''}</h2>
+<div
+    class="desktop-cover-image"
+    style={`background-image: url(${content.cover_image.url});`}
+/>
+<section class={pattern ? `odd-${pattern}` : ''}>
+    <Container>
+        <div class="title-wrapper">
+            <button type="button" on:click={() => history.back()} />
+            <div>
+                <h1>{content.title || ''}</h1>
+                <h2>{content.type || ''}</h2>
+            </div>
         </div>
-    </div>
-    <div class="content-wrapper">
         <div class="summary-wrapper">
-            <div style={`background-image: url(${content.cover_image.url});`} />
+            <div
+                class="mobile-cover-image"
+                style={`background-image: url(${content.cover_image.url});`}
+            />
             <PrismicRichText field={content.summary} />
         </div>
         <div class="details-wrapper">
@@ -53,44 +62,64 @@
                 <span>{content.tools || ''}</span>
             </div>
         </div>
-    </div>
+    </Container>
 </section>
 
 <style>
-    .title-wrapper {
+    div.desktop-cover-image {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    }
+
+    div.title-wrapper {
         background-color: var(--odd-gray-light);
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
 
-    .title-wrapper button {
+    div.title-wrapper button {
+        aspect-ratio: 1/1;
         background-color: transparent;
         background-image: url('/icons/left-arrow-dark.svg');
         background-position: center center;
         background-repeat: no-repeat;
-        background-size: 55%;
+        background-size: 50%;
         border-radius: 100%;
         cursor: pointer;
         display: block;
     }
 
-    .title-wrapper button:hover {
+    .odd-studio div.title-wrapper button:hover {
         background-color: var(--odd-turquoise-light);
     }
 
-    .title-wrapper div {
+    .odd-education div.title-wrapper button:hover {
+        background-color: var(--odd-pink-light);
+    }
+
+    .odd-experiments div.title-wrapper button:hover {
+        background-color: var(--odd-yellow-medium);
+    }
+
+    div.title-wrapper div {
         border-radius: 0.625rem;
         width: 100%;
     }
 
-    .title-wrapper h1 {
+    div.title-wrapper h1 {
         font-family: 'Switzer', sans-serif;
         font-weight: 600;
         letter-spacing: -0.0275rem;
         line-height: 95%;
     }
 
-    .title-wrapper h2 {
+    div.title-wrapper h2 {
         font-family: 'Switzer', sans-serif;
         font-weight: 500;
         letter-spacing: -0.0125rem;
@@ -98,18 +127,13 @@
         text-transform: uppercase;
     }
 
-    .content-wrapper {
-        display: grid;
-    }
-
-    .summary-wrapper {
+    div.summary-wrapper {
         background-color: var(--odd-gray-light);
         border-radius: 0.625rem;
-        box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
         display: block;
     }
 
-    .summary-wrapper div {
+    div.summary-wrapper div.mobile-cover-image {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -118,7 +142,7 @@
         width: 100%;
     }
 
-    .summary-wrapper :global(p) {
+    div.summary-wrapper :global(p) {
         color: var(--odd-gray-dark);
         font-family: 'Switzer', sans-serif;
         font-weight: 400;
@@ -126,30 +150,42 @@
         width: 100%;
     }
 
-    .summary-wrapper :global(p strong) {
+    div.summary-wrapper :global(p strong) {
         font-weight: 600;
     }
 
-    .summary-wrapper :global(p em) {
+    div.summary-wrapper :global(p em) {
         font-style: italic;
     }
 
-    .summary-wrapper :global(p a) {
-        color: var(--odd-purple-medium);
+    div.summary-wrapper :global(p a) {
         cursor: pointer;
         font-weight: 500;
         text-decoration: underline;
     }
 
-    .details-wrapper {
+    .odd-studio .summary-wrapper :global(p a) {
+        color: var(--odd-purple-medium);
+    }
+
+    .odd-education .summary-wrapper :global(p a) {
+        color: var(--odd-blue-medium);
+    }
+
+    .odd-experiments .summary-wrapper :global(p a) {
+        color: var(--odd-turquoise-medium);
+    }
+
+    div.details-wrapper {
         background-color: var(--odd-gray-light);
         border-radius: 0.625rem;
+        -webkit-box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
         box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+        display: -ms-grid;
         display: grid;
     }
 
-    .details-wrapper span:nth-child(1) {
-        color: var(--odd-purple-medium);
+    div.details-wrapper span:nth-child(1) {
         display: block;
         font-family: 'Switzer', sans-serif;
         font-weight: 700;
@@ -158,7 +194,19 @@
         text-transform: uppercase;
     }
 
-    .details-wrapper span:nth-child(2) {
+    .odd-studio div.details-wrapper span:nth-child(1) {
+        color: var(--odd-purple-medium);
+    }
+
+    .odd-education div.details-wrapper span:nth-child(1) {
+        color: var(--odd-blue-medium);
+    }
+
+    .odd-experiments div.details-wrapper span:nth-child(1) {
+        color: var(--odd-turquoise-medium);
+    }
+
+    div.details-wrapper span:nth-child(2) {
         color: var(--odd-gray-dark);
         display: block;
         font-family: 'Switzer', sans-serif;
@@ -168,442 +216,382 @@
         text-wrap: balance;
     }
 
-    .details-wrapper span:nth-child(2) a {
-        color: var(--odd-purple-medium);
+    div.details-wrapper span:nth-child(2) a {
         cursor: pointer;
         font-weight: 500;
         text-decoration: underline;
     }
 
+    .odd-studio div.details-wrapper span:nth-child(2) a {
+        color: var(--odd-purple-medium);
+    }
+
+    .odd-education div.details-wrapper span:nth-child(2) a {
+        color: var(--odd-blue-medium);
+    }
+
+    .odd-experiments div.details-wrapper span:nth-child(2) a {
+        color: var(--odd-turquoise-medium);
+    }
+
     @media only screen and (max-width: 600px) {
-        section {
-            margin: 3.75rem auto 1.25rem auto;
-            width: 85vw;
+        div.desktop-cover-image {
+            display: none;
         }
 
-        .title-wrapper {
+        section {
+            margin: 5rem 0 1.25rem 0;
+        }
+
+        div.title-wrapper {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
-            gap: 1.75rem;
+            gap: 1.25rem;
             margin-bottom: 1.25rem;
         }
 
-        .title-wrapper button {
+        div.title-wrapper button {
             border: 1px solid var(--odd-gray-dark);
             height: 2rem;
             margin-top: 0;
-            width: 2.125rem;
         }
 
-        .title-wrapper div {
-            background-color: var(--odd-purple-medium);
+        div.title-wrapper div {
             padding: 1.25rem 0.75rem 1rem 0.75rem;
         }
 
-        .title-wrapper h1 {
+        .odd-studio div.title-wrapper div {
+            background-color: var(--odd-purple-medium);
+        }
+
+        .odd-education div.title-wrapper div {
+            background-color: var(--odd-blue-medium);
+        }
+
+        .odd-experiments div.title-wrapper div {
+            background-color: var(--odd-turquoise-medium);
+        }
+
+        div.title-wrapper h1 {
             color: var(--odd-gray-light);
             font-size: 1.375rem;
             margin-bottom: 0.375rem;
         }
 
-        .title-wrapper h2 {
+        div.title-wrapper h2 {
             color: var(--odd-gray-light);
             font-size: 0.75rem;
+            padding-left: 0.25rem;
         }
 
-        .content-wrapper {
-            gap: 0;
-            grid-template-columns: 1fr;
-            margin-bottom: 0;
-        }
-
-        .summary-wrapper {
+        div.summary-wrapper {
+            -webkit-box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
             margin: 0 0 1.25rem 0;
         }
 
-        .summary-wrapper div {
-            height: 12.5rem;
+        div.summary-wrapper div.mobile-cover-image {
+            display: block;
+            height: calc(85vw * (9 / 16));
         }
 
-        .summary-wrapper :global(p) {
+        div.summary-wrapper :global(p) {
             font-size: 1rem;
             line-height: 120%;
             padding: 1.25rem 1rem;
         }
 
-        .details-wrapper {
+        div.details-wrapper {
             gap: 1.25rem 1.25rem;
-            grid-template-columns: 1fr 1fr 1fr;
+            -ms-grid-columns: 1fr 1.25rem 1fr 1.25rem 1fr;
+            grid-template-columns: repeat(3, 1fr);
             padding: 1rem 1rem;
         }
 
-        .details-wrapper span:nth-child(1) {
+        div.details-wrapper span:nth-child(1) {
             font-size: 0.875rem;
             margin-bottom: 0.25rem;
         }
 
-        .details-wrapper span:nth-child(2) {
+        div.details-wrapper span:nth-child(2) {
             font-size: 0.875rem;
         }
     }
 
     @media only screen and (min-width: 600px) {
-        section {
-            margin: 3.75rem auto 1.25rem auto;
-            width: 75vw;
+        div.desktop-cover-image {
+            display: none;
         }
 
-        .title-wrapper {
+        section {
+            margin: 5rem 0 1.25rem 0;
+        }
+
+        div.title-wrapper {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1.25rem;
             margin-bottom: 1.25rem;
         }
 
-        .title-wrapper button {
+        div.title-wrapper button {
             border: 1px solid var(--odd-gray-dark);
             height: 2rem;
             margin-top: 0;
-            width: 2.125rem;
         }
 
-        .title-wrapper div {
+        div.title-wrapper div {
+            padding: 1.25rem 0.75rem 1rem 0.75rem;
+        }
+
+        .odd-studio div.title-wrapper div {
             background-color: var(--odd-purple-medium);
-            padding: 1.25rem 1.25rem 1rem 1.25rem;
         }
 
-        .title-wrapper h1 {
+        .odd-education div.title-wrapper div {
+            background-color: var(--odd-blue-medium);
+        }
+
+        .odd-experiments div.title-wrapper div {
+            background-color: var(--odd-turquoise-medium);
+        }
+
+        div.title-wrapper h1 {
             color: var(--odd-gray-light);
             font-size: 1.375rem;
             margin-bottom: 0.375rem;
         }
 
-        .title-wrapper h2 {
+        div.title-wrapper h2 {
             color: var(--odd-gray-light);
             font-size: 0.75rem;
+            padding-left: 0.25rem;
         }
 
-        .content-wrapper {
-            gap: 0;
-            grid-template-columns: 1fr;
-            margin-bottom: 0;
+        div.summary-wrapper {
+            -webkit-box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0 0 1.25rem 0;
         }
 
-        .summary-wrapper {
-            margin-bottom: 1.25rem;
+        div.summary-wrapper div.mobile-cover-image {
+            display: block;
+            height: calc(75vw * (9 / 16));
         }
 
-        .summary-wrapper div {
-            height: 12.5rem;
-        }
-
-        .summary-wrapper :global(p) {
+        div.summary-wrapper :global(p) {
             font-size: 1rem;
             line-height: 120%;
             padding: 1.25rem 1rem;
         }
 
-        .details-wrapper {
+        div.details-wrapper {
             gap: 1.25rem 1.25rem;
-            grid-template-columns: 1fr 1fr 1fr;
+            -ms-grid-columns: 1fr 1.25rem 1fr 1.25rem 1fr;
+            grid-template-columns: repeat(3, 1fr);
             padding: 1rem 1rem;
         }
 
-        .details-wrapper span:nth-child(1) {
+        div.details-wrapper span:nth-child(1) {
             font-size: 0.875rem;
             margin-bottom: 0.25rem;
         }
 
-        .details-wrapper span:nth-child(2) {
+        div.details-wrapper span:nth-child(2) {
             font-size: 0.875rem;
         }
     }
 
     @media only screen and (min-width: 768px) {
-        section {
-            margin: 3.75rem auto 1.5rem auto;
-            width: 70vw;
-        }
-
-        .title-wrapper {
-            align-items: center;
+        div.title-wrapper {
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
-        .title-wrapper button {
-            border: 1px solid var(--odd-gray-dark);
+        div.title-wrapper button {
             height: 2.25rem;
-            margin-top: 0;
-            width: 2.5rem;
         }
 
-        .title-wrapper div {
-            background-color: var(--odd-purple-medium);
+        div.title-wrapper div {
             padding: 1.25rem 1.5rem 1rem 1.5rem;
         }
 
-        .title-wrapper h1 {
-            color: var(--odd-gray-light);
+        div.title-wrapper h1 {
             font-size: 1.875rem;
             margin-bottom: 0.5rem;
         }
 
-        .title-wrapper h2 {
-            color: var(--odd-gray-light);
+        div.title-wrapper h2 {
             font-size: 0.875rem;
         }
 
-        .content-wrapper {
-            gap: 0;
-            grid-template-columns: 1fr;
-            margin-bottom: 0;
-        }
-
-        .summary-wrapper {
+        div.summary-wrapper {
             margin-bottom: 1.5rem;
         }
 
-        .summary-wrapper div {
-            height: 15rem;
+        div.summary-wrapper div.mobile-cover-image {
+            display: block;
+            height: calc(70vw * (9 / 16));
         }
 
-        .summary-wrapper :global(p) {
+        div.summary-wrapper :global(p) {
             font-size: 1.125rem;
             line-height: 125%;
             padding: 1.5rem 1.5rem;
         }
 
-        .details-wrapper {
+        div.details-wrapper {
             gap: 1.5rem 1.5rem;
-            grid-template-columns: 1fr 1fr 1fr;
             padding: 1.5rem 1.5rem;
         }
 
-        .details-wrapper span:nth-child(1) {
+        div.details-wrapper span:nth-child(1) {
             font-size: 1rem;
             margin-bottom: 0.375rem;
         }
 
-        .details-wrapper span:nth-child(2) {
+        div.details-wrapper span:nth-child(2) {
             font-size: 1rem;
         }
     }
 
     @media only screen and (min-width: 1024px) {
-        section {
-            margin: 3.75rem auto 1.75rem auto;
-            width: 60vw;
-        }
-
-        .title-wrapper {
-            align-items: center;
+        div.title-wrapper {
             gap: 1.75rem;
             margin-bottom: 1.75rem;
         }
 
-        .title-wrapper button {
-            border: 1px solid var(--odd-gray-dark);
-            height: 2.25rem;
-            margin-top: 0;
-            width: 2.5rem;
-        }
-
-        .title-wrapper div {
-            background-color: var(--odd-purple-medium);
+        div.title-wrapper div {
             padding: 1.5rem 1.75rem 1.25rem 1.75rem;
         }
 
-        .title-wrapper h1 {
-            color: var(--odd-gray-light);
-            font-size: 1.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .title-wrapper h2 {
-            color: var(--odd-gray-light);
-            font-size: 0.875rem;
-        }
-
-        .content-wrapper {
-            gap: 0;
-            grid-template-columns: 1fr;
-            margin-bottom: 0;
-        }
-
-        .summary-wrapper {
+        div.summary-wrapper {
             margin-bottom: 1.75rem;
         }
 
-        .summary-wrapper div {
-            height: 15rem;
+        div.summary-wrapper div.mobile-cover-image {
+            display: block;
+            height: calc(60vw * (9 / 16));
         }
 
-        .summary-wrapper :global(p) {
-            font-size: 1.125rem;
-            line-height: 125%;
+        div.summary-wrapper :global(p) {
             padding: 1.75rem 1.75rem;
         }
 
-        .details-wrapper {
+        div.details-wrapper {
             gap: 1.75rem 1.75rem;
-            grid-template-columns: 1fr 1fr 1fr;
             padding: 1.75rem 1.75rem;
-        }
-
-        .details-wrapper span:nth-child(1) {
-            font-size: 1rem;
-            margin-bottom: 0.375rem;
-        }
-
-        .details-wrapper span:nth-child(2) {
-            font-size: 1rem;
         }
     }
 
     @media only screen and (min-width: 1280px) {
-        section {
-            margin: 5rem auto;
-            width: 60rem;
+        div.desktop-cover-image {
+            display: block;
+            height: calc(100svh / 2);
         }
 
-        .title-wrapper {
+        section {
+            margin: 5rem 0;
+        }
+
+        div.title-wrapper {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
             align-items: flex-start;
             gap: 3rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .title-wrapper button {
+        div.title-wrapper button {
             border: 2px solid var(--odd-gray-dark);
             height: 3rem;
-            margin-top: 0.25rem;
-            width: 3.25rem;
+            margin-top: 0.5rem;
         }
 
-        .title-wrapper div {
-            background-color: var(--odd-gray-light);
+        div.title-wrapper div {
+            background-color: var(--odd-gray-light) !important;
             padding: 0;
         }
 
-        .title-wrapper h1 {
-            color: var(--odd-purple-medium);
+        div.title-wrapper h1 {
             font-size: 3.5rem;
             margin-bottom: 0.75rem;
         }
 
-        .title-wrapper h2 {
-            color: var(--odd-purple-medium);
+        div.title-wrapper h2 {
             font-size: 1.25rem;
+            padding-left: 0.5rem;
         }
 
-        .content-wrapper {
-            gap: 1.25rem;
-            grid-template-columns: 3fr 1fr;
-            margin-bottom: 5rem;
+        .odd-studio div.title-wrapper h1,
+        .odd-studio div.title-wrapper h2 {
+            color: var(--odd-purple-medium);
         }
 
-        .summary-wrapper {
-            margin-bottom: 0;
+        .odd-education div.title-wrapper h1,
+        .odd-education div.title-wrapper h2 {
+            color: var(--odd-blue-medium);
         }
 
-        .summary-wrapper div {
-            height: 20rem;
+        .odd-experiments div.title-wrapper h1,
+        .odd-experiments div.title-wrapper h2 {
+            color: var(--odd-turquoise-medium);
         }
 
-        .summary-wrapper :global(p) {
+        div.summary-wrapper {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            margin-bottom: 2rem;
+        }
+
+        div.summary-wrapper div.mobile-cover-image {
+            display: none;
+        }
+
+        div.summary-wrapper :global(p) {
             font-size: 1.25rem;
             line-height: 130%;
-            padding: 2rem 2rem;
+            padding: 0;
         }
 
-        .details-wrapper {
+        div.details-wrapper {
+            -ms-flex-line-pack: start;
             align-content: start;
             gap: 2rem;
-            grid-template-columns: 1fr;
-            height: 100%;
-            margin-bottom: 0;
+            -ms-grid-columns: 1fr 2rem 1fr 2rem 1fr 2rem 1fr 2rem 1fr;
+            grid-template-columns: repeat(5, 1fr);
             padding: 2rem 2rem;
         }
 
-        .details-wrapper span:nth-child(1) {
+        div.details-wrapper span:nth-child(1) {
             font-size: 1.125rem;
             margin-bottom: 0.375rem;
         }
 
-        .details-wrapper span:nth-child(2) {
+        div.details-wrapper span:nth-child(2) {
             font-size: 1.125rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
         section {
-            margin: 5rem auto;
-            width: 80rem;
+            margin: 5rem 0;
         }
 
-        .title-wrapper {
-            align-items: flex-start;
-            gap: 3rem;
-            margin-bottom: 3rem;
+        div.title-wrapper {
+            gap: 3.75rem;
+            margin-bottom: 2.5rem;
         }
 
-        .title-wrapper button {
-            border: 2px solid var(--odd-gray-dark);
-            height: 3rem;
-            margin-top: 0.25rem;
-            width: 3.25rem;
+        div.summary-wrapper {
+            margin-bottom: 2.5rem;
         }
 
-        .title-wrapper div {
-            background-color: var(--odd-gray-light);
-            padding: 0;
-        }
-
-        .title-wrapper h1 {
-            color: var(--odd-purple-medium);
-            font-size: 3.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .title-wrapper h2 {
-            color: var(--odd-purple-medium);
-            font-size: 1.25rem;
-        }
-
-        .content-wrapper {
-            gap: 1.25rem;
-            grid-template-columns: 3fr 1fr;
-            margin-bottom: 5rem;
-        }
-
-        .summary-wrapper {
-            margin-bottom: 0;
-        }
-
-        .summary-wrapper div {
-            height: 20rem;
-        }
-
-        .summary-wrapper :global(p) {
-            font-size: 1.25rem;
-            line-height: 130%;
+        div.details-wrapper {
+            gap: 2.5rem;
             padding: 2.5rem 2.5rem;
-        }
-
-        .details-wrapper {
-            align-content: start;
-            gap: 2rem;
-            grid-template-columns: 1fr;
-            height: 100%;
-            margin-bottom: 0;
-            padding: 2.5rem 2.5rem;
-        }
-
-        .details-wrapper span:nth-child(1) {
-            font-size: 1.125rem;
-            margin-bottom: 0.375rem;
-        }
-
-        .details-wrapper span:nth-child(2) {
-            font-size: 1.125rem;
         }
     }
 </style>
