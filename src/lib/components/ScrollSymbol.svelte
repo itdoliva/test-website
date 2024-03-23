@@ -23,19 +23,38 @@
 </button>
 
 <style>
-    @keyframes bounce {
+    @-webkit-keyframes bounce {
         0% {
+            -webkit-transform: translateY(0);
             transform: translateY(0);
         }
         50% {
+            -webkit-transform: translateY(-0.5rem);
             transform: translateY(-0.5rem);
         }
         100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes bounce {
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        50% {
+            -webkit-transform: translateY(-0.5rem);
+            transform: translateY(-0.5rem);
+        }
+        100% {
+            -webkit-transform: translateY(0);
             transform: translateY(0);
         }
     }
 
     button {
+        -webkit-animation: bounce 2.5s infinite;
         animation: bounce 2.5s infinite;
         background: transparent;
         cursor: pointer;
@@ -47,6 +66,7 @@
     }
 
     svg {
+        -webkit-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
         filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
     }
 
@@ -70,15 +90,27 @@
     }
 
     @media only screen and (min-width: 600px) {
+        svg {
+            height: 2.25rem;
+            width: calc(2.25rem * 1.35);
+        }
     }
 
     @media only screen and (min-width: 768px) {
+        svg {
+            height: 2.5rem;
+            width: calc(2.5rem * 1.35);
+        }
     }
 
     @media only screen and (min-width: 1024px) {
     }
 
     @media only screen and (min-width: 1280px) {
+        svg {
+            height: 2.75rem;
+            width: calc(2.75rem * 1.35);
+        }
     }
 
     @media only screen and (min-width: 1536px) {

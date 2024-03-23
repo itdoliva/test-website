@@ -8,7 +8,7 @@
 
 <style>
     h2 {
-        color: var(--odd-purple-medium);
+        color: var(--odd-gray-dark);
         font-family: 'Newsreader', serif;
         font-style: italic;
         font-weight: 400;
@@ -54,8 +54,7 @@
 
     @media only screen and (min-width: 1024px) {
         h2 {
-            font-size: 1.875rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
     }
 
@@ -68,7 +67,6 @@
 
     @media only screen and (min-width: 1536px) {
         h2 {
-            font-size: 2.25rem;
             margin-bottom: 2.5rem;
         }
     }
