@@ -14,8 +14,14 @@
 
 <style>
     section {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         min-height: 100svh;
     }
@@ -38,7 +44,21 @@
 
     @media only screen and (max-width: 600px) {
         section {
-            background: linear-gradient(
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                from(var(--odd-purple-dark)),
+                color-stop(75%, var(--odd-purple-medium)),
+                to(var(--odd-gray-light))
+            );
+            background-image: -o-linear-gradient(
+                top,
+                var(--odd-purple-dark) 0%,
+                var(--odd-purple-medium) 75%,
+                var(--odd-gray-light) 100%
+            );
+            background-image: linear-gradient(
                 180deg,
                 var(--odd-purple-dark) 0%,
                 var(--odd-purple-medium) 75%,
@@ -49,19 +69,33 @@
 
         h1 {
             color: var(--odd-gray-light);
-            font-size: 2.375rem;
+            font-size: 2.25rem;
             line-height: 120%;
         }
 
         h1 .highlight-text {
             color: var(--odd-gray-light);
-            font-size: 2.625rem;
+            font-size: 2.5rem;
         }
     }
 
     @media only screen and (min-width: 600px) {
         section {
-            background: linear-gradient(
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                from(var(--odd-purple-dark)),
+                color-stop(75%, var(--odd-purple-medium)),
+                to(var(--odd-gray-light))
+            );
+            background-image: -o-linear-gradient(
+                top,
+                var(--odd-purple-dark) 0%,
+                var(--odd-purple-medium) 75%,
+                var(--odd-gray-light) 100%
+            );
+            background-image: linear-gradient(
                 180deg,
                 var(--odd-purple-dark) 0%,
                 var(--odd-purple-medium) 75%,
@@ -83,47 +117,22 @@
     }
 
     @media only screen and (min-width: 768px) {
-        section {
-            background: linear-gradient(
-                180deg,
-                var(--odd-purple-dark) 0%,
-                var(--odd-purple-medium) 75%,
-                var(--odd-gray-light) 100%
-            );
-            padding: 3.75rem 0;
-        }
-
         h1 {
-            color: var(--odd-gray-light);
             font-size: 3.25rem;
             line-height: 115%;
         }
 
         h1 .highlight-text {
-            color: var(--odd-gray-light);
             font-size: 3.375rem;
         }
     }
 
     @media only screen and (min-width: 1024px) {
-        section {
-            background: linear-gradient(
-                180deg,
-                var(--odd-purple-dark) 0%,
-                var(--odd-purple-medium) 75%,
-                var(--odd-gray-light) 100%
-            );
-            padding: 3.75rem 0;
-        }
-
         h1 {
-            color: var(--odd-gray-light);
             font-size: 3.75rem;
-            line-height: 115%;
         }
 
         h1 .highlight-text {
-            color: var(--odd-gray-light);
             font-size: 3.875rem;
         }
     }
@@ -146,29 +155,17 @@
 
         h1 .highlight-text {
             color: var(--odd-purple-medium);
-            font-size: 3.75rem;
+            font-size: 3.875rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
-        section {
-            background: var(--odd-gray-light);
-            padding: 5rem 0;
-        }
-
         h1 {
-            color: var(--odd-gray-dark);
-            font-size: 4.5rem;
-            line-height: 110%;
-        }
-
-        h1 > span {
-            color: var(--odd-purple-medium);
+            font-size: 4.125rem;
         }
 
         h1 .highlight-text {
-            color: var(--odd-purple-medium);
-            font-size: 4.5rem;
+            font-size: 4.25rem;
         }
     }
 </style>

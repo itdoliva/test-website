@@ -1,17 +1,15 @@
 <script>
-    import Footer from '@components/Footer.svelte';
     import CoverSection from '@sections/studio/CoverSection.svelte';
     import WorkSection from '@sections/studio/WorkSection.svelte';
+    import Subscription from '@components/Subscription.svelte';
+    import Footer from '@components/Footer.svelte';
 
     export let data;
 </script>
 
-<svelte:head>
-    <title>Odd Data & Design Studio</title>
-</svelte:head>
-
 <CoverSection />
 <WorkSection cases={data.cases} />
+<Subscription pattern="studio" />
 <Footer pattern="studio" />
 
 <style>

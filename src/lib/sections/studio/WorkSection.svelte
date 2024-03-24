@@ -52,8 +52,8 @@
             <div>
                 {#each categories as category, index}
                     <button
-                        class={currentIndex === index ? 'active' : ''}
                         type="button"
+                        class={currentIndex === index ? 'active' : ''}
                         on:click={() => (currentIndex = index)}
                     >
                         {category.name}
@@ -97,14 +97,29 @@
         font-weight: 600;
     }
 
+    div.mobile-content :global(.splide .splide__pagination) {
+        margin-bottom: 5rem;
+    }
+
     div.desktop-content {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
 
     div.desktop-content div {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 
@@ -143,7 +158,7 @@
 
     @media only screen and (max-width: 600px) {
         section {
-            padding: 3.75rem 0;
+            padding: 5rem 0 0 0;
         }
 
         section div.mobile-content {
@@ -170,7 +185,7 @@
 
     @media only screen and (min-width: 600px) {
         section {
-            padding: 3.75rem 0;
+            padding: 5rem 0 0 0;
         }
 
         section div.mobile-content {
@@ -196,12 +211,7 @@
     }
 
     @media only screen and (min-width: 768px) {
-        section {
-            padding: 3.75rem 0;
-        }
-
         section div.mobile-content {
-            display: block;
             margin-top: 1.5rem;
         }
 
@@ -216,42 +226,25 @@
             line-height: 125%;
             margin-bottom: 1.5rem;
         }
-
-        section div.desktop-content {
-            display: none;
-        }
     }
 
     @media only screen and (min-width: 1024px) {
-        section {
-            padding: 3.75rem 0;
-        }
-
         section div.mobile-content {
-            display: block;
             margin-top: 1.75rem;
         }
 
         div.mobile-content h3 {
-            font-size: 1.5rem;
-            line-height: 100%;
             margin-bottom: 1.25rem;
         }
 
         div.mobile-content p {
-            font-size: 1.125rem;
-            line-height: 125%;
             margin-bottom: 1.75rem;
-        }
-
-        section div.desktop-content {
-            display: none;
         }
     }
 
     @media only screen and (min-width: 1280px) {
         section {
-            padding: 5rem 0;
+            padding: 7.5rem 0;
         }
 
         section div.mobile-content {
@@ -275,25 +268,12 @@
 
         div.desktop-content p {
             font-size: 1.75rem;
-            margin-bottom: 4rem;
+            margin: 0 auto 4rem auto;
             width: 45rem;
         }
     }
 
     @media only screen and (min-width: 1536px) {
-        section {
-            padding: 5rem 0;
-        }
-
-        section div.mobile-content {
-            display: none;
-        }
-
-        section div.desktop-content {
-            display: block;
-            margin: 0 -10rem;
-        }
-
         div.desktop-content div {
             gap: 0.875rem;
             margin-bottom: 2.5rem;
@@ -305,8 +285,7 @@
         }
 
         div.desktop-content p {
-            font-size: 1.75rem;
-            margin-bottom: 5rem;
+            margin: 0 auto 5rem auto;
             width: 60rem;
         }
     }
