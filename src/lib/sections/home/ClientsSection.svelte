@@ -4,7 +4,7 @@
 
     import Container from '@components/Container.svelte';
     import SectionTitle from '@components/SectionTitle.svelte';
-    import ClientQuote from '@components/home/ClientQuote.svelte';
+    import ClientQuote from '@components/ClientQuote.svelte';
 
     const quotes = [
         {
@@ -52,6 +52,8 @@
 
     section :global(.splide__slide) {
         opacity: 0.4;
+        -webkit-transition: opacity 0.25s ease-in-out;
+        -o-transition: opacity 0.25s ease-in-out;
         transition: opacity 0.25s ease-in-out;
     }
 
@@ -73,10 +75,14 @@
             padding: 2.5rem 0;
         }
 
+        section :global(.splide) {
+            margin: 0;
+        }
+
         section :global(.splide__list) {
             gap: 0.75rem !important;
             padding-bottom: 1.25rem !important;
-            padding-top: 1.25rem !important;
+            padding-top: 0.75rem !important;
         }
 
         section :global(.splide__pagination__page) {
@@ -86,15 +92,56 @@
     }
 
     @media only screen and (min-width: 600px) {
+        section {
+            padding: 2.5rem 0;
+        }
+
+        section :global(.splide) {
+            margin: 0;
+        }
+
+        section :global(.splide__list) {
+            gap: 0.75rem !important;
+            padding-bottom: 1.25rem !important;
+            padding-top: 0.75rem !important;
+        }
+
+        section :global(.splide__pagination__page) {
+            height: 0.625rem;
+            width: 0.625rem;
+        }
     }
 
     @media only screen and (min-width: 768px) {
+        section :global(.splide__list) {
+            gap: 1rem !important;
+            padding-bottom: 1.5rem !important;
+            padding-top: 0.5rem !important;
+        }
     }
 
     @media only screen and (min-width: 1024px) {
     }
 
     @media only screen and (min-width: 1280px) {
+        section {
+            padding: 3.75rem 0;
+        }
+
+        section :global(.splide) {
+            margin: 0 -10rem;
+        }
+
+        section :global(.splide__list) {
+            gap: 1.25rem !important;
+            padding-bottom: 1.75rem !important;
+            padding-top: 0.25rem !important;
+        }
+
+        section :global(.splide__pagination__page) {
+            height: 0.75rem;
+            width: 0.75rem;
+        }
     }
 
     @media only screen and (min-width: 1536px) {

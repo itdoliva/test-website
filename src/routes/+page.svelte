@@ -1,21 +1,21 @@
 <script>
-    import Footer from '@components/Footer.svelte';
     import CoverSection from '@sections/home/CoverSection.svelte';
     import DescriptionSection from '@sections/home/DescriptionSection.svelte';
     import BranchesSection from '@sections/home/BranchesSection.svelte';
     import ClientsSection from '@sections/home/ClientsSection.svelte';
     import ValuesSection from '@sections/home/ValuesSection.svelte';
-</script>
+    import Subscription from '@components/Subscription.svelte';
+    import Footer from '@components/Footer.svelte';
 
-<svelte:head>
-    <title>Odd Data & Design Studio</title>
-</svelte:head>
+    export let data;
+</script>
 
 <CoverSection />
 <DescriptionSection />
-<BranchesSection />
+<BranchesSection cases={data.cases} />
 <ClientsSection />
 <ValuesSection />
+<Subscription pattern="studio" />
 <Footer pattern="studio" />
 
 <style>

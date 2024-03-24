@@ -13,7 +13,7 @@
                 > who love to push new ways to interact, think and show information.
             </p>
             <p>
-                Some imagine what data can become.<br />
+                Some imagine what data can become.
                 <span class="text-bold">We make it happen.</span>
             </p>
         </div>
@@ -52,6 +52,7 @@
         font-family: 'Newsreader', serif;
         font-style: italic;
         letter-spacing: -0.1rem;
+        line-height: 100%;
     }
 
     .header-wrapper .text-bold {
@@ -59,14 +60,14 @@
     }
 
     .values-wrapper {
+        display: -ms-grid;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
     }
 
     .values-wrapper div {
         background-color: var(--odd-purple-medium);
         background-repeat: no-repeat;
+        border-radius: 0.75rem;
     }
 
     .values-wrapper div:nth-child(1) {
@@ -106,42 +107,206 @@
         }
 
         .header-wrapper .text-highlight {
-            line-height: 100%;
             font-size: 2.25rem;
         }
 
         .values-wrapper {
-            gap: 0.75rem;
-            margin-top: 3.75rem;
+            gap: 0.5rem;
+            -ms-grid-columns: 1fr 0.5rem 1fr;
+            grid-template-columns: repeat(2, 1fr);
+            -ms-grid-rows: 1fr 0.5rem 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            margin: 3rem 0 0 0;
+        }
+
+        .values-wrapper > *:nth-child(1) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 1;
+        }
+
+        .values-wrapper > *:nth-child(2) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 3;
+        }
+
+        .values-wrapper > *:nth-child(3) {
+            -ms-grid-row: 3;
+            -ms-grid-column: 1;
+        }
+
+        .values-wrapper > *:nth-child(4) {
+            -ms-grid-row: 3;
+            -ms-grid-column: 3;
         }
 
         .values-wrapper div {
+            aspect-ratio: 1 / 1;
             background-position: 125% 125%;
-            background-size: 75%;
-            border-radius: 0.75rem;
+            background-size: 60%;
             padding: 0.75rem;
-            height: 12.5rem;
         }
 
         .values-wrapper span {
             font-size: 1rem;
             max-width: 7.5rem;
-            text-wrap: balance;
+            text-wrap: wrap;
         }
     }
 
     @media only screen and (min-width: 600px) {
+        section {
+            padding: 2.5rem 0 5rem 0;
+        }
+
+        .header-wrapper p {
+            font-size: 2.75rem;
+            line-height: 120%;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-wrapper .text-highlight {
+            font-size: 2.875rem;
+        }
+
+        .values-wrapper {
+            gap: 0.75rem;
+            -ms-grid-columns: 1fr 0.75rem 1fr;
+            grid-template-columns: repeat(2, 1fr);
+            -ms-grid-rows: 1fr 0.75rem 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            margin: 3rem 0 0 0;
+        }
+
+        .values-wrapper > *:nth-child(1) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 1;
+        }
+
+        .values-wrapper > *:nth-child(2) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 3;
+        }
+
+        .values-wrapper > *:nth-child(3) {
+            -ms-grid-row: 3;
+            -ms-grid-column: 1;
+        }
+
+        .values-wrapper > *:nth-child(4) {
+            -ms-grid-row: 3;
+            -ms-grid-column: 3;
+        }
+
+        .values-wrapper div {
+            aspect-ratio: 1 / 1;
+            background-position: 125% 125%;
+            background-size: 60%;
+            padding: 0.75rem;
+        }
+
+        .values-wrapper span {
+            font-size: 1.375rem;
+            max-width: 10rem;
+            text-wrap: balance;
+        }
     }
 
     @media only screen and (min-width: 768px) {
+        .header-wrapper p {
+            font-size: 3.25rem;
+            line-height: 115%;
+        }
+
+        .header-wrapper .text-highlight {
+            font-size: 3.375rem;
+        }
+
+        .values-wrapper {
+            gap: 1rem;
+        }
+
+        .values-wrapper div {
+            background-size: 62.5%;
+            padding: 1rem;
+        }
+
+        .values-wrapper span {
+            font-size: 1.5rem;
+            max-width: 12.5rem;
+        }
     }
 
     @media only screen and (min-width: 1024px) {
+        .values-wrapper div {
+            background-size: 65%;
+        }
+
+        .values-wrapper span {
+            max-width: 13.25rem;
+        }
     }
 
     @media only screen and (min-width: 1280px) {
+        section {
+            padding: 3.75rem 0 7.5rem 0;
+        }
+
+        .header-wrapper p {
+            font-size: 3.75rem;
+            line-height: 110%;
+            margin-bottom: 2rem;
+        }
+
+        .header-wrapper .text-highlight {
+            font-size: 3.875rem;
+        }
+
+        .values-wrapper {
+            gap: 1.25rem;
+            -ms-grid-columns: 1fr 1.25rem 1fr 1.25rem 1fr 1.25rem 1fr;
+            grid-template-columns: repeat(4, 1fr);
+            -ms-grid-rows: 1fr;
+            grid-template-rows: 1fr;
+            margin: 4.5rem -10rem 0 -10rem;
+        }
+
+        .values-wrapper > *:nth-child(1) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 1;
+        }
+
+        .values-wrapper > *:nth-child(2) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 3;
+        }
+
+        .values-wrapper > *:nth-child(3) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 5;
+        }
+
+        .values-wrapper > *:nth-child(4) {
+            -ms-grid-row: 1;
+            -ms-grid-column: 7;
+        }
+
+        .values-wrapper div {
+            background-size: 60%;
+        }
+
+        .values-wrapper span {
+            max-width: 11rem;
+        }
     }
 
     @media only screen and (min-width: 1536px) {
+        .values-wrapper {
+            margin: 4.5rem -7.5rem 0 -7.5rem;
+        }
+
+        .values-wrapper span {
+            font-size: 1.75rem;
+            max-width: 12.5rem;
+        }
     }
 </style>
