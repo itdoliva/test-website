@@ -8,25 +8,25 @@ export const ssr = false;
 export const load = async ({ params, fetch, cookies }) => {
     const client = createClient({ fetch, cookies });
     const queryParams = { lang: get(locale) };
+    const data = { page: {} };
 
-    const page = await client.getByUID(
-        'odd-studio-cases',
-        params.uid,
-        queryParams
-    );
+    try {
+        const page = await client.getByUID(
+            'odd-studio-cases',
+            params.uid,
+            queryParams
+        );
+        data.page = page;
+    } catch (e) {
+        console.error(e);
+    }
 
-    return { page };
+    return data;
 };
 
 export const entries = async () => {
     const client = createClient();
-    const queryParams = {
-        graphQuery: `{
-            odd-studio-cases {
-                title
-            }
-        }`,
-    };
+    const queryParams = {};
 
     let pages = await client.getAllByType('odd-studio-cases', queryParams);
     pages = pages.map((page) => ({ uid: page.uid }));
