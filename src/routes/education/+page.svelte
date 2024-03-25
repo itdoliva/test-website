@@ -1,5 +1,33 @@
-<svelte:head>
-    <title>Odd Data & Design Studio</title>
-</svelte:head>
+<script>
+    import CoverSection from '@sections/education/CoverSection.svelte';
+    import WorkSection from '@sections/education/WorkSection.svelte';
+    import Subscription from '@components/Subscription.svelte';
+    import Footer from '@components/Footer.svelte';
 
-<h1>Not yet!</h1>
+    export let data;
+</script>
+
+<CoverSection />
+<WorkSection cases={data.cases} />
+<Subscription pattern="education" />
+<Footer pattern="education" />
+
+<style>
+    @media only screen and (max-width: 600px) {
+    }
+
+    @media only screen and (min-width: 600px) {
+    }
+
+    @media only screen and (min-width: 768px) {
+    }
+
+    @media only screen and (min-width: 1024px) {
+    }
+
+    @media only screen and (min-width: 1280px) {
+    }
+
+    @media only screen and (min-width: 1536px) {
+    }
+</style>
