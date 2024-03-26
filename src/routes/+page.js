@@ -9,6 +9,7 @@ const getQueryParams = (documentType) => {
     const queryParams = {
         lang: get(locale),
         orderings: [
+            { field: `my.${documentType}.ready`, direction: 'desc' },
             { field: `my.${documentType}.priority`, direction: 'desc' },
             { field: `my.${documentType}.date`, direction: 'desc' },
         ],
@@ -17,37 +18,30 @@ const getQueryParams = (documentType) => {
     return queryParams;
 };
 
+const getCases = async (client, documentType) => {
+    let cases = await client.getAllByType(
+        documentType,
+        getQueryParams(documentType)
+    );
+
+    return cases.map((c) => ({ uid: c.uid, ...c.data })).slice(0, 5);
+};
+
 export const load = async ({ fetch, cookies }) => {
     const client = createClient({ fetch, cookies });
     const data = { cases: { studio: [], education: [], experiments: [] } };
+    const branches = [
+        { name: 'studio', documentType: 'StudioCase' },
+        { name: 'education', documentType: 'EducationCase' },
+        { name: 'experiments', documentType: 'ExperimentsCase' },
+    ];
 
     try {
-        let studioCases = await client.getAllByType(
-            'odd-studio-cases',
-            getQueryParams('odd-studio-cases')
-        );
-
-        let educationCases = await client.getAllByType(
-            'odd-studio-cases',
-            getQueryParams('odd-studio-cases')
-        );
-
-        let experimentsCases = await client.getAllByType(
-            'odd-studio-cases',
-            getQueryParams('odd-studio-cases')
-        );
-
-        data.cases.studio = studioCases
-            .map((c) => ({ uid: c.uid, ...c.data }))
-            .slice(0, 5);
-
-        data.cases.education = educationCases
-            .map((c) => ({ uid: c.uid, ...c.data }))
-            .slice(0, 5);
-
-        data.cases.experiments = experimentsCases
-            .map((c) => ({ uid: c.uid, ...c.data }))
-            .slice(0, 5);
+        for (const branch of branches)
+            data.cases[branch.name] = await getCases(
+                client,
+                branch.documentType
+            );
     } catch (e) {
         console.error(e);
     }
