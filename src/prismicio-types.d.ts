@@ -4,117 +4,649 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-/**
- * Item content in *exemplo-leroy → Slice zone → Paragraph → Items*
- */
-export interface ExemploLeroyDocumentDataBodyParagraphSliceItem {
-    /**
-     * Paragraph field in *exemplo-leroy → Slice zone → Paragraph → Items*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: Insert here the text of the paragraph.
-     * - **API ID Path**: exemplo-leroy.body[].paragraph.items.paragraph
-     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-     */
-    paragraph: prismic.RichTextField;
-}
+type EducationCaseDocumentDataSlicesSlice =
+    | VideoSlice
+    | UnorderedListItemSlice
+    | SectionTitleSlice
+    | QuoteSlice
+    | ExternalLinkSlice
+    | ImagesSlice
+    | ParagraphsSlice
+    | OrderedListSlice
+    | FullWidthImageSlice
+    | BigNumberSlice;
 
 /**
- * Slice for *exemplo-leroy → Slice zone*
+ * Content for odd.studio/education/cases documents
  */
-export type ExemploLeroyDocumentDataBodyParagraphSlice = prismic.Slice<
-    'paragraph',
-    Record<string, never>,
-    Simplify<ExemploLeroyDocumentDataBodyParagraphSliceItem>
->;
-
-type ExemploLeroyDocumentDataBodySlice =
-    ExemploLeroyDocumentDataBodyParagraphSlice;
-
-/**
- * Content for exemplo-leroy documents
- */
-interface ExemploLeroyDocumentData {
+interface EducationCaseDocumentData {
     /**
-     * Cover Image field in *exemplo-leroy*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: exemplo-leroy.cover_image
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#image
-     */
-    cover_image: prismic.ImageField<never>;
-
-    /**
-     * Title field in *exemplo-leroy*
+     * Title field in *odd.studio/education/cases*
      *
      * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: exemplo-leroy.title
+     * - **Placeholder**: Title for this document. Please avoid long texts.
+     * - **API ID Path**: EducationCase.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     title: prismic.KeyTextField;
 
     /**
-     * Subtitle field in *exemplo-leroy*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: exemplo-leroy.subtitle
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    subtitle: prismic.KeyTextField;
-
-    /**
-     * Author field in *exemplo-leroy*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: exemplo-leroy.author
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    author: prismic.KeyTextField;
-
-    /**
-     * Date field in *exemplo-leroy*
+     * Date field in *odd.studio/education/cases*
      *
      * - **Field Type**: Date
-     * - **Placeholder**: *None*
-     * - **API ID Path**: exemplo-leroy.date
+     * - **Placeholder**: This date will be used to sort the cases.
+     * - **API ID Path**: EducationCase.date
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/field#date
      */
     date: prismic.DateField;
 
     /**
-     * Slice zone field in *exemplo-leroy*
+     * Is this a priority case? field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: EducationCase.priority
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    priority: prismic.BooleanField;
+
+    /**
+     * Is the page content ready? field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: EducationCase.ready
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    ready: prismic.BooleanField;
+
+    /**
+     * Preview Text field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The text that will be showed on display cards. Please avoid long texts.
+     * - **API ID Path**: EducationCase.preview
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    preview: prismic.KeyTextField;
+
+    /**
+     * Category field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select an option from this drop-down list. Please pay attention to this document's current language.
+     * - **Default Value**: -
+     * - **API ID Path**: EducationCase.category
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    category: prismic.SelectField<
+        '-' | 'Keynote Talk' | 'In-Company',
+        'filled'
+    >;
+
+    /**
+     * Summary field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A short text that summarizes this case.
+     * - **API ID Path**: EducationCase.summary
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    summary: prismic.RichTextField;
+
+    /**
+     * Before field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Brief description of what the client had before this case.
+     * - **API ID Path**: EducationCase.before
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    before: prismic.KeyTextField;
+
+    /**
+     * Delivery field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Brief description of the main delivery of this case.
+     * - **API ID Path**: EducationCase.delivery
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    delivery: prismic.KeyTextField;
+
+    /**
+     * Client field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Name of the client related to this case.
+     * - **API ID Path**: EducationCase.client
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    client: prismic.KeyTextField;
+
+    /**
+     * Year field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The year in which the case was completed.
+     * - **API ID Path**: EducationCase.year
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    year: prismic.KeyTextField;
+
+    /**
+     * Tools field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: List of the main tools used in this case.
+     * - **API ID Path**: EducationCase.tools
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    tools: prismic.KeyTextField;
+
+    /**
+     * Link field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Link to the case website or to some related content.
+     * - **API ID Path**: EducationCase.link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField;
+
+    /**
+     * Display Image field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: EducationCase.display_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    display_image: prismic.ImageField<never>;
+
+    /**
+     * Cover Image field in *odd.studio/education/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: EducationCase.cover_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    cover_image: prismic.ImageField<never>;
+
+    /**
+     * Slice Zone field in *odd.studio/education/cases*
      *
      * - **Field Type**: Slice Zone
      * - **Placeholder**: *None*
-     * - **API ID Path**: exemplo-leroy.body[]
+     * - **API ID Path**: EducationCase.slices[]
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/field#slices
      */
-    body: prismic.SliceZone<ExemploLeroyDocumentDataBodySlice>;
+    slices: prismic.SliceZone<EducationCaseDocumentDataSlicesSlice>;
 }
 
 /**
- * exemplo-leroy document from Prismic
+ * odd.studio/education/cases document from Prismic
  *
- * - **API ID**: `exemplo-leroy`
+ * - **API ID**: `EducationCase`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type ExemploLeroyDocument<Lang extends string = string> =
+export type EducationCaseDocument<Lang extends string = string> =
     prismic.PrismicDocumentWithUID<
-        Simplify<ExemploLeroyDocumentData>,
-        'exemplo-leroy',
+        Simplify<EducationCaseDocumentData>,
+        'EducationCase',
+        Lang
+    >;
+
+type ExperimentsCaseDocumentDataSlicesSlice =
+    | VideoSlice
+    | QuoteSlice
+    | UnorderedListItemSlice
+    | SectionTitleSlice
+    | ImagesSlice
+    | OrderedListSlice
+    | ParagraphsSlice
+    | ExternalLinkSlice
+    | FullWidthImageSlice
+    | BigNumberSlice;
+
+/**
+ * Content for odd.studio/experiments/cases documents
+ */
+interface ExperimentsCaseDocumentData {
+    /**
+     * Title field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Title for this document. Please avoid long texts.
+     * - **API ID Path**: ExperimentsCase.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+
+    /**
+     * Date field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Date
+     * - **Placeholder**: This date will be used to sort the cases.
+     * - **API ID Path**: ExperimentsCase.date
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#date
+     */
+    date: prismic.DateField;
+
+    /**
+     * Is this a priority case? field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: ExperimentsCase.priority
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    priority: prismic.BooleanField;
+
+    /**
+     * Is the page content ready? field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: ExperimentsCase.ready
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    ready: prismic.BooleanField;
+
+    /**
+     * Preview Text field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The text that will be showed on display cards. Please avoid long texts.
+     * - **API ID Path**: ExperimentsCase.preview
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    preview: prismic.KeyTextField;
+
+    /**
+     * Category field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select an option from this drop-down list. Please pay attention to this document's current language.
+     * - **Default Value**: -
+     * - **API ID Path**: ExperimentsCase.category
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    category: prismic.SelectField<'-' | '--', 'filled'>;
+
+    /**
+     * Summary field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A short text that summarizes this case.
+     * - **API ID Path**: ExperimentsCase.summary
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    summary: prismic.RichTextField;
+
+    /**
+     * Before field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Brief description of what the client had before this case.
+     * - **API ID Path**: ExperimentsCase.before
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    before: prismic.KeyTextField;
+
+    /**
+     * Delivery field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Brief description of the main delivery of this case.
+     * - **API ID Path**: ExperimentsCase.delivery
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    delivery: prismic.KeyTextField;
+
+    /**
+     * Client field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Name of the client related to this case.
+     * - **API ID Path**: ExperimentsCase.client
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    client: prismic.KeyTextField;
+
+    /**
+     * Year field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The year in which the case was completed.
+     * - **API ID Path**: ExperimentsCase.year
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    year: prismic.KeyTextField;
+
+    /**
+     * Tools field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: List of the main tools used in this case.
+     * - **API ID Path**: ExperimentsCase.tools
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    tools: prismic.KeyTextField;
+
+    /**
+     * Link field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Link to the case website or to some related content.
+     * - **API ID Path**: ExperimentsCase.link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField;
+
+    /**
+     * Display Image field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ExperimentsCase.display_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    display_image: prismic.ImageField<never>;
+
+    /**
+     * Cover Image field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ExperimentsCase.cover_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    cover_image: prismic.ImageField<never>;
+
+    /**
+     * Slice Zone field in *odd.studio/experiments/cases*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ExperimentsCase.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<ExperimentsCaseDocumentDataSlicesSlice>;
+}
+
+/**
+ * odd.studio/experiments/cases document from Prismic
+ *
+ * - **API ID**: `ExperimentsCase`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ExperimentsCaseDocument<Lang extends string = string> =
+    prismic.PrismicDocumentWithUID<
+        Simplify<ExperimentsCaseDocumentData>,
+        'ExperimentsCase',
+        Lang
+    >;
+
+type StudioCaseDocumentDataSlicesSlice =
+    | UnorderedListItemSlice
+    | VideoSlice
+    | SectionTitleSlice
+    | QuoteSlice
+    | FullWidthImageSlice
+    | ImagesSlice
+    | ParagraphsSlice
+    | OrderedListSlice
+    | ExternalLinkSlice
+    | BigNumberSlice;
+
+/**
+ * Content for odd.studio/studio/cases documents
+ */
+interface StudioCaseDocumentData {
+    /**
+     * Title field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Title for this document. Please avoid long texts.
+     * - **API ID Path**: StudioCase.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+
+    /**
+     * Date field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Date
+     * - **Placeholder**: This date will be used to sort the cases.
+     * - **API ID Path**: StudioCase.date
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#date
+     */
+    date: prismic.DateField;
+
+    /**
+     * Is this a priority case? field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: StudioCase.priority
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    priority: prismic.BooleanField;
+
+    /**
+     * Is the page content ready? field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: StudioCase.ready
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    ready: prismic.BooleanField;
+
+    /**
+     * Preview Text field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The text that will be showed on display cards. Please avoid long texts.
+     * - **API ID Path**: StudioCase.preview
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    preview: prismic.KeyTextField;
+
+    /**
+     * Category field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select an option from this drop-down list. Please pay attention to this document's current language.
+     * - **Default Value**: -
+     * - **API ID Path**: StudioCase.category
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    category: prismic.SelectField<
+        | '-'
+        | 'Infographics and Reports'
+        | 'Storytelling and Microwebsites'
+        | 'Dashboards'
+        | 'Data-driven Systems',
+        'filled'
+    >;
+
+    /**
+     * Summary field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A short text that summarizes this case.
+     * - **API ID Path**: StudioCase.summary
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    summary: prismic.RichTextField;
+
+    /**
+     * Before field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Brief description of what the client had before this case.
+     * - **API ID Path**: StudioCase.before
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    before: prismic.KeyTextField;
+
+    /**
+     * Delivery field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Brief description of the main delivery of this case.
+     * - **API ID Path**: StudioCase.delivery
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    delivery: prismic.KeyTextField;
+
+    /**
+     * Client field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Name of the client related to this case.
+     * - **API ID Path**: StudioCase.client
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    client: prismic.KeyTextField;
+
+    /**
+     * Year field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The year in which the case was completed.
+     * - **API ID Path**: StudioCase.year
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    year: prismic.KeyTextField;
+
+    /**
+     * Tools field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: List of the main tools used in this case.
+     * - **API ID Path**: StudioCase.tools
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    tools: prismic.KeyTextField;
+
+    /**
+     * Link field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Link to the case website or to some related content.
+     * - **API ID Path**: StudioCase.link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField;
+
+    /**
+     * Display Image field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: StudioCase.display_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    display_image: prismic.ImageField<never>;
+
+    /**
+     * Cover Image field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: StudioCase.cover_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    cover_image: prismic.ImageField<never>;
+
+    /**
+     * Slice Zone field in *odd.studio/studio/cases*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: StudioCase.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<StudioCaseDocumentDataSlicesSlice>;
+}
+
+/**
+ * odd.studio/studio/cases document from Prismic
+ *
+ * - **API ID**: `StudioCase`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StudioCaseDocument<Lang extends string = string> =
+    prismic.PrismicDocumentWithUID<
+        Simplify<StudioCaseDocumentData>,
+        'StudioCase',
         Lang
     >;
 
@@ -131,11 +663,11 @@ type OddStudioCasesDocumentDataSlicesSlice =
     | SectionTitleSlice;
 
 /**
- * Content for odd.studio/studio/cases documents
+ * Content for Test Cases documents
  */
 interface OddStudioCasesDocumentData {
     /**
-     * Title field in *odd.studio/studio/cases*
+     * Title field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: Title for this document. Please avoid long texts.
@@ -146,7 +678,7 @@ interface OddStudioCasesDocumentData {
     title: prismic.KeyTextField;
 
     /**
-     * Type of work field in *odd.studio/studio/cases*
+     * Type of work field in *Test Cases*
      *
      * - **Field Type**: Select
      * - **Placeholder**: Select an option from this drop-down list. Please pay attention to this document's current language.
@@ -167,7 +699,7 @@ interface OddStudioCasesDocumentData {
     >;
 
     /**
-     * Should this document be prioritized on landing pages? field in *odd.studio/studio/cases*
+     * Should this document be prioritized on landing pages? field in *Test Cases*
      *
      * - **Field Type**: Boolean
      * - **Placeholder**: *None*
@@ -179,7 +711,7 @@ interface OddStudioCasesDocumentData {
     priority: prismic.BooleanField;
 
     /**
-     * Date field in *odd.studio/studio/cases*
+     * Date field in *Test Cases*
      *
      * - **Field Type**: Date
      * - **Placeholder**: This date will be used to sort the cases.
@@ -190,7 +722,7 @@ interface OddStudioCasesDocumentData {
     date: prismic.DateField;
 
     /**
-     * Before field in *odd.studio/studio/cases*
+     * Before field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: Brief description of what the client had before this case.
@@ -201,7 +733,7 @@ interface OddStudioCasesDocumentData {
     before: prismic.KeyTextField;
 
     /**
-     * Delivery field in *odd.studio/studio/cases*
+     * Delivery field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: Brief description of the main delivery of this case.
@@ -212,7 +744,7 @@ interface OddStudioCasesDocumentData {
     delivery: prismic.KeyTextField;
 
     /**
-     * Client field in *odd.studio/studio/cases*
+     * Client field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: Name of the client related to this case.
@@ -223,7 +755,7 @@ interface OddStudioCasesDocumentData {
     client: prismic.KeyTextField;
 
     /**
-     * Year field in *odd.studio/studio/cases*
+     * Year field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: The year in which the case was completed.
@@ -234,7 +766,7 @@ interface OddStudioCasesDocumentData {
     year: prismic.KeyTextField;
 
     /**
-     * Link field in *odd.studio/studio/cases*
+     * Link field in *Test Cases*
      *
      * - **Field Type**: Link
      * - **Placeholder**: Link to the case website or to some related content.
@@ -245,7 +777,7 @@ interface OddStudioCasesDocumentData {
     link: prismic.LinkField;
 
     /**
-     * Tools field in *odd.studio/studio/cases*
+     * Tools field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: List of the main tools used in this case.
@@ -256,7 +788,7 @@ interface OddStudioCasesDocumentData {
     tools: prismic.KeyTextField;
 
     /**
-     * Summary field in *odd.studio/studio/cases*
+     * Summary field in *Test Cases*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: A short text that summarizes this case.
@@ -267,7 +799,7 @@ interface OddStudioCasesDocumentData {
     summary: prismic.RichTextField;
 
     /**
-     * Preview Text field in *odd.studio/studio/cases*
+     * Preview Text field in *Test Cases*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -278,7 +810,7 @@ interface OddStudioCasesDocumentData {
     preview: prismic.KeyTextField;
 
     /**
-     * Display Image field in *odd.studio/studio/cases*
+     * Display Image field in *Test Cases*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -289,7 +821,7 @@ interface OddStudioCasesDocumentData {
     display_image: prismic.ImageField<never>;
 
     /**
-     * Cover Image field in *odd.studio/studio/cases*
+     * Cover Image field in *Test Cases*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -300,7 +832,7 @@ interface OddStudioCasesDocumentData {
     cover_image: prismic.ImageField<never>;
 
     /**
-     * Slice Zone field in *odd.studio/studio/cases*
+     * Slice Zone field in *Test Cases*
      *
      * - **Field Type**: Slice Zone
      * - **Placeholder**: *None*
@@ -312,7 +844,7 @@ interface OddStudioCasesDocumentData {
 }
 
 /**
- * odd.studio/studio/cases document from Prismic
+ * Test Cases document from Prismic
  *
  * - **API ID**: `odd-studio-cases`
  * - **Repeatable**: `true`
@@ -1642,221 +2174,14 @@ export type OddexperimentsDocument<Lang extends string = string> =
         Lang
     >;
 
-/**
- * Content for odd.people documents
- */
-interface OddpeopleDocumentData {
-    /**
-     * Order field in *odd.people*
-     *
-     * - **Field Type**: Number
-     * - **Placeholder**: Insert here the position in which the person must appear on the page (sorting).
-     * - **API ID Path**: oddpeople.order
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#number
-     */
-    order: prismic.NumberField;
-
-    /**
-     * Photo (B&W) field in *odd.people*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: oddpeople.photo1
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#image
-     */
-    photo1: prismic.ImageField<never>;
-
-    /**
-     * Photo (Color) field in *odd.people*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: oddpeople.photo2
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#image
-     */
-    photo2: prismic.ImageField<never>;
-
-    /**
-     * Name field in *odd.people*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here the person's full name.
-     * - **API ID Path**: oddpeople.name
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    name: prismic.KeyTextField;
-
-    /**
-     * Pronouns field in *odd.people*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here the person's pronouns.
-     * - **API ID Path**: oddpeople.pronouns
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    pronouns: prismic.KeyTextField;
-
-    /**
-     * Job Title field in *odd.people*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here the person's job title.
-     * - **API ID Path**: oddpeople.job
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    job: prismic.KeyTextField;
-
-    /**
-     * Location field in *odd.people*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here the person's nationality and location. For example, "Brazilian, Barcelona based".
-     * - **API ID Path**: oddpeople.location
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    location: prismic.KeyTextField;
-
-    /**
-     * About field in *odd.people*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here a short text about the person.
-     * - **API ID Path**: oddpeople.about
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    about: prismic.KeyTextField;
-
-    /**
-     * Career field in *odd.people*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here a short text about the person's career.
-     * - **API ID Path**: oddpeople.career
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    career: prismic.KeyTextField;
-}
-
-/**
- * odd.people document from Prismic
- *
- * - **API ID**: `oddpeople`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type OddpeopleDocument<Lang extends string = string> =
-    prismic.PrismicDocumentWithUID<
-        Simplify<OddpeopleDocumentData>,
-        'oddpeople',
-        Lang
-    >;
-
-/**
- * Content for what we do documents
- */
-interface OddservicesDocumentData {
-    /**
-     * Order field in *what we do*
-     *
-     * - **Field Type**: Number
-     * - **Placeholder**: Insert the position (sorting) in which the service must appear on the page.
-     * - **API ID Path**: oddservices.order
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#number
-     */
-    order: prismic.NumberField;
-
-    /**
-     * Color field in *what we do*
-     *
-     * - **Field Type**: Select
-     * - **Placeholder**: Select the color to be applied to this service's components on the page.
-     * - **API ID Path**: oddservices.color
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#select
-     */
-    color: prismic.SelectField<'orange' | 'magenta' | 'green'>;
-
-    /**
-     * Background field in *what we do*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: oddservices.background
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#image
-     */
-    background: prismic.ImageField<never>;
-
-    /**
-     * Title field in *what we do*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert the service title here.
-     * - **API ID Path**: oddservices.title
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    title: prismic.KeyTextField;
-
-    /**
-     * Description field in *what we do*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Insert here a short text describing this service.
-     * - **API ID Path**: oddservices.description
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    description: prismic.KeyTextField;
-
-    /**
-     * Deliveries field in *what we do*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: Insert here examples of deliveries related to this type of service.
-     * - **API ID Path**: oddservices.deliveries
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-     */
-    deliveries: prismic.RichTextField;
-}
-
-/**
- * what we do document from Prismic
- *
- * - **API ID**: `oddservices`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type OddservicesDocument<Lang extends string = string> =
-    prismic.PrismicDocumentWithUID<
-        Simplify<OddservicesDocumentData>,
-        'oddservices',
-        Lang
-    >;
-
 export type AllDocumentTypes =
-    | ExemploLeroyDocument
+    | EducationCaseDocument
+    | ExperimentsCaseDocument
+    | StudioCaseDocument
     | OddStudioCasesDocument
     | OddcasesDocument
     | OddeduDocument
-    | OddexperimentsDocument
-    | OddpeopleDocument
-    | OddservicesDocument;
+    | OddexperimentsDocument;
 
 /**
  * Primary content in *BigNumber → Items*
@@ -2384,10 +2709,15 @@ declare module '@prismicio/client' {
 
     namespace Content {
         export type {
-            ExemploLeroyDocument,
-            ExemploLeroyDocumentData,
-            ExemploLeroyDocumentDataBodyParagraphSliceItem,
-            ExemploLeroyDocumentDataBodySlice,
+            EducationCaseDocument,
+            EducationCaseDocumentData,
+            EducationCaseDocumentDataSlicesSlice,
+            ExperimentsCaseDocument,
+            ExperimentsCaseDocumentData,
+            ExperimentsCaseDocumentDataSlicesSlice,
+            StudioCaseDocument,
+            StudioCaseDocumentData,
+            StudioCaseDocumentDataSlicesSlice,
             OddStudioCasesDocument,
             OddStudioCasesDocumentData,
             OddStudioCasesDocumentDataSlicesSlice,
@@ -2433,10 +2763,6 @@ declare module '@prismicio/client' {
             OddexperimentsDocumentDataBodyImageSliceItem,
             OddexperimentsDocumentDataBodyIframeSlicePrimary,
             OddexperimentsDocumentDataBodySlice,
-            OddpeopleDocument,
-            OddpeopleDocumentData,
-            OddservicesDocument,
-            OddservicesDocumentData,
             AllDocumentTypes,
             BigNumberSlice,
             BigNumberSliceDefaultItem,
