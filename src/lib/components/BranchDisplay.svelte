@@ -5,7 +5,7 @@
 </script>
 
 <article class={`odd-${content.pattern}`}>
-    <a href={`/${content.pattern}`}>
+    <a href={`/${content.pattern}/`}>
         <header>
             <div>
                 <h3>{content.branch}</h3>
@@ -19,7 +19,7 @@
         <p>{content.audience}</p>
     </div>
     <CasesSlider branch={content.pattern} cases={content.cases} />
-    <a href={`/${content.pattern}`}><span>See all projects</span><span /></a>
+    <a href={`/${content.pattern}/`}><span>See all projects</span><span /></a>
 </article>
 
 <style>

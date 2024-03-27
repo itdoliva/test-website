@@ -39,26 +39,35 @@
         <div class={`column-${column}`}>
             {#each content[currentIndex].cases.slice(0, 3) as caseContent, i}
                 {#if i % 3 === column}
-                    <a
-                        href={`/${content[currentIndex].pattern}/cases/${caseContent.uid}`}
-                    >
-                        <div
-                            style={`background-image: url(${caseContent.display_image.url});`}
+                    {#if caseContent.ready}
+                        <a
+                            href={`/${content[currentIndex].pattern}/cases/${caseContent.uid}`}
                         >
-                            <div class="branch-gallery-overlay">
-                                {getPreviewText(caseContent)}
+                            <div
+                                style={`background-image: url(${caseContent.display_image.url});`}
+                            >
+                                <div class="branch-gallery-overlay">
+                                    {getPreviewText(caseContent)}
+                                </div>
                             </div>
+                            <h4>{caseContent.title}</h4>
+                        </a>
+                    {:else}
+                        <div class="not-ready">
+                            <div
+                                style={`background-image: url(${caseContent.display_image.url});`}
+                            />
+                            <h4>{caseContent.title}</h4>
                         </div>
-                        <h4>{caseContent.title}</h4>
-                    </a>
+                    {/if}
                 {/if}
             {/each}
             {#if content[currentIndex].cases.length < 3 && column >= content[currentIndex].cases.length % 3}
-                <a href={`/${content[currentIndex].pattern}`}>
+                <a href={`/${content[currentIndex].pattern}/`}>
                     <div class="case-placeholder" />
                 </a>
             {/if}
-            <a href={`/${content[currentIndex].pattern}`}>
+            <a href={`/${content[currentIndex].pattern}/`}>
                 <div class="case-placeholder last-placeholder" />
             </a>
         </div>
@@ -218,80 +227,30 @@
         flex-direction: column;
     }
 
-    div.branch-gallery-content a {
+    div.branch-gallery-content a div.branch-gallery-content div.not-ready {
         cursor: pointer;
         display: block;
         text-decoration: none;
         width: 100%;
     }
 
-    div.branch-gallery-content a > div {
+    div.branch-gallery-content div.not-ready,
+    div.branch-gallery-content div.not-ready * {
+        cursor: not-allowed !important;
+    }
+
+    div.branch-gallery-content div.not-ready {
+        opacity: 0.25;
+    }
+
+    div.branch-gallery-content a > div,
+    div.branch-gallery-content div.not-ready > div {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 1.25rem;
         cursor: pointer;
         width: 100%;
-    }
-
-    div.branch-gallery-content.odd-studio a > div {
-        background-image: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            from(var(--odd-purple-medium)),
-            to(var(--odd-white))
-        );
-        background-image: -o-linear-gradient(
-            top,
-            var(--odd-purple-medium) 0%,
-            var(--odd-white) 100%
-        );
-        background-image: linear-gradient(
-            180deg,
-            var(--odd-purple-medium) 0%,
-            var(--odd-white) 100%
-        );
-    }
-
-    div.branch-gallery-content.odd-education a > div {
-        background-image: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            from(var(--odd-blue-medium)),
-            to(var(--odd-white))
-        );
-        background-image: -o-linear-gradient(
-            top,
-            var(--odd-blue-medium) 0%,
-            var(--odd-white) 100%
-        );
-        background-image: linear-gradient(
-            180deg,
-            var(--odd-blue-medium) 0%,
-            var(--odd-white) 100%
-        );
-    }
-
-    div.branch-gallery-content.odd-experiments a > div {
-        background-image: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            from(var(--odd-turquoise-medium)),
-            to(var(--odd-white))
-        );
-        background-image: -o-linear-gradient(
-            top,
-            var(--odd-turquoise-medium) 0%,
-            var(--odd-white) 100%
-        );
-        background-image: linear-gradient(
-            180deg,
-            var(--odd-turquoise-medium) 0%,
-            var(--odd-white) 100%
-        );
     }
 
     div.branch-gallery-content div.branch-gallery-overlay {
@@ -317,7 +276,8 @@
         opacity: 1;
     }
 
-    div.branch-gallery-content h4 {
+    div.branch-gallery-content h4,
+    div.branch-gallery-content div.not-ready h4 {
         color: var(--odd-gray-dark);
         cursor: pointer;
         font-family: 'Switzer', sans-serif;
@@ -341,17 +301,26 @@
     }
 
     div.branch-gallery-content div.column-0 > a:nth-child(odd) div,
-    div.branch-gallery-content div.column-2 > a:nth-child(odd) div {
+    div.branch-gallery-content div.column-2 > a:nth-child(odd) div,
+    div.branch-gallery-content div.column-0 > div.not-ready:nth-child(odd) div,
+    div.branch-gallery-content div.column-2 > div.not-ready:nth-child(odd) div {
         height: 30rem;
     }
 
     div.branch-gallery-content div.column-1 > a:nth-child(even) div,
-    div.branch-gallery-content div.column-1 > a:nth-child(odd) div {
+    div.branch-gallery-content div.column-1 > a:nth-child(odd) div,
+    div.branch-gallery-content div.column-1 > div.not-ready:nth-child(even) div,
+    div.branch-gallery-content div.column-1 > div.not-ready:nth-child(odd) div {
         height: 37.5rem;
     }
 
     div.branch-gallery-content div.column-0 > a:nth-child(even) div,
-    div.branch-gallery-content div.column-2 > a:nth-child(even) div {
+    div.branch-gallery-content div.column-2 > a:nth-child(even) div,
+    div.branch-gallery-content div.column-0 > div.not-ready:nth-child(even) div,
+    div.branch-gallery-content
+        div.column-2
+        > div.not-ready:nth-child(even)
+        div {
         height: 35rem;
     }
 

@@ -18,16 +18,25 @@
             <div class={`column-${column}`}>
                 {#each cases as content, index}
                     {#if index % 3 === column}
-                        <a href={`/${branch}/cases/${content.uid}`}>
-                            <div
-                                style={`background-image: url(${content.display_image.url});`}
-                            >
-                                <div class="overlay">
-                                    {getPreviewText(content)}
+                        {#if content.ready}
+                            <a href={`/${branch}/cases/${content.uid}`}>
+                                <div
+                                    style={`background-image: url(${content.display_image.url});`}
+                                >
+                                    <div class="overlay">
+                                        {getPreviewText(content)}
+                                    </div>
                                 </div>
+                                <h4>{content.title}</h4>
+                            </a>
+                        {:else}
+                            <div class="not-ready">
+                                <div
+                                    style={`background-image: url(${content.display_image.url});`}
+                                />
+                                <h4>{content.title}</h4>
                             </div>
-                            <h4>{content.title}</h4>
-                        </a>
+                        {/if}
                     {/if}
                 {/each}
             </div>
@@ -56,14 +65,25 @@
         flex-direction: column;
     }
 
-    div.cases-gallery a {
+    div.cases-gallery a,
+    div.cases-gallery div.not-ready {
         cursor: pointer;
         display: block;
         text-decoration: none;
         width: 100%;
     }
 
-    div.cases-gallery a > div {
+    div.cases-gallery div.not-ready,
+    div.cases-gallery div.not-ready * {
+        cursor: not-allowed !important;
+    }
+
+    div.cases-gallery div.not-ready {
+        opacity: 0.25;
+    }
+
+    div.cases-gallery a > div,
+    div.cases-gallery div.not-ready > div {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -93,7 +113,8 @@
         opacity: 1;
     }
 
-    div.cases-gallery a h4 {
+    div.cases-gallery a h4,
+    div.cases-gallery div.not-ready h4 {
         color: var(--odd-gray-dark);
         cursor: pointer;
         font-family: 'Switzer', sans-serif;
@@ -117,17 +138,23 @@
     }
 
     div.column-0 > a:nth-child(odd) div,
-    div.column-2 > a:nth-child(odd) div {
+    div.column-2 > a:nth-child(odd) div,
+    div.column-0 > div.not-ready:nth-child(odd) div,
+    div.column-2 > div.not-ready:nth-child(odd) div {
         height: 30rem;
     }
 
     div.column-1 > a:nth-child(even) div,
-    div.column-1 > a:nth-child(odd) div {
+    div.column-1 > a:nth-child(odd) div,
+    div.column-1 > div.not-ready:nth-child(even) div,
+    div.column-1 > div.not-ready:nth-child(odd) div {
         height: 37.5rem;
     }
 
     div.column-0 > a:nth-child(even) div,
-    div.column-2 > a:nth-child(even) div {
+    div.column-2 > a:nth-child(even) div,
+    div.column-0 > div.not-ready:nth-child(even) div,
+    div.column-2 > div.not-ready:nth-child(even) div {
         height: 35rem;
     }
 
@@ -157,7 +184,8 @@
             padding: 2rem 2rem;
         }
 
-        div.cases-gallery a h4 {
+        div.cases-gallery a h4,
+        div.cases-gallery div.not-ready h4 {
             font-size: 1.75rem;
             margin-top: 1rem;
         }
@@ -177,7 +205,8 @@
             padding: 2.5rem 2.5rem;
         }
 
-        div.cases-gallery a h4 {
+        div.cases-gallery a h4,
+        div.cases-gallery div.not-ready h4 {
             font-size: 2rem;
             margin-top: 1.25rem;
         }

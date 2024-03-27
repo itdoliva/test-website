@@ -11,13 +11,23 @@
         <Splide options={casesSlider}>
             {#each cases as content}
                 <SplideSlide>
-                    <a href={`/${branch}/cases/${content.uid}`}>
-                        <div
-                            class="case-slider-cover"
-                            style={`background-image: url(${content.display_image.url});`}
-                        />
-                        <h4>{content.title}</h4>
-                    </a>
+                    {#if content.ready}
+                        <a href={`/${branch}/cases/${content.uid}`}>
+                            <div
+                                class="case-slider-cover"
+                                style={`background-image: url(${content.display_image.url});`}
+                            />
+                            <h4>{content.title}</h4>
+                        </a>
+                    {:else}
+                        <div class="not-ready">
+                            <div
+                                class="case-slider-cover"
+                                style={`background-image: url(${content.display_image.url});`}
+                            />
+                            <h4>{content.title}</h4>
+                        </div>
+                    {/if}
                 </SplideSlide>
             {/each}
         </Splide>
@@ -31,13 +41,25 @@
         margin: 0 auto;
     }
 
-    div a {
+    div a,
+    div div.not-ready {
         cursor: pointer;
         display: block;
         text-decoration: none;
     }
 
-    div a div {
+    div div.not-ready {
+        cursor: not-allowed !important;
+        opacity: 0.5;
+        width: 100%;
+    }
+
+    div div.not-ready * {
+        cursor: not-allowed !important;
+    }
+
+    div a div,
+    div div.not-ready div {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -45,7 +67,8 @@
         cursor: pointer;
     }
 
-    div a h4 {
+    div a h4,
+    div div.not-ready h4 {
         color: var(--odd-gray-dark);
         cursor: pointer;
         font-family: 'Switzer', sans-serif;
@@ -94,13 +117,15 @@
             width: 100%;
         }
 
-        div a div {
+        div a div,
+        div div.not-ready div {
             height: 30rem;
             margin-bottom: 1.25rem;
             width: 100%;
         }
 
-        div a h4 {
+        div a h4,
+        div div.not-ready h4 {
             font-size: 1.75rem;
             line-height: 120%;
         }
@@ -116,13 +141,15 @@
             width: 80%;
         }
 
-        div a div {
+        div a div,
+        div div.not-ready div {
             height: 30rem;
             margin-bottom: 1.25rem;
             width: 100%;
         }
 
-        div a h4 {
+        div a h4,
+        div div.not-ready h4 {
             font-size: 1.75rem;
             line-height: 120%;
         }
@@ -138,12 +165,14 @@
             width: 75%;
         }
 
-        div a div {
+        div a div,
+        div div.not-ready div {
             height: 32.5rem;
             margin-bottom: 1.5rem;
         }
 
-        div a h4 {
+        div a h4,
+        div div.not-ready h4 {
             font-size: 2.25rem;
             line-height: 110%;
         }
@@ -154,7 +183,8 @@
             width: 70%;
         }
 
-        div a div {
+        div a div,
+        div div.not-ready div {
             height: 35rem;
             margin-bottom: 1.75rem;
         }
