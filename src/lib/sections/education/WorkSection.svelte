@@ -9,26 +9,14 @@
     let currentIndex = 0;
     const categories = [
         {
-            name: 'Presentations and Reports',
-            cases: [...Array(3).fill(cases[1])],
-            description:
-                'Whether it is <span>PPTs, keynote, Canva</span> we help you translate data discoveries into concise and easily digestible content that effectively engages <span>users</span> and supports <span>decision-makers</span>.',
-        },
-        {
-            name: 'Storytelling and Microwebsites',
-            cases: [...Array(4).fill(cases[1])],
+            name: 'Keynote Talk',
+            cases: cases.filter((c) => c.category === 'Keynote Talk'),
             description:
                 'Lorem ipsum dolor sit amet consectetur. In tristique lectus est tortor lorem neque. Elit sapien cras diam sem eget felis enim commodo volutpat. Vel malesuada faucibus sed dolor ut mi fringillaarcu.',
         },
         {
-            name: 'Infographics and Dashboards',
-            cases: [...Array(5).fill(cases[1])],
-            description:
-                'Lorem ipsum dolor sit amet consectetur. In tristique lectus est tortor lorem neque. Elit sapien cras diam sem eget felis enim commodo volutpat. Vel malesuada faucibus sed dolor ut mi fringillaarcu.',
-        },
-        {
-            name: 'Data-Driven Design Systems',
-            cases: [...Array(6).fill(cases[1])],
+            name: 'In-Company',
+            cases: cases.filter((c) => c.category === 'In-Company'),
             description:
                 'Lorem ipsum dolor sit amet consectetur. In tristique lectus est tortor lorem neque. Elit sapien cras diam sem eget felis enim commodo volutpat. Vel malesuada faucibus sed dolor ut mi fringillaarcu.',
         },
@@ -86,6 +74,10 @@
         text-transform: uppercase;
     }
 
+    div.mobile-content h3:first-of-type {
+        margin-top: 0;
+    }
+
     div.mobile-content p {
         color: var(--odd-gray-dark);
         font-family: 'Switzer', sans-serif;
@@ -95,10 +87,6 @@
 
     div.mobile-content p :global(span) {
         font-weight: 600;
-    }
-
-    div.mobile-content :global(.splide .splide__pagination) {
-        margin-bottom: 5rem;
     }
 
     div.desktop-content {
@@ -118,9 +106,15 @@
     }
 
     div.desktop-content div {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
     }
 
     div.desktop-content button {
@@ -158,7 +152,7 @@
 
     @media only screen and (max-width: 600px) {
         section {
-            padding: 5rem 0 0 0;
+            padding: 5rem 0;
         }
 
         section div.mobile-content {
@@ -169,7 +163,7 @@
         div.mobile-content h3 {
             font-size: 1.25rem;
             line-height: 120%;
-            margin-bottom: 0.75rem;
+            margin: 5rem 0 0.75rem 0;
         }
 
         div.mobile-content p {
@@ -185,7 +179,7 @@
 
     @media only screen and (min-width: 600px) {
         section {
-            padding: 5rem 0 0 0;
+            padding: 5rem 0;
         }
 
         section div.mobile-content {
@@ -196,7 +190,7 @@
         div.mobile-content h3 {
             font-size: 1.25rem;
             line-height: 120%;
-            margin-bottom: 0.75rem;
+            margin: 5rem 0 0.75rem 0;
         }
 
         div.mobile-content p {
@@ -218,7 +212,7 @@
         div.mobile-content h3 {
             font-size: 1.5rem;
             line-height: 100%;
-            margin-bottom: 1rem;
+            margin: 5rem 0 1rem 0;
         }
 
         div.mobile-content p {
@@ -234,7 +228,7 @@
         }
 
         div.mobile-content h3 {
-            margin-bottom: 1.25rem;
+            margin: 5rem 0 1.25rem 0;
         }
 
         div.mobile-content p {
@@ -262,8 +256,12 @@
         }
 
         div.desktop-content button {
-            font-size: 1.125rem;
-            padding: 0.375rem 1.125rem;
+            font-size: 1.25rem;
+            padding: 0.375rem 1.5rem;
+        }
+
+        div.mobile-content h3 {
+            margin: 7.5rem 0 1.25rem 0;
         }
 
         div.desktop-content p {
@@ -280,8 +278,8 @@
         }
 
         div.desktop-content button {
-            font-size: 1.375rem;
-            padding: 0.375rem 1.375rem;
+            font-size: 1.5rem;
+            padding: 0.375rem 2.5rem;
         }
 
         div.desktop-content p {
