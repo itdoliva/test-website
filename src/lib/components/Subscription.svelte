@@ -46,7 +46,12 @@
         courses, and job opportunities.
     </p>
     <div>
-        <input type="text" bind:value={email} placeholder={'EMAIL HERE'} />
+        <input
+            name="subscription-input"
+            type="text"
+            bind:value={email}
+            placeholder={'EMAIL HERE'}
+        />
         <button
             type="button"
             class={buttonState}

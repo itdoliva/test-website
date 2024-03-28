@@ -12,9 +12,7 @@
         updateScreenWidth();
         window.addEventListener('resize', updateScreenWidth);
 
-        return () => {
-            window.removeEventListener('resize', updateScreenWidth);
-        };
+        return () => window.removeEventListener('resize', updateScreenWidth);
     });
 </script>
 

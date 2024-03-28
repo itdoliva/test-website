@@ -43,9 +43,13 @@
                 </span>
             </div>
             <div>
+                <span>Tools</span>
+                <span>{content.tools || ''}</span>
+            </div>
+            <div>
                 <span>Link</span>
                 <span>
-                    {#if content.link}
+                    {#if content.link.url}
                         See the project
                         <a
                             href={content.link.url}
@@ -56,10 +60,6 @@
                         </a>
                     {/if}
                 </span>
-            </div>
-            <div>
-                <span>Tools</span>
-                <span>{content.tools || ''}</span>
             </div>
         </div>
     </Container>
