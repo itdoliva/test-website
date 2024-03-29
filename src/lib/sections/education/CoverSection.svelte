@@ -140,7 +140,7 @@
     @media only screen and (min-width: 1280px) {
         section {
             background: var(--odd-gray-light);
-            padding: 5rem 0;
+            padding: 2.5rem 0 7.5rem 0;
         }
 
         h1 {
