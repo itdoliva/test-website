@@ -1,14 +1,29 @@
-export const quotesSlider = {
+export const casesSlider = {
+    arrows: false,
+    autoplay: true,
+    gap: '1rem',
+    interval: 3000,
+    resetProgress: false,
+    speed: 750,
+    type: 'loop',
+};
+
+export const coverSlider = {
     arrows: false,
     autoplay: true,
     autoWidth: true,
-    interval: 3000,
-    padding: { left: '1rem', right: '1rem' },
+    cloneStatus: false,
+    focus: 'center',
+    drag: false,
+    gap: '2rem',
+    interval: 5000,
+    pagination: false,
+    pauseOnHover: false,
+    perMove: 1,
     resetProgress: false,
-    rewind: true,
-    rewindByDrag: true,
-    rewindSpeed: 750,
     speed: 750,
+    start: 1,
+    type: 'loop',
 };
 
 export const imageSlider = {
@@ -21,12 +36,14 @@ export const imageSlider = {
     type: 'loop',
 };
 
-export const casesSlider = {
+export const quotesSlider = {
     arrows: false,
     autoplay: true,
-    gap: '1rem',
+    autoWidth: true,
     interval: 3000,
     resetProgress: false,
+    rewind: true,
+    rewindByDrag: true,
+    rewindSpeed: 750,
     speed: 750,
-    type: 'loop',
 };
