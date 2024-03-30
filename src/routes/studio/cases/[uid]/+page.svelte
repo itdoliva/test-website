@@ -2,14 +2,16 @@
     import { SliceZone } from '@prismicio/svelte';
     import { components } from '@slices';
 
-    import Container from '@components/Container.svelte';
+    import StickyMenu from '@components/StickyMenu.svelte';
     import CaseIntro from '@components/CaseIntro.svelte';
+    import Container from '@components/Container.svelte';
     import Subscription from '@components/Subscription.svelte';
     import Footer from '@components/Footer.svelte';
 
     export let data;
 </script>
 
+<StickyMenu pattern="studio" delayed={true} />
 <CaseIntro pattern="studio" content={data.page.data} />
 <section class="odd-studio">
     <Container>

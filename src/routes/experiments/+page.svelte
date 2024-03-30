@@ -1,5 +1,6 @@
 <script>
     import CoverSection from '@sections/experiments/CoverSection.svelte';
+    import StickyMenu from '@components/StickyMenu.svelte';
     import WorkSection from '@sections/experiments/WorkSection.svelte';
     import Subscription from '@components/Subscription.svelte';
     import Footer from '@components/Footer.svelte';
@@ -8,6 +9,7 @@
 </script>
 
 <CoverSection />
+<StickyMenu pattern="experiments" delayed={false} />
 <WorkSection cases={data.cases} />
 <Subscription pattern="experiments" />
 <Footer pattern="experiments" />

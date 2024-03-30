@@ -1,5 +1,6 @@
 <script>
     import CoverSection from '@sections/home/CoverSection.svelte';
+    import StickyMenu from '@components/StickyMenu.svelte';
     import DescriptionSection from '@sections/home/DescriptionSection.svelte';
     import BranchesSection from '@sections/home/BranchesSection.svelte';
     import ClientsSection from '@sections/home/ClientsSection.svelte';
@@ -11,6 +12,7 @@
 </script>
 
 <CoverSection />
+<StickyMenu pattern="home" delayed={false} />
 <DescriptionSection />
 <BranchesSection cases={data.cases} />
 <ClientsSection />
