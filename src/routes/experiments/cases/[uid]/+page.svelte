@@ -2,6 +2,7 @@
     import { SliceZone } from '@prismicio/svelte';
     import { components } from '@slices';
 
+    import AnalyticsModal from '@components/AnalyticsModal.svelte';
     import StickyMenu from '@components/StickyMenu.svelte';
     import CaseIntro from '@components/CaseIntro.svelte';
     import Container from '@components/Container.svelte';
@@ -11,6 +12,7 @@
     export let data;
 </script>
 
+<AnalyticsModal pattern="experiments" />
 <StickyMenu pattern="experiments" delayed={true} />
 <CaseIntro pattern="experiments" content={data.page.data} />
 <section class="odd-experiments">

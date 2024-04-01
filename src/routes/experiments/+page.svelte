@@ -1,4 +1,5 @@
 <script>
+    import AnalyticsModal from '@components/AnalyticsModal.svelte';
     import CoverSection from '@sections/experiments/CoverSection.svelte';
     import StickyMenu from '@components/StickyMenu.svelte';
     import WorkSection from '@sections/experiments/WorkSection.svelte';
@@ -8,6 +9,7 @@
     export let data;
 </script>
 
+<AnalyticsModal pattern="experiments" />
 <CoverSection />
 <StickyMenu pattern="experiments" delayed={false} />
 <WorkSection cases={data.cases} />
