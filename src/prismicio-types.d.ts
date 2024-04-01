@@ -2406,6 +2406,21 @@ type ImagesSliceVariation = ImagesSliceDefault;
 export type ImagesSlice = prismic.SharedSlice<'images', ImagesSliceVariation>;
 
 /**
+ * Primary content in *OrderedList → Primary*
+ */
+export interface OrderedListSliceDefaultPrimary {
+    /**
+     * title field in *OrderedList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The text for the title of this list (optional).
+     * - **API ID Path**: ordered_list.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *OrderedList → Items*
  */
 export interface OrderedListSliceDefaultItem {
@@ -2429,7 +2444,7 @@ export interface OrderedListSliceDefaultItem {
  */
 export type OrderedListSliceDefault = prismic.SharedSliceVariation<
     'default',
-    Record<string, never>,
+    Simplify<OrderedListSliceDefaultPrimary>,
     Simplify<OrderedListSliceDefaultItem>
 >;
 
@@ -2603,6 +2618,21 @@ export type SectionTitleSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *UnorderedList → Primary*
+ */
+export interface UnorderedListItemSliceDefaultPrimary {
+    /**
+     * title field in *UnorderedList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: The text for the title of this list (optional).
+     * - **API ID Path**: unordered_list_item.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *UnorderedList → Items*
  */
 export interface UnorderedListItemSliceDefaultItem {
@@ -2626,7 +2656,7 @@ export interface UnorderedListItemSliceDefaultItem {
  */
 export type UnorderedListItemSliceDefault = prismic.SharedSliceVariation<
     'default',
-    Record<string, never>,
+    Simplify<UnorderedListItemSliceDefaultPrimary>,
     Simplify<UnorderedListItemSliceDefaultItem>
 >;
 
@@ -2782,6 +2812,7 @@ declare module '@prismicio/client' {
             ImagesSliceVariation,
             ImagesSliceDefault,
             OrderedListSlice,
+            OrderedListSliceDefaultPrimary,
             OrderedListSliceDefaultItem,
             OrderedListSliceVariation,
             OrderedListSliceDefault,
@@ -2798,6 +2829,7 @@ declare module '@prismicio/client' {
             SectionTitleSliceVariation,
             SectionTitleSliceDefault,
             UnorderedListItemSlice,
+            UnorderedListItemSliceDefaultPrimary,
             UnorderedListItemSliceDefaultItem,
             UnorderedListItemSliceVariation,
             UnorderedListItemSliceDefault,
