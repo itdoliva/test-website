@@ -46,7 +46,7 @@
                             <div
                                 style={`background-image: url(${caseContent.display_image.url});`}
                             >
-                                <div class="branch-gallery-overlay">
+                                <div class="overlay">
                                     {getPreviewText(caseContent)}
                                 </div>
                             </div>
@@ -56,7 +56,13 @@
                         <div class="not-ready">
                             <div
                                 style={`background-image: url(${caseContent.display_image.url});`}
-                            />
+                            >
+                                {#if getPreviewText(caseContent)}
+                                    <div class="overlay">
+                                        {getPreviewText(caseContent)}
+                                    </div>
+                                {/if}
+                            </div>
                             <h4>{caseContent.title}</h4>
                         </div>
                     {/if}
@@ -243,6 +249,10 @@
         opacity: 0.25;
     }
 
+    div.branch-gallery-content div.not-ready:hover:has(div.overlay) {
+        opacity: 1;
+    }
+
     div.branch-gallery-content a > div,
     div.branch-gallery-content div.not-ready > div {
         background-position: center center;
@@ -253,7 +263,7 @@
         width: 100%;
     }
 
-    div.branch-gallery-content div.branch-gallery-overlay {
+    div.branch-gallery-content div.overlay {
         background-color: rgba(0, 0, 0, 0.7);
         border-radius: inherit;
         color: var(--odd-gray-light);
@@ -272,7 +282,8 @@
         width: 100%;
     }
 
-    div.branch-gallery-content a:hover div.branch-gallery-overlay {
+    div.branch-gallery-content a:hover div.overlay,
+    div.branch-gallery-content div.not-ready:hover div.overlay {
         opacity: 1;
     }
 

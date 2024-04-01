@@ -33,7 +33,13 @@
                             <div class="not-ready">
                                 <div
                                     style={`background-image: url(${content.display_image.url});`}
-                                />
+                                >
+                                    {#if getPreviewText(content)}
+                                        <div class="overlay">
+                                            {getPreviewText(content)}
+                                        </div>
+                                    {/if}
+                                </div>
                                 <h4>{content.title}</h4>
                             </div>
                         {/if}
@@ -82,6 +88,10 @@
         opacity: 0.25;
     }
 
+    div.cases-gallery div.not-ready:hover:has(div.overlay) {
+        opacity: 1;
+    }
+
     div.cases-gallery a > div,
     div.cases-gallery div.not-ready > div {
         background-position: center center;
@@ -92,7 +102,8 @@
         width: 100%;
     }
 
-    div.cases-gallery a div.overlay {
+    div.cases-gallery a div.overlay,
+    div.cases-gallery div.not-ready div.overlay {
         background-color: rgba(0, 0, 0, 0.7);
         border-radius: inherit;
         color: var(--odd-gray-light);
@@ -109,7 +120,8 @@
         width: 100%;
     }
 
-    div.cases-gallery a:hover div.overlay {
+    div.cases-gallery a:hover div.overlay,
+    div.cases-gallery div.not-ready:hover div.overlay {
         opacity: 1;
     }
 
@@ -179,7 +191,8 @@
             gap: 3rem;
         }
 
-        div.cases-gallery a div.overlay {
+        div.cases-gallery a div.overlay,
+        div.cases-gallery div.not-ready div.overlay {
             font-size: 1.25rem;
             padding: 2rem 2rem;
         }
@@ -200,7 +213,8 @@
             gap: 3.75rem;
         }
 
-        div.cases-gallery a div.overlay {
+        div.cases-gallery a div.overlay,
+        div.cases-gallery div.not-ready div.overlay {
             font-size: 1.375rem;
             padding: 2.5rem 2.5rem;
         }
