@@ -16,7 +16,7 @@
             <button type="button" on:click={() => history.back()} />
             <div>
                 <h1>{content.title || ''}</h1>
-                <h2>{content.type || ''}</h2>
+                <h2>{content.category || ''}</h2>
             </div>
         </div>
         <div class="summary-wrapper">
