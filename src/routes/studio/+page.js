@@ -20,7 +20,7 @@ export const load = async ({ fetch, cookies }) => {
     try {
         let cases = await client.getAllByType('StudioCase', queryParams);
         cases = cases.map((c) => ({ uid: c.uid, ...c.data }));
-        data.cases = cases;
+        data.cases = cases.filter((c) => c.ready);
     } catch (e) {
         console.error(e);
     }

@@ -22,7 +22,7 @@
         $page.url.pathname === link.href ||
         $page.url.pathname + '/' === link.href;
 
-    const getBackgrountImage = (pattern, imageType) =>
+    const getBackgroundImage = (pattern, imageType) =>
         `background-image: url(/brand/${imageType}-${pattern}-dark.svg);`;
 
     const content = [
@@ -50,10 +50,10 @@
     >
         <div class="mobile-content">
             <a href={pattern === 'home' ? '/' : `/${pattern}/`}>
-                <div style={getBackgrountImage(pattern, 'logo-text')} />
+                <div style={getBackgroundImage(pattern, 'logo-text')} />
             </a>
             <a href="/">
-                <div style={getBackgrountImage(pattern, 'logo')} />
+                <div style={getBackgroundImage(pattern, 'logo')} />
             </a>
             <button type="button" on:click={() => (showMenu = !showMenu)}>
                 <span>menu</span>
@@ -82,10 +82,10 @@
         >
             <div class="mobile-menu-options">
                 <a href={pattern === 'home' ? '/' : `/${pattern}/`}>
-                    <div style={getBackgrountImage(pattern, 'logo-text')} />
+                    <div style={getBackgroundImage(pattern, 'logo-text')} />
                 </a>
                 <a href="/">
-                    <div style={getBackgrountImage(pattern, 'logo')} />
+                    <div style={getBackgroundImage(pattern, 'logo')} />
                 </a>
                 <button type="button" on:click={() => (showMenu = !showMenu)}>
                     <span />
@@ -112,7 +112,7 @@
         position: sticky;
         top: 0;
         width: 100%;
-        z-index: 97;
+        z-index: 100;
     }
 
     nav.stuck {
@@ -267,7 +267,7 @@
 
     div.mobile-menu-overlay {
         background-color: rgb(0 0 0 / 0.5);
-        z-index: 98;
+        z-index: 101;
     }
 
     div.mobile-menu-content {
@@ -279,7 +279,7 @@
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
-        z-index: 99;
+        z-index: 102;
     }
 
     div.mobile-menu-options button {
