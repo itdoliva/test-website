@@ -8,6 +8,17 @@ export const casesSlider = {
     type: 'loop',
 };
 
+export const clientsSlider = {
+    arrows: false,
+    autoplay: true,
+    autoWidth: true,
+    focus: 'center',
+    interval: 3000,
+    resetProgress: false,
+    speed: 750,
+    type: 'loop',
+};
+
 export const coverSlider = {
     arrows: false,
     autoplay: true,
@@ -40,10 +51,10 @@ export const quotesSlider = {
     arrows: false,
     autoplay: true,
     autoWidth: true,
+    drag: false,
+    focus: 'center',
     interval: 3000,
     resetProgress: false,
-    rewind: true,
-    rewindByDrag: true,
-    rewindSpeed: 750,
     speed: 750,
+    type: 'loop',
 };

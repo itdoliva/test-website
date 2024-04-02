@@ -1,12 +1,12 @@
 <script>
     import { Splide, SplideSlide } from '@splidejs/svelte-splide';
-    import { quotesSlider } from '@utils/splide.js';
+    import { clientsSlider } from '@utils/splide.js';
 
     import Container from '@components/Container.svelte';
     import SectionTitle from '@components/SectionTitle.svelte';
-    import ClientQuote from '@components/ClientQuote.svelte';
+    /* import ClientQuote from '@components/ClientQuote.svelte';
 
-    const quotes = [
+     const quotes = [
         {
             author: 'Amanda - Talk Inc',
             text: 'Lorem ipsum dolor sit amet consectetur. Platea maecenas consequat consequat tellus laoreet malesuada.',
@@ -16,9 +16,26 @@
             author: 'Author 3',
             text: 'Platea maecenas consequat consequat tellus laoreet malesuada.',
         },
-    ];
+    ]; */
 </script>
 
+<section>
+    <Container>
+        <SectionTitle pattern="studio">Who are our clients</SectionTitle>
+        <Splide options={clientsSlider}>
+            <!-- eslint-disable no-unused-vars -->
+            {#each Array(21) as _, i}
+                <SplideSlide>
+                    <div
+                        style={`background-image: url(/clients/client-${i + 1}.svg);`}
+                    />
+                </SplideSlide>
+            {/each}
+        </Splide>
+    </Container>
+</section>
+
+<!--
 <section>
     <Container>
         <SectionTitle pattern="studio">What our clients say</SectionTitle>
@@ -38,6 +55,7 @@
         </Splide>
     </Container>
 </section>
+-->
 
 <style>
     @import url('@splidejs/svelte-splide/css');
@@ -50,17 +68,6 @@
         position: unset;
     }
 
-    section :global(.splide__slide) {
-        opacity: 0.4;
-        -webkit-transition: opacity 0.25s ease-in-out;
-        -o-transition: opacity 0.25s ease-in-out;
-        transition: opacity 0.25s ease-in-out;
-    }
-
-    section :global(.splide__slide.is-active) {
-        opacity: 1;
-    }
-
     section :global(.splide__pagination__page) {
         background-color: var(--odd-gray-medium);
         margin: 0.25rem;
@@ -68,6 +75,17 @@
 
     section :global(.splide__pagination__page.is-active) {
         background-color: var(--odd-purple-medium);
+    }
+
+    div {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-radius: 0.625rem;
+        -webkit-box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+        height: 15rem;
+        width: 15rem;
     }
 
     @media only screen and (max-width: 600px) {
