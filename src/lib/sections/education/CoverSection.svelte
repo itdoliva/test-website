@@ -6,8 +6,8 @@
     <Container>
         <h1>
             <span>odd <span class="highlight-text">education</span></span>
-            lorem ipsum dolor sit amet consectetur. Eu suspendisse duis auctor facilisis
-            pulvinar interdum. Amet est faucibus interdum ut id vitae faucibus.
+            upskills and reskills the worksforce preparing companies and individuals
+            to visualize, communicate and understand data.
         </h1>
     </Container>
 </section>
@@ -64,7 +64,7 @@
                 var(--odd-blue-medium) 75%,
                 var(--odd-gray-light) 100%
             );
-            padding: 3.75rem 0;
+            padding: 0 0 3.75rem 0;
         }
 
         h1 {
@@ -101,7 +101,7 @@
                 var(--odd-blue-medium) 75%,
                 var(--odd-gray-light) 100%
             );
-            padding: 3.75rem 0;
+            padding: 0 0 3.75rem 0;
         }
 
         h1 {
@@ -140,7 +140,7 @@
     @media only screen and (min-width: 1280px) {
         section {
             background: var(--odd-gray-light);
-            padding: 2.5rem 0 7.5rem 0;
+            padding: 0 0 7.5rem 0;
         }
 
         h1 {

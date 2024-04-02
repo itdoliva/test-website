@@ -64,7 +64,7 @@
                 var(--odd-turquoise-medium) 75%,
                 var(--odd-gray-light) 100%
             );
-            padding: 3.75rem 0;
+            padding: 0 0 3.75rem 0;
         }
 
         h1 {
@@ -101,7 +101,7 @@
                 var(--odd-turquoise-medium) 75%,
                 var(--odd-gray-light) 100%
             );
-            padding: 3.75rem 0;
+            padding: 0 0 3.75rem 0;
         }
 
         h1 {
@@ -140,7 +140,7 @@
     @media only screen and (min-width: 1280px) {
         section {
             background: var(--odd-gray-light);
-            padding: 2.5rem 0 7.5rem 0;
+            padding: 0 0 7.5rem 0;
         }
 
         h1 {
