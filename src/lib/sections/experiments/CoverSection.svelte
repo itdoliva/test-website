@@ -6,8 +6,8 @@
     <Container>
         <h1>
             <span>odd <span class="highlight-text">experiments</span></span>
-            lorem ipsum dolor sit amet consectetur. Eu suspendisse duis auctor facilisis
-            pulvinar interdum. Amet est faucibus interdum ut id vitae faucibus.
+            researches, design and prototype new forms of interaction with data,
+            collaborating with artists and creative studios.
         </h1>
     </Container>
 </section>

@@ -21,7 +21,7 @@
 
 <section>
     <Container>
-        <SectionTitle pattern="studio">Who are our clients</SectionTitle>
+        <SectionTitle pattern="studio">Our clients</SectionTitle>
         <Splide options={clientsSlider}>
             <!-- eslint-disable no-unused-vars -->
             {#each Array(21) as _, i}

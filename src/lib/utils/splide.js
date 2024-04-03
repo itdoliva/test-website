@@ -13,7 +13,7 @@ export const clientsSlider = {
     autoplay: true,
     autoWidth: true,
     focus: 'center',
-    interval: 3000,
+    interval: 1000,
     resetProgress: false,
     speed: 750,
     type: 'loop',
