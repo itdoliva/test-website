@@ -1,0 +1,40 @@
+{
+    "id": "quote",
+    "type": "SharedSlice",
+    "name": "Quote",
+    "description": "Quote",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {
+                "text": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Text",
+                        "placeholder": "The text of this quote. Don't include quotation marks!"
+                    }
+                },
+                "author": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Author",
+                        "placeholder": "The name of this quote's author."
+                    }
+                },
+                "details": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Details",
+                        "placeholder": "Brief description of this quote's author (optional)."
+                    }
+                }
+            },
+            "items": {}
+        }
+    ]
+}

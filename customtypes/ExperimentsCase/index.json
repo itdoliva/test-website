@@ -1,0 +1,173 @@
+{
+    "format": "page",
+    "id": "ExperimentsCase",
+    "label": "odd.studio/experiments/cases",
+    "repeatable": true,
+    "status": true,
+    "json": {
+        "Main": {
+            "uid": {
+                "config": {
+                    "label": "Document ID",
+                    "placeholder": "Unique identifier. It will be used in the URL of this document's page."
+                },
+                "type": "UID"
+            },
+            "title": {
+                "type": "Text",
+                "config": {
+                    "label": "Title",
+                    "placeholder": "Title for this document. Please avoid long texts."
+                }
+            },
+            "date": {
+                "type": "Date",
+                "config": {
+                    "label": "Date",
+                    "placeholder": "This date will be used to sort the cases."
+                }
+            },
+            "priority": {
+                "type": "Boolean",
+                "config": {
+                    "label": "Is this a priority case?",
+                    "placeholder_false": "No",
+                    "placeholder_true": "Yes",
+                    "default_value": false
+                }
+            },
+            "ready": {
+                "type": "Boolean",
+                "config": {
+                    "label": "Is the page content ready?",
+                    "placeholder_false": "No, just the display card.",
+                    "placeholder_true": "Yes, everything is ready!",
+                    "default_value": true
+                }
+            },
+            "preview": {
+                "type": "Text",
+                "config": {
+                    "label": "Preview Text",
+                    "placeholder": "The text that will be showed on display cards. Please avoid long texts."
+                }
+            },
+            "category": {
+                "type": "Select",
+                "config": {
+                    "label": "Category",
+                    "placeholder": "Select an option from this drop-down list. Please pay attention to this document's current language.",
+                    "options": ["-", "--"],
+                    "default_value": "-"
+                }
+            },
+            "summary": {
+                "type": "StructuredText",
+                "config": {
+                    "label": "Summary",
+                    "placeholder": "A short text that summarizes this case.",
+                    "allowTargetBlank": true,
+                    "single": "strong,em,hyperlink"
+                }
+            },
+            "before": {
+                "type": "Text",
+                "config": {
+                    "label": "Before",
+                    "placeholder": "Brief description of what the client had before this case."
+                }
+            },
+            "delivery": {
+                "type": "Text",
+                "config": {
+                    "label": "Delivery",
+                    "placeholder": "Brief description of the main delivery of this case."
+                }
+            },
+            "client": {
+                "type": "Text",
+                "config": {
+                    "label": "Client",
+                    "placeholder": "Name of the client related to this case."
+                }
+            },
+            "year": {
+                "type": "Text",
+                "config": {
+                    "label": "Year",
+                    "placeholder": "The year in which the case was completed."
+                }
+            },
+            "tools": {
+                "type": "Text",
+                "config": {
+                    "label": "Tools",
+                    "placeholder": "List of the main tools used in this case."
+                }
+            },
+            "link": {
+                "type": "Link",
+                "config": {
+                    "label": "Link",
+                    "placeholder": "Link to the case website or to some related content.",
+                    "allowTargetBlank": false,
+                    "select": null
+                }
+            },
+            "display_image": {
+                "type": "Image",
+                "config": {
+                    "label": "Display Image",
+                    "constraint": {},
+                    "thumbnails": []
+                }
+            },
+            "cover_image": {
+                "type": "Image",
+                "config": {
+                    "label": "Cover Image",
+                    "constraint": {},
+                    "thumbnails": []
+                }
+            },
+            "slices": {
+                "type": "Slices",
+                "fieldset": "Slice Zone",
+                "config": {
+                    "choices": {
+                        "video": {
+                            "type": "SharedSlice"
+                        },
+                        "quote": {
+                            "type": "SharedSlice"
+                        },
+                        "unordered_list_item": {
+                            "type": "SharedSlice"
+                        },
+                        "section_title": {
+                            "type": "SharedSlice"
+                        },
+                        "images": {
+                            "type": "SharedSlice"
+                        },
+                        "ordered_list": {
+                            "type": "SharedSlice"
+                        },
+                        "paragraphs": {
+                            "type": "SharedSlice"
+                        },
+                        "external_link": {
+                            "type": "SharedSlice"
+                        },
+                        "full_width_image": {
+                            "type": "SharedSlice"
+                        },
+                        "big_number": {
+                            "type": "SharedSlice"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

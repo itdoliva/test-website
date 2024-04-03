@@ -1,0 +1,19 @@
+[
+    {
+        "__TYPE__": "SharedSliceContent",
+        "variation": "default",
+        "primary": {
+            "caption": {
+                "__TYPE__": "FieldContent",
+                "value": "fallen",
+                "type": "Text"
+            },
+            "iframe": {
+                "__TYPE__": "FieldContent",
+                "value": "therefore",
+                "type": "Text"
+            }
+        },
+        "items": []
+    }
+]

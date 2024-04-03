@@ -1,0 +1,36 @@
+{
+    "id": "unordered_list_item",
+    "type": "SharedSlice",
+    "name": "UnorderedList",
+    "description": "UnorderedListItem",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {
+                "title": {
+                    "type": "Text",
+                    "config": {
+                        "label": "title",
+                        "placeholder": "The text for the title of this list (optional)."
+                    }
+                }
+            },
+            "items": {
+                "item": {
+                    "type": "StructuredText",
+                    "config": {
+                        "label": "Unordered List Item",
+                        "placeholder": "The text of one of the list items. You can use bold, italic and links here.",
+                        "allowTargetBlank": false,
+                        "single": "strong,em,hyperlink"
+                    }
+                }
+            }
+        }
+    ]
+}

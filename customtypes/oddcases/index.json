@@ -1,0 +1,333 @@
+{
+    "id": "oddcases",
+    "label": "odd.cases",
+    "repeatable": true,
+    "json": {
+        "Main": {
+            "uid": {
+                "type": "UID",
+                "config": {
+                    "label": "Case ID",
+                    "placeholder": "Insert here an unique identifier for this case (part of the URL)."
+                }
+            },
+            "preview_image": {
+                "type": "Image",
+                "config": {
+                    "constraint": {},
+                    "thumbnails": [],
+                    "label": "Preview Image"
+                }
+            },
+            "cover_image": {
+                "type": "Image",
+                "config": {
+                    "constraint": {},
+                    "thumbnails": [],
+                    "label": "Cover Image"
+                }
+            },
+            "title": {
+                "type": "Text",
+                "config": {
+                    "label": "Title",
+                    "placeholder": "Insert here a title for this case."
+                }
+            },
+            "tldr": {
+                "type": "Text",
+                "config": {
+                    "label": "TL;DR",
+                    "placeholder": "Insert here a one-paragraph summary for this case."
+                }
+            },
+            "client": {
+                "type": "Text",
+                "config": {
+                    "label": "Client",
+                    "placeholder": "Insert here the name of the client in this case."
+                }
+            },
+            "work_type": {
+                "type": "Select",
+                "config": {
+                    "options": [
+                        "Data Strategy Design",
+                        "Data Product Prototyping",
+                        "Talks & Applied Education",
+                        "Design de Estratégia de Dados",
+                        "Prototipação de Produtos de Dados",
+                        "Falas e Educação",
+                        "Diseño de Estrategia de Datos",
+                        "Prototipos de Productos de Datos",
+                        "Charlas y Educación"
+                    ],
+                    "label": "Type of Work",
+                    "placeholder": "Select the type of work that is most related to this case. Please pay attention to the current language."
+                }
+            },
+            "year": {
+                "type": "Text",
+                "config": {
+                    "label": "Year",
+                    "placeholder": "Insert here this case's year."
+                }
+            },
+            "strategy_effort": {
+                "type": "Number",
+                "config": {
+                    "label": "Strategy Effort Percentage",
+                    "placeholder": "Insert here the Data Strategy Design effort percentage in this case."
+                }
+            },
+            "prototyping_effort": {
+                "type": "Number",
+                "config": {
+                    "label": "Prototyping Effort Percentage",
+                    "placeholder": "Insert here the Data Product Prototyping effort percentage in this case."
+                }
+            },
+            "talks_effort": {
+                "type": "Number",
+                "config": {
+                    "label": "Talks Effort Percentage",
+                    "placeholder": "Insert here the Talks & Applied Education effort percentage in this case."
+                }
+            },
+            "body": {
+                "type": "Slices",
+                "fieldset": "Slice zone",
+                "config": {
+                    "labels": {},
+                    "choices": {
+                        "section_title": {
+                            "type": "Slice",
+                            "fieldset": "Section Title",
+                            "description": "Use this slice to add a section title to the post.",
+                            "icon": "title",
+                            "non-repeat": {
+                                "section_title": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Section Title",
+                                        "placeholder": "Insert here the text of the section title."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        },
+                        "paragraph": {
+                            "type": "Slice",
+                            "fieldset": "Paragraph",
+                            "description": "Use this slice to add one (or more) paragraph.",
+                            "icon": "short_text",
+                            "non-repeat": {},
+                            "repeat": {
+                                "paragraph": {
+                                    "type": "StructuredText",
+                                    "config": {
+                                        "single": "paragraph,strong,em,hyperlink",
+                                        "label": "Paragraph",
+                                        "placeholder": "Insert here the text of the paragraph."
+                                    }
+                                }
+                            }
+                        },
+                        "quote": {
+                            "type": "Slice",
+                            "fieldset": "Quote",
+                            "description": "Use this slice to add a quote.",
+                            "icon": "format_quote",
+                            "non-repeat": {
+                                "quote_text": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Quote Text",
+                                        "placeholder": "Insert here the quote's text."
+                                    }
+                                },
+                                "quote_author": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Quote Author",
+                                        "placeholder": "Insert here the name of the quote's author."
+                                    }
+                                },
+                                "quote_author_details": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Quote Author Details",
+                                        "placeholder": "Insert here more details about the quote's author."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        },
+                        "ordered_list": {
+                            "type": "Slice",
+                            "fieldset": "Ordered List",
+                            "description": "Use this slice to add an ordered list.",
+                            "icon": "format_list_numbered",
+                            "non-repeat": {
+                                "ordered_list": {
+                                    "type": "StructuredText",
+                                    "config": {
+                                        "single": "o-list-item",
+                                        "label": "Ordered List",
+                                        "placeholder": "Insert here the items of the ordered list."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        },
+                        "unordered_list": {
+                            "type": "Slice",
+                            "fieldset": "Unordered List",
+                            "description": "Use this slice to add an unordered list.",
+                            "icon": "list",
+                            "non-repeat": {
+                                "unordered_list": {
+                                    "type": "StructuredText",
+                                    "config": {
+                                        "single": "list-item",
+                                        "label": "Unordered List",
+                                        "placeholder": "Insert here the items of the unordered list."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        },
+                        "big_number": {
+                            "type": "Slice",
+                            "fieldset": "Big Number",
+                            "description": "Use this slice to add one (or more) big numbers.",
+                            "icon": "filter_1",
+                            "non-repeat": {},
+                            "repeat": {
+                                "big_number": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Big Number",
+                                        "placeholder": "Insert here the big number value."
+                                    }
+                                },
+                                "big_number_text": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Big Number Text",
+                                        "placeholder": "Insert here the big number auxiliary text."
+                                    }
+                                }
+                            }
+                        },
+                        "external_link": {
+                            "type": "Slice",
+                            "fieldset": "External Link",
+                            "description": "Use this slice to add an external link.",
+                            "icon": "insert_link",
+                            "non-repeat": {
+                                "external_link_address": {
+                                    "type": "Link",
+                                    "config": {
+                                        "label": "External Link Address",
+                                        "placeholder": "Insert here the address of the external link.",
+                                        "select": null
+                                    }
+                                },
+                                "external_link_text": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "External Link Text",
+                                        "placeholder": "Insert here the text to be rendered as the external link."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        },
+                        "video": {
+                            "type": "Slice",
+                            "fieldset": "Video",
+                            "description": "Use this slice to add a video.",
+                            "icon": "ondemand_video",
+                            "non-repeat": {
+                                "video_caption": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Video Caption",
+                                        "placeholder": "Insert here the caption of this video."
+                                    }
+                                },
+                                "video_iframe_html": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Video iFrame HTML",
+                                        "placeholder": "Insert here the HTML to create the video iFrame."
+                                    }
+                                },
+                                "video_origin": {
+                                    "type": "Select",
+                                    "config": {
+                                        "options": ["Vimeo", "YouTube"],
+                                        "label": "Video Origin",
+                                        "placeholder": "Select the platform where the video is being hosted."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        },
+                        "image": {
+                            "type": "Slice",
+                            "fieldset": "Image",
+                            "description": "Use this slice to add one (or more) image.",
+                            "icon": "collections",
+                            "non-repeat": {
+                                "image_caption": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Image Caption",
+                                        "placeholder": "Insert here the caption for the image (or images)."
+                                    }
+                                }
+                            },
+                            "repeat": {
+                                "image_item": {
+                                    "type": "Image",
+                                    "config": {
+                                        "constraint": {},
+                                        "thumbnails": [],
+                                        "label": "Image Item"
+                                    }
+                                }
+                            }
+                        },
+                        "iframe": {
+                            "type": "Slice",
+                            "fieldset": "Iframe",
+                            "description": "Use this slice to add an iframe.",
+                            "icon": "filter_frames",
+                            "non-repeat": {
+                                "iframe_title": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Iframe Title",
+                                        "placeholder": "Insert here a title to the iframe."
+                                    }
+                                },
+                                "iframe_source": {
+                                    "type": "Text",
+                                    "config": {
+                                        "label": "Iframe Source",
+                                        "placeholder": "Insert here the link to the iframe source."
+                                    }
+                                }
+                            },
+                            "repeat": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "status": true,
+    "format": "custom"
+}

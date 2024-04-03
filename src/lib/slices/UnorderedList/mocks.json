@@ -1,0 +1,34 @@
+[
+    {
+        "__TYPE__": "SharedSliceContent",
+        "variation": "default",
+        "primary": {
+            "title": {
+                "__TYPE__": "FieldContent",
+                "value": "create",
+                "type": "Text"
+            }
+        },
+        "items": [
+            {
+                "__TYPE__": "GroupItemContent",
+                "value": [
+                    [
+                        "item",
+                        {
+                            "__TYPE__": "StructuredTextContent",
+                            "value": [
+                                {
+                                    "type": "paragraph",
+                                    "content": {
+                                        "text": "Irure consequat enim duis cupidatat incididunt veniam excepteur minim fugiat irure cillum. Et labore laborum enim."
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,28 @@
+{
+    "id": "paragraphs",
+    "type": "SharedSlice",
+    "name": "Paragraphs",
+    "description": "Paragraphs",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {},
+            "items": {
+                "paragraph": {
+                    "type": "StructuredText",
+                    "config": {
+                        "label": "Paragraph",
+                        "placeholder": "The text of this paragraph. You can use bold, italic and links here.",
+                        "allowTargetBlank": false,
+                        "single": "paragraph,strong,em,hyperlink"
+                    }
+                }
+            }
+        }
+    ]
+}

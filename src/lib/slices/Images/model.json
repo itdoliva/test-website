@@ -1,0 +1,35 @@
+{
+    "id": "images",
+    "type": "SharedSlice",
+    "name": "Images",
+    "description": "Images",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": "",
+            "primary": {
+                "caption": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Images Caption",
+                        "placeholder": "The caption to show below the images (optional)."
+                    }
+                }
+            },
+            "items": {
+                "image": {
+                    "type": "Image",
+                    "config": {
+                        "label": "Image",
+                        "constraint": {},
+                        "thumbnails": []
+                    }
+                }
+            }
+        }
+    ]
+}
