@@ -26,9 +26,8 @@ export const load = async ({ params, fetch, cookies }) => {
 
 export const entries = async () => {
     const client = createClient();
-    const queryParams = {};
 
-    let pages = await client.getAllByType('EducationCase', queryParams);
+    let pages = await client.getAllByType('EducationCase');
     pages = pages.map((page) => ({ uid: page.uid }));
 
     return pages;
