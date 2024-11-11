@@ -34,13 +34,25 @@
   const interval = 3000
 
   let slider
+  let tl
+  let timeoutID
   
   let branchIdx = 0;
   let itemIdx = -1;
   let itemEl
   let caretEl
 
-  onMount(() => updateItem())
+  onMount(() => {
+    updateItem()
+
+    return () => {
+      clearTimeout(timeoutID)
+      
+      if (tl?.isActive()) {
+        tl.kill()
+      }
+    }
+  })
   
   const updateBranch = () => {
     branchIdx = (branchIdx + 1) % branches.length;
@@ -58,13 +70,17 @@
 
     typewritter()
     
-    setTimeout(updateItem, interval);
+    timeoutID = setTimeout(updateItem, interval);
   };
   
   const typewritter = () => {
-    const tl = gsap.timeline()
-    
     const text = branches[branchIdx].items[itemIdx]
+
+    if (tl?.isActive()) {
+      tl.kill()
+    }
+    
+    tl = gsap.timeline()
     
     tl
     .add(() => {
