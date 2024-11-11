@@ -21,7 +21,7 @@ export const clientsSlider = {
 
 export const coverSlider = {
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     autoWidth: true,
     cloneStatus: false,
     focus: 'center',
@@ -31,10 +31,10 @@ export const coverSlider = {
     pagination: false,
     pauseOnHover: false,
     perMove: 1,
-    resetProgress: false,
+    resetProgress: true,
     speed: 750,
-    start: 1,
-    type: 'loop',
+    start: 0,
+    rewind: true
 };
 
 export const imageSlider = {

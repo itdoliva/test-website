@@ -1,328 +1,325 @@
 <script>
-    import { onMount } from 'svelte';
-    import { Splide, SplideSlide } from '@splidejs/svelte-splide';
-    import { coverSlider } from '@utils/splide.js';
+  import { onMount } from 'svelte';
+  import { gsap } from "gsap/dist/gsap";
+  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+  import { coverSlider } from '@utils/splide.js';
+  
+  import Container from '@components/Container.svelte';
+  
+  const branches = [
+  {
+    name: 'studio',
+    header: 'we <span class="highlighted-text">reimagine data</span> into',
+    items: [
+    'meaningful narratives',
+    'crafted data stories',
+    'data illustrations',
+    'actionable information',
+    'data-driven solutions',
+    'scientific translation',
+    'engaging visuals',
+    ],
+  },
+  {
+    name: 'education',
+    header: 'we <span class="highlighted-text">teach</span> how to reimagine <span class="highlighted-text">data</span> with',
+    items: [
+    'learning opportunities',
+    'insightful analytics',
+    'conversations',
+    ],
+  },
+  ];
+  
+  const interval = 3000
 
-    import Container from '@components/Container.svelte';
+  let slider
+  
+  let branchIdx = 0;
+  let itemIdx = -1;
+  let itemEl
+  let caretEl
 
-    const branches = [
-        {
-            name: 'experiments',
-            header: '<h1>we reimagine new ways to interact with <span class="highlighted-text">data</span> through</h1>',
-            items: [
-                'exploratory data tools',
-                'bespoke data tools',
-                'playful data prototypes',
-                'phygital artifacts',
-            ],
-        },
-        {
-            name: 'studio',
-            header: '<h1>we reimagine <span class="highlighted-text">data</span> into</h1>',
-            items: [
-                'meaningful narratives',
-                'crafted data stories',
-                'data illustrations',
-                'actionable information',
-                'data-driven solutions',
-                'scientific translation',
-                'engaging visuals',
-            ],
-        },
-        {
-            name: 'education',
-            header: '<h1>we teach how to reimagine <span class="highlighted-text">data</span> with</h1>',
-            items: [
-                'learning opportunities',
-                'insightful analytics ',
-                'conversations',
-            ],
-        },
-    ];
+  onMount(() => updateItem())
+  
+  const updateBranch = () => {
+    branchIdx = (branchIdx + 1) % branches.length;
+    itemIdx = 0
+    
+    slider.splide.go('>')
+  };
+  
+  const updateItem = () => {
+    itemIdx++
 
-    let currentBranch = 1;
-    let currentItem = -1;
-    let interval = 5000 / branches[currentBranch].items.length;
+    if (itemIdx === branches[branchIdx].items.length) {
+      updateBranch();
+    }
 
-    const updateBranch = () => {
-        currentBranch = (currentBranch + 1) % branches.length;
-        interval = 5000 / branches[currentBranch].items.length;
-        currentItem = 0;
-    };
+    typewritter()
+    
+    setTimeout(updateItem, interval);
+  };
+  
+  const typewritter = () => {
+    const tl = gsap.timeline()
+    
+    const text = branches[branchIdx].items[itemIdx]
+    
+    tl
+    .add(() => {
+      caretEl.classList.remove('blink') 
+      caretEl.classList.remove('blink--fast') 
+    })
+    .to(itemEl, { text: { value: '', rtl: true, preserveSpaces: true }, duration: 0.5, ease: 'power1.inOut' })
+    .add(() => {
+      caretEl.classList.add('blink--fast') 
+    })
+    .to(itemEl, { text: { value: text, preserveSpaces: true, }, duration: 1.5, ease: 'power1.inOut' })
+    .add(() => {
+      caretEl.classList.remove('blink--fast') 
+      caretEl.classList.add('blink') 
+    })
+  }
 
-    const updateItem = () => {
-        currentItem = (currentItem + 1) % branches[currentBranch].items.length;
-        setTimeout(updateItem, interval);
-    };
-
-    onMount(() => updateItem());
+  
 </script>
 
-<section class={`odd-${branches[currentBranch].name}`}>
-    <Container>
-        <Splide options={coverSlider} on:moved={() => updateBranch()}>
-            {#each branches as branch}
-                <SplideSlide>
-                    <div class="odd-branch-name">
-                        <span>odd</span>
-                        <span>{branch.name}</span>
-                    </div>
-                </SplideSlide>
-            {/each}
-        </Splide>
-        <!-- eslint-disable svelte/no-at-html-tags -->
-        {@html branches[currentBranch].header}
-        <div class="odd-branch-items">
-            {#each branches[currentBranch].items as item, index}
-                <span class={currentItem === index ? 'active' : ''}>
-                    {item}
-                </span>
-            {/each}
-        </div>
-    </Container>
+<section class="odd-{branches[branchIdx].name}">
+  <div class="container">
+
+    <Splide bind:this={slider} options={coverSlider}>
+      {#each branches as branch}
+      {@const active = branches[branchIdx].name === branch.name}
+        <SplideSlide>
+          <div class="odd-branch-name {branch.name}" class:active>
+            <span>odd</span>
+            <span>{branch.name}</span>
+          </div>
+        </SplideSlide>
+      {/each}
+    </Splide>
+
+    <div class="odd-branch-claims">
+      <h1>
+        {@html branches[branchIdx].header}
+        <br>
+        <p>
+          <span bind:this={itemEl} class="highlighted-text"></span><span bind:this={caretEl} class="blink">_</span>
+        </p>
+        
+      </h1>
+    </div>
+
+  </div>
 </section>
 
 <style>
-    @import url('@splidejs/svelte-splide/css');
+  @import url('@splidejs/svelte-splide/css');
+  
+  section {
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    min-height: 100svh;
+    color: var(--odd-gray-dark);
+  }
 
+  section div.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  section div.odd-branch-name {
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    opacity: 0.5;
+
+    transition: opacity 0.15s ease-in-out;
+  }
+  
+  section div.odd-branch-name.active {
+    opacity: 1;
+  }
+  
+  section div.odd-branch-name.active > span:first-child {
+    opacity: 1;
+  }
+  
+  section div.odd-branch-name.active.studio {
+    color: var(--odd-purple-medium);
+  }
+  
+  section div.odd-branch-name.active.education {
+    color: var(--odd-blue-medium);
+  }
+  
+  section div.odd-branch-name > span:first-child {
+    font-family: 'Switzer', sans-serif;
+    letter-spacing: -0.03rem;
+    opacity: 0;
+    
+    transition: opacity 0.15s ease-in-out;
+  }
+  
+  section div.odd-branch-name > span:last-child {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    letter-spacing: -0.09rem;
+  }
+
+  section div.odd-branch-claims {
+  }
+
+  section div.odd-branch-claims h1 {
+    position: relative;
+
+    transform: translateY(-.75em);
+  }
+
+  section div.odd-branch-claims h1 p {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  
+  section h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 300;
+    letter-spacing: -0.2rem;
+    text-align: center;
+    text-wrap: balance;
+  }
+  
+  section :global(.highlighted-text) {
+    font-style: italic;
+    font-weight: 400 !important;
+  }
+
+  section :global(.no-wrap) {
+    white-space: nowrap;
+  }
+  
+  section div.odd-branch-claims {
+    flex-grow: 1;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  
+  section :global(button) {
+    bottom: 2rem;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  @media only screen and (max-width: 600px) {
     section {
-        align-items: flex-start;
-        display: flex;
-        justify-content: center;
-        min-height: 100svh;
+      padding: 5rem 0;
     }
-
-    section.odd-studio {
-        background-image: linear-gradient(
-            180deg,
-            var(--odd-purple-dark) 0%,
-            var(--odd-purple-medium) 75%,
-            var(--odd-gray-light) 100%
-        );
-    }
-
-    section.odd-education {
-        background-image: linear-gradient(
-            180deg,
-            var(--odd-blue-dark) 0%,
-            var(--odd-blue-medium) 75%,
-            var(--odd-gray-light) 100%
-        );
-    }
-
-    section.odd-experiments {
-        background-image: linear-gradient(
-            180deg,
-            var(--odd-turquoise-dark) 0%,
-            var(--odd-turquoise-medium) 75%,
-            var(--odd-gray-light) 100%
-        );
-    }
-
-    section div.odd-branch-name {
-        align-items: flex-end;
-        color: var(--odd-gray-light);
-        display: flex;
-        justify-content: center;
-        font-weight: 400;
-        opacity: 0.5;
-    }
-
+    
     section div.odd-branch-name > span:first-child {
-        font-family: 'Switzer', sans-serif;
-        letter-spacing: -0.03rem;
+      font-size: 1.75rem;
+      padding-right: 0.375rem;
     }
-
+    
     section div.odd-branch-name > span:last-child {
-        font-family: 'Newsreader', serif;
-        font-style: italic;
-        letter-spacing: -0.09rem;
+      font-size: 2rem;
     }
-
-    section :global(li.is-active div.odd-branch-name) {
-        opacity: 1 !important;
+    
+    section h1 {
+      font-size: 3.75rem;
+      line-height: 95%;
+      margin: 3.75rem 0;
     }
-
-    section :global(h1) {
-        color: var(--odd-gray-light);
-        font-family: 'Newsreader', serif;
-        font-weight: 300;
-        letter-spacing: -0.2rem;
-        text-align: center;
-        text-wrap: balance;
+    
+  }
+  
+  @media only screen and (min-width: 600px) {
+    section {
+      padding: 5rem 0;
     }
-
-    section :global(h1 .highlighted-text) {
-        font-style: italic;
-        font-weight: 400;
+    
+    section div.odd-branch-name > span:first-child {
+      font-size: 1.75rem;
+      padding-right: 0.375rem;
     }
-
-    section div.odd-branch-items {
-        display: flex;
-        flex-direction: column;
+    
+    section div.odd-branch-name > span:last-child {
+      font-size: 2rem;
     }
-
-    section div.odd-branch-items span {
-        color: var(--odd-gray-light);
-        display: block;
-        font-family: 'Switzer', sans-serif;
-        font-weight: 400;
-        line-height: 100%;
-        letter-spacing: -0.03rem;
-        text-align: center;
-        text-transform: lowercase;
-        opacity: 0.5;
+    
+    section h1 {
+      font-size: 4.5rem;
+      line-height: 95%;
+      margin: 5rem 0;
     }
-
-    section div.odd-branch-items span.active {
-        font-weight: 700;
-        opacity: 1;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    section div.odd-branch-name > span:first-child {
+      font-size: 2.25rem;
+      padding-right: 0.5rem;
     }
-
-    section :global(button) {
-        bottom: 2rem;
-        left: 0;
-        position: absolute;
-        width: 100%;
-        z-index: 1;
+    
+    section div.odd-branch-name > span:last-child {
+      font-size: 2.5rem;
     }
-
-    @media only screen and (max-width: 600px) {
-        section {
-            padding: 5rem 0;
-        }
-
-        section div.odd-branch-name > span:first-child {
-            font-size: 1.75rem;
-            padding-right: 0.375rem;
-        }
-
-        section div.odd-branch-name > span:last-child {
-            font-size: 2rem;
-        }
-
-        section :global(h1) {
-            font-size: 3.75rem;
-            line-height: 95%;
-            margin: 3.75rem 0;
-        }
-
-        section div.odd-branch-items {
-            gap: 1rem;
-        }
-
-        section div.odd-branch-items span {
-            font-size: 1.625rem;
-        }
+    
+    section h1 {
+      font-size: 5rem;
     }
-
-    @media only screen and (min-width: 600px) {
-        section {
-            padding: 5rem 0;
-        }
-
-        section div.odd-branch-name > span:first-child {
-            font-size: 1.75rem;
-            padding-right: 0.375rem;
-        }
-
-        section div.odd-branch-name > span:last-child {
-            font-size: 2rem;
-        }
-
-        section :global(h1) {
-            font-size: 4.5rem;
-            line-height: 95%;
-            margin: 5rem 0;
-        }
-
-        section div.odd-branch-items {
-            gap: 1.125rem;
-        }
-
-        section div.odd-branch-items span {
-            font-size: 2rem;
-        }
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    section div.odd-branch-name > span:first-child {
+      font-size: 2.75rem;
+      padding-right: 0.5rem;
     }
-
-    @media only screen and (min-width: 768px) {
-        section div.odd-branch-name > span:first-child {
-            font-size: 2.25rem;
-            padding-right: 0.5rem;
-        }
-
-        section div.odd-branch-name > span:last-child {
-            font-size: 2.5rem;
-        }
-
-        section :global(h1) {
-            font-size: 5rem;
-        }
-
-        section div.odd-branch-items {
-            gap: 1.25rem;
-        }
-
-        section div.odd-branch-items span {
-            font-size: 2rem;
-        }
+    
+    section div.odd-branch-name > span:last-child {
+      font-size: 3rem;
     }
-
-    @media only screen and (min-width: 1024px) {
-        section div.odd-branch-name > span:first-child {
-            font-size: 2.75rem;
-            padding-right: 0.5rem;
-        }
-
-        section div.odd-branch-name > span:last-child {
-            font-size: 3rem;
-        }
-
-        section :global(h1) {
-            font-size: 6.75rem;
-        }
-
-        section div.odd-branch-items {
-            gap: 1.75rem;
-        }
-
-        section div.odd-branch-items span {
-            font-size: 3rem;
-        }
+    
+    section h1 {
+      font-size: 6.75rem;
     }
-
-    @media only screen and (min-width: 1280px) {
-        section {
-            padding: 3.75rem 0 7.5rem 0;
-        }
-
-        section div.odd-branch-name > span:first-child {
-            font-size: 2.25rem;
-            padding-right: 0.5rem;
-        }
-
-        section div.odd-branch-name > span:last-child {
-            font-size: 2.5rem;
-        }
-
-        section :global(h1) {
-            font-size: 6.25rem;
-            line-height: 90%;
-            margin: 3.75rem 0;
-        }
-
-        section div.odd-branch-items {
-            gap: 1.25rem;
-        }
-
-        section div.odd-branch-items span {
-            font-size: 2rem;
-        }
+    
+  }
+  
+  @media only screen and (min-width: 1280px) {
+    section {
+      padding: 3.75rem 0 7.5rem 0;
     }
-
-    @media only screen and (min-width: 1536px) {
-        section :global(h1) {
-            font-size: 7.5rem;
-        }
+    
+    section div.odd-branch-name > span:first-child {
+      font-size: 2.25rem;
+      padding-right: 0.5rem;
     }
+    
+    section div.odd-branch-name > span:last-child {
+      font-size: 2.5rem;
+    }
+    
+    section h1 {
+      font-size: 6.25rem;
+      line-height: 90%;
+      margin: 3.75rem 0;
+    }
+    
+  }
+  
+  @media only screen and (min-width: 1536px) {
+    section h1 {
+      font-size: 7.5rem;
+    }
+  }
 </style>
