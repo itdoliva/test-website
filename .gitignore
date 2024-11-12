@@ -17,6 +17,7 @@ vite.config.ts.timestamp-*
 .env
 .env.*
 !.env.example
+.vscode
 
 # PNPM, NPM & Yarn
 pnpm-lock.yaml

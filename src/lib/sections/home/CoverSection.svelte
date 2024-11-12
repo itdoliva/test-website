@@ -31,7 +31,7 @@
   },
   ];
   
-  const interval = 3000
+  const interval = 4000
 
   let slider
   let tl
@@ -83,19 +83,12 @@
     tl = gsap.timeline()
     
     tl
-    .add(() => {
-      caretEl.classList.remove('blink') 
-      caretEl.classList.remove('blink--fast') 
-    })
+    .add(() => caretEl.classList.remove('blink'))
     .to(itemEl, { text: { value: '', rtl: true, preserveSpaces: true }, duration: 0.5, ease: 'power1.inOut' })
-    .add(() => {
-      caretEl.classList.add('blink--fast') 
-    })
-    .to(itemEl, { text: { value: text, preserveSpaces: true, }, duration: 1.5, ease: 'power1.inOut' })
-    .add(() => {
-      caretEl.classList.remove('blink--fast') 
-      caretEl.classList.add('blink') 
-    })
+    .add(() => caretEl.classList.add('blink'))
+    .to(itemEl, { text: { value: text, preserveSpaces: true, }, duration: 1, ease: 'power1.inOut' }, "+=1")
+    .add(() => caretEl.classList.remove('blink'), '<=')
+    .add(() => caretEl.classList.add('blink') )
   }
 
   
