@@ -31,6 +31,10 @@
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
+
+        /* Max Width 600 */
+        margin: 1.25rem 0;
+        padding: 1.25rem 1.25rem;
     }
 
     p {
@@ -42,19 +46,12 @@
         line-height: 100%;
         text-align: center;
         text-wrap: balance;
+
+        /* Max Width 600 */
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
-    :global(.odd-studio) p {
-        color: var(--odd-purple-medium);
-    }
-
-    :global(.odd-education) p {
-        color: var(--odd-blue-medium);
-    }
-
-    :global(.odd-experiments) p {
-        color: var(--odd-turquoise-medium);
-    }
 
     span.quote-author {
         color: var(--odd-gray-dark);
@@ -65,6 +62,9 @@
         line-height: 120%;
         text-align: center;
         text-wrap: balance;
+
+        /* Max Width 600 */
+        font-size: 1rem;
         width: 100%;
     }
 
@@ -78,48 +78,17 @@
         text-align: center;
         text-transform: uppercase;
         text-wrap: balance;
+
+        /* Max Width 600 */
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
     }
 
     @media only screen and (max-width: 600px) {
-        div {
-            margin: 1.25rem 0;
-            padding: 1.25rem 1.25rem;
-        }
-
-        p {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        span.quote-author {
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        span.quote-details {
-            font-size: 0.75rem;
-            margin-top: 0.25rem;
-        }
     }
 
     @media only screen and (min-width: 600px) {
-        div {
-            margin: 1.25rem 0;
-            padding: 1.25rem 1.25rem;
-        }
-
-        p {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        span.quote-author {
-            font-size: 1rem;
-        }
-
         span.quote-details {
-            font-size: 0.75rem;
-            margin-top: 0.25rem;
             width: 100%;
         }
     }
