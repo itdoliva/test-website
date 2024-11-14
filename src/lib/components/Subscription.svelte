@@ -40,7 +40,7 @@
 
 <div class={pattern ? `odd-${pattern}` : ''}>
     <h3>Subscribe to our</h3>
-    <h3>newsletter</h3>
+    <h3>substack</h3>
     <p>
         Join our community and receive updates on our projects, available
         courses, and job opportunities.
@@ -65,22 +65,11 @@
 
 <style>
     div {
-        background-color: var(--odd-purple-medium);
+        background-color: var(--odd-gray-dark);
         border-top-left-radius: 0.625rem;
         border-top-right-radius: 0.625rem;
     }
 
-    div.odd-studio {
-        background-color: var(--odd-purple-medium);
-    }
-
-    div.odd-experiments {
-        background-color: var(--odd-turquoise-medium);
-    }
-
-    div.odd-education {
-        background-color: var(--odd-blue-medium);
-    }
 
     h3:nth-of-type(1) {
         color: var(--odd-gray-light);

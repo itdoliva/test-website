@@ -29,7 +29,7 @@
         -webkit-box-align: end;
         -ms-flex-align: end;
         align-items: flex-end;
-        background-color: var(--odd-purple-dark);
+        background-color: var(--odd-gray-darkest);
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;

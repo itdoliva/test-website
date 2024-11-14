@@ -3,18 +3,19 @@ import { enableAutoPreviews } from '@prismicio/svelte/kit';
 import * as prismic from '@prismicio/client';
 
 const routes = [
-    { type: 'StudioCase', path: '/studio/cases/:uid' },
-    { type: 'EducationCase', path: '/education/cases/:uid' },
-    { type: 'ExperimentsCase', path: '/experiments/cases/:uid' },
+    { type: 'StudioCase', path: '/:lang/studio/cases/:uid' },
+    { type: 'EducationCase', path: '/:lang/education/cases/:uid' },
+    { type: 'ExperimentsCase', path: '/:lang/experiments/cases/:uid' },
 ];
 
-export const repositoryName = PUBLIC_PRISMIC_REPOSITORY_NAME;
 
 export const createClient = ({ cookies, ...config } = {}) => {
-    const client = prismic.createClient(repositoryName, {
+    const options = {
         routes,
         ...config,
-    });
+    };
+    
+    const client = prismic.createClient(PUBLIC_PRISMIC_REPOSITORY_NAME, options);
 
     enableAutoPreviews({ client, cookies });
 

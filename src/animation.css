@@ -8,6 +8,11 @@
 	        animation: blink .3s linear infinite both;
 }
 
+.led-shift {
+  -webkit-animation: led-shift 60s linear infinite;
+	        animation: led-shift 60s linear infinite;
+}
+
  @-webkit-keyframes blink {
   0% { opacity: 1; }
   49% { opacity: 1; }
@@ -21,4 +26,13 @@
   50% { opacity: 0; }
   99% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@-webkit-keyframes led-shift {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(-0%, 0, 0); }
+}
+@keyframes led-shift {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(-0%, 0, 0); }
 }
